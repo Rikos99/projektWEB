@@ -9,10 +9,10 @@
 - Stanislav Janča
 
 ## Rozdělení
-- Mariana -
-- Richard -
-- Lukáš - 
-- Stanislav -
+- Mariana -   Databáze, front-end
+- Richard -   PHP, back-end
+- Lukáš -     CSS, login, front-end
+- Stanislav - PHP, JS, back-end
 
 ## Návrh aplikace
 
