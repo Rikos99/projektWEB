@@ -18,9 +18,40 @@ Priority
 //////
 
 Nove
+# Struktura Indexu:
+## Header (každá část se roztáhne a bude mít dropdown menu)
+  - Knihy - seznam knih, seznam tvých knih
+  - Gramatika
+  - Profilovka uživatele (dropdown - profil, nastavení a volba knih)
 
-Popis Pracovního Postupu (popis od prvního přihlášení do začátku maturity)
+## Body (seřazení sekcí podle uživatele)
+  - Sekce:
+    1. Daily Questy - rozdělení na knihy a gramatiku; streak 
+      - Knihy - kartičky a kvíz
+      - Gramatika - x splněných "otázek" atd.
+    2. Random procvičení (rozdělí se na:)
+        - Random kvíz na jednu z knížek
+        - Random gramatickou otázku
+    3. 
+  
+
+
+## Footer
+
+# Seznam všech knížek
+  - Seřazení podle hodnocení, počtu stran, náročnosti, počtu materiálů (referáty, obsahy, rozbory) a kvízy
+
+# Struktura stránky knihy
+  - Hodnocení
+  - Info o knize (počet stran, autor)
+
+
+# Popis Pracovního Postupu (popis od prvního přihlášení do začátku maturity)
 
 1. Přihlášení / Registrace
-  a. Jméno, Příjmení, E-mail, Heslo
-  b. 
+  - Jméno, Příjmení, E-mail, Heslo
+2. Po vytvoření účtu přesměrování na nastavení profilu
+  - 3 sekce - účet / profil, škola a přesměrování na výběr knih
+  - účet - Základní údaje
+  - škola - název, třída
+3. Redirect na home page (index)
