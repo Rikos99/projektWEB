@@ -29,11 +29,14 @@ Nove
       1. Procvičování - při prvním spuštění ten den se zobrazí Daily Questy, po splnění Daily Questů se změní na Náhodné Procvičování a ukáže se k tomu nějaký indikátor splnění Daily Questů
   
       1. Daily Questy - rozdělení na knihy a gramatiku; streak 
-        ~~~- Knihy - kartičky a kvíz
+
+
+
+        - Knihy - kartičky a kvíz
         - Gramatika - x splněných "otázek" atd.
-      2. Random procvičení (rozdělí se na:)
+        3. Random procvičení (rozdělí se na:)
           - Random kvíz na jednu z knížek (nalevo)
-          - Random gramatickou otázku (napravo)~~~
+          - Random gramatickou otázku (napravo)
     
 
 
