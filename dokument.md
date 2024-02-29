@@ -15,9 +15,8 @@ Priority
   1.	Udělat dabazi
     a.	Profily
     b.	Knížky
-//////
-
-Nove
+---
+# Nove
 # Struktura Indexu:
 ## Header (každá část se roztáhne a bude mít dropdown menu)
   - Knihy - seznam knih, seznam tvých knih
@@ -42,12 +41,13 @@ Nove
         - Rozdělení na Knihy a gramatiku
         - Knihy
           1. Možnost - Odkaz na stránku s knížkou
-          2. Možnost - 
+          2. Možnost - Rozbory, Kvízy, Otázky (kartičky)
         - Gramatika - např. interpunkce, doplňování, určování, atd.; tlačítko na stránku se vším procvičováním, checkboxy a max. zvolených - např. 6
       3. Seznam zvolených knih uživatelem
-        - Odkazy na ČSFD-esk stránky (Struktura stránky knihy)
+        - Odkazy na ČSFD-esk stránky (Struktura stránky knihy) (dva sloupce o 10 knihách)
 
 ## Footer
+  - Easter Eggs
 
 # Seznam všech knížek
   - Seřazení podle hodnocení, počtu stran, náročnosti, počtu materiálů (referáty, obsahy, rozbory) a kvízy
@@ -55,6 +55,7 @@ Nove
 # Struktura stránky knihy
   - Hodnocení
   - Info o knize (počet stran, autor)
+  - Možnost zakliknout "Moje Kniha"
   - "Quick access menu" - Kvízy, Rozbory, 
 
 # Seznam období
@@ -69,3 +70,15 @@ Nove
   - účet - Základní údaje
   - škola - název, třída
 3. Redirect na home page (index)
+
+# Vytváření
+
+Select pro rozbor, otázka
+
+Při možnosti zvolení ze stránky knihy se automaticky zvolí některé selecty
+
+
+
+
+
+# Administrace
