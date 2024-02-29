@@ -22,23 +22,30 @@ Nove
 ## Header (každá část se roztáhne a bude mít dropdown menu)
   - Knihy - seznam knih, seznam tvých knih
   - Gramatika
+  - Materiály (souvislý text / časové období) ??????
   - Profilovka uživatele (dropdown - profil, nastavení a volba knih)
 
 ## Body (seřazení sekcí podle uživatele)
   - Sekce:
       1. Procvičování - při prvním spuštění ten den se zobrazí Daily Questy, po splnění Daily Questů se změní na Náhodné Procvičování a ukáže se k tomu nějaký indikátor splnění Daily Questů
   
-      1. Daily Questy - rozdělení na knihy a gramatiku; streak 
-
-
-
+      Nepatří, nemazat {
+        1. Daily Questy
+        - rozdělení na knihy a gramatiku; streak 
         - Knihy - kartičky a kvíz
         - Gramatika - x splněných "otázek" atd.
         3. Random procvičení (rozdělí se na:)
           - Random kvíz na jednu z knížek (nalevo)
           - Random gramatickou otázku (napravo)
-    
-
+    }
+      2. Konkrétní procvičování
+        - Rozdělení na Knihy a gramatiku
+        - Knihy
+          1. Možnost - Odkaz na stránku s knížkou
+          2. Možnost - 
+        - Gramatika - např. interpunkce, doplňování, určování, atd.; tlačítko na stránku se vším procvičováním, checkboxy a max. zvolených - např. 6
+      3. Seznam zvolených knih uživatelem
+        - Odkazy na ČSFD-esk stránky (Struktura stránky knihy)
 
 ## Footer
 
@@ -48,7 +55,10 @@ Nove
 # Struktura stránky knihy
   - Hodnocení
   - Info o knize (počet stran, autor)
+  - "Quick access menu" - Kvízy, Rozbory, 
 
+# Seznam období
+  - Období 
 
 # Popis Pracovního Postupu (popis od prvního přihlášení do začátku maturity)
 
