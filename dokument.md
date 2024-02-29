@@ -18,3 +18,9 @@ Priority
 //////
 
 Nove
+
+Popis Pracovního Postupu (popis od prvního přihlášení do začátku maturity)
+
+1. Přihlášení / Registrace
+  a. Jméno, Příjmení, E-mail, Heslo
+  b. 
