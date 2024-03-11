@@ -53,8 +53,8 @@ Priority
   - Seřazení podle hodnocení, počtu stran, náročnosti, počtu materiálů (referáty, obsahy, rozbory) a kvízy
 
 # Struktura stránky knihy
-  - Hodnocení
-  - Info o knize (počet stran, autor)
+  - ~~Hodnocení~~ (POUZE SERAZENI PODLE POCTU OBLIBENOSTI)
+  - Info o knize (~~počet stran~~, autor)
   - Možnost zakliknout "Moje Kniha"
   - "Quick access menu" - Kvízy, Rozbory, 
 
