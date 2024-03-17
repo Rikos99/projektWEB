@@ -1,0 +1,10 @@
+# zakáže zobrazení obsahu složek bez souboru index.*
+Options -Indexes
+
+# přesměruje požadavek (URL) na neexistující soubory a složky na index.php v kořeni
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip)$ index.php [L]
+
+AddType application/x-httpd-php .php .phtml
