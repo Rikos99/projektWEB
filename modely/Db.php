@@ -1,0 +1,1 @@
+//Funkce pro jednodušší práci s databází
