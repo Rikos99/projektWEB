@@ -18,7 +18,7 @@ body {
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
-    margin-right:10px ;
+    margin-right: 10px;
 }
 
 #sidediv {
@@ -68,22 +68,27 @@ nav ul li a {
     padding: 10px 20px;
     text-decoration: none;
     color: #fff;
-    transition: color 0.4s ease;
+    transition: color 0.4s ease; 
 }
 
 nav ul li a::after {
     content: '';
     position: absolute;
-    left: 0;
+    left: 50%; 
     bottom: -2px;
-    width: 0%;
+    width: 0; 
     height: 2px;
     background-color: #333; 
-    transition: width 0.3s ease;
+    transition: width 0.4s ease, left 0.4s ease; 
 }
 
 nav ul li a:hover::after {
     width: 100%;
+    left: 0; 
+}
+
+nav ul li a:hover {
+    color: #333; 
 }
 
 footer {
