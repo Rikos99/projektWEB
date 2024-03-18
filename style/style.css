@@ -68,7 +68,7 @@ nav ul li a {
     padding: 10px 20px;
     text-decoration: none;
     color: #fff;
-    transition: color 0.3s ease;
+    transition: color 0.4s ease;
 }
 
 nav ul li a::after {
