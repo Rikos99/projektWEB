@@ -1,3 +1,12 @@
+<?php
+//TODO vyměnit URL při hostingu
+//header( "Location: ".(empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."?authWindow" );
+
+$URL = "//" . $_SERVER['HTTP_HOST'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -14,7 +23,7 @@
 <div class="navigation">
     <nav>
         <ul>
-            <li><a href=""><span>Knihy</span></a></li>
+            <li><a href="<?=$URL?>/uvod"><span>Knihy</span></a></li>
             <li><a href=""><span>Gramatika</span></a></li>
             <li><a href=""><span>Materiály</span></a></li>
             <li class="dropdown" id="profil">
