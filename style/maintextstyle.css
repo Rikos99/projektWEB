@@ -1,0 +1,84 @@
+
+#text {
+    flex: 3;
+    padding: 20px;
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+#text #divbars div {
+    flex: 0 0 calc((100% - 60px) / 3); 
+    margin-bottom: 20px; 
+    margin-left: 15px;
+    margin-right: 15px ;
+    padding: 15px;
+    max-width: 20%;
+    min-width: 20%;
+    border-radius: 15px;
+    background-color: #555;
+    text-align: center;
+}
+
+#text #divbars div p {
+    color: #f4f4f4;
+    text-decoration: none;
+}
+
+#text img {
+    height: 80px;
+    width: 80px;
+}
+
+#text #divbars {
+    align-items: center; 
+    justify-content: center; 
+    margin-left: 15%;
+    margin-right: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 3;
+    position: relative; /* Position relative for pseudo-elements */
+}
+
+#text #divbars::before,
+#text #divbars::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 7px; /* Width of the lines */
+    background-color: #555; /* Color of the lines */
+    border-radius: 5px;
+}
+
+#text #divbars::before {
+    left: -8%; /* Position of the left line */
+}
+
+#text #divbars::after {
+    right: -8%; /* Position of the right line */
+}
+
+#text #divbars #divbartext{
+
+    text-align: left ;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 5px;
+    padding-bottom: 0;
+
+}
+
+#section {
+    width: 78%;
+    margin: 0 auto; 
+    text-align: center;
+    background-color: #555;
+    padding: 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 35px;
+}

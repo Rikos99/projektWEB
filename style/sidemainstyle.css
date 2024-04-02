@@ -1,0 +1,52 @@
+#sidediv {
+    flex: 1;
+    padding: 20px;
+    background-color: #e7e7e7;
+    color: #333;
+    border-radius: 5px;
+    max-height: 75vh;
+}
+
+#nastenka {
+    flex: 1;
+    padding: 20px;
+    background-color: #333;
+    margin-top: 20px;
+    color: #fff;
+    border-radius: 5px;
+    align-self: flex-start;
+    overflow-y: auto;
+    max-height: 50vh;
+    background-color: #333;
+}
+
+#sidediv #nastenka p{
+padding: 8px;
+background-color: #555;
+border-radius: 8px;
+
+}
+
+#sidediv #nastenka::-webkit-scrollbar {
+    width: 8px; 
+}
+
+#sidediv #nastenka::-webkit-scrollbar-thumb {
+    background-color: #555; 
+    border-radius: 10px; 
+}
+
+#sidediv #profile-info{
+    background-color: #555;
+    color: #f9f9f9;
+    padding: 3px;
+    padding-left: 20px;
+    border-radius: 12px;
+}
+
+#sidediv #profile-info h3{
+    padding-right: 50px;
+    margin-bottom: 12px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
