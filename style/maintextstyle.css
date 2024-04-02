@@ -89,6 +89,11 @@
     padding: 1%;
 }
 
+#dailyoutline h3 {
+    text-align: center;
+    margin: 8px auto 15px auto;
+}
+
 .container .dailyquest #dailyknihy,
 .container .dailyquest #dailygramatika {
     display: flex;

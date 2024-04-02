@@ -1,41 +1,50 @@
-div #whitecont{
-
-    flex: 2;
-    padding: 20px;
-    background-color: #e7e7e7;
-    border-radius: 5px;
+#filter {
+    flex: 1;
     margin-right: 10px;
+}
+
+#filter select {
+    width: 10%;
+    flex:1;
     display: flex;
-    flex-wrap: wrap; 
-
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
 }
 
-#whitecont #mybookholder #mybooklist{
-
-    flex:2;
-    flex-wrap: wrap;
-    display: inline-flex;
-}
-
-#whitecont img{
-    float: left;
-    width: 50px;
-    height: 50px;
-    justify-content: center;
-}
-
-#whitecont #mybookholder{
-
+.mybookholder {
     width: 45vh;
     height: 25vh;
     background-color: #555;
     padding: 10px 20px;
     border-radius: 8px;
-    
-
+    margin-top: 20px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
-/*
-#whitecont ul #mybookinfo{
 
+.mybookholder img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
 
+.mybookinfo {
+    list-style: none;
+    padding: 0;
+}
+
+.mybookinfo li {
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    margin: 20px;
+    align-items: flex-start;
+}
+
+main {
+    margin: 0 10%;
 }
