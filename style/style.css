@@ -8,6 +8,12 @@ body {
     background-color: #d4d4d4;
 }
 
+main{
+
+    margin: 0 10%;
+
+}
+
 .container {
     display: flex;
     margin: 20px;

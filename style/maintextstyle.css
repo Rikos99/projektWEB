@@ -72,6 +72,81 @@
 
 }
 
+.container .dailyquest{
+
+    background-color: #555;
+    padding: 1% 2%;
+    border-radius: 8px;
+    max-height: fit-content;
+    display: flex;
+    flex: 3;
+
+}
+
+.container #dailyoutline{
+    background-color: #666;
+    border-radius: 8px;
+    padding: 1%;
+}
+
+.container .dailyquest #dailyknihy,
+.container .dailyquest #dailygramatika {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    flex-direction: column;
+}
+
+.container .dailyquest #dailyknihy > div,
+.container .dailyquest #dailygramatika > div {
+    
+    width: 80%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #444444a6;
+}
+
+
+
+.container .dailyquest #dailyknihy {
+    border-right: 3px solid #666; 
+    padding-right: 10px; 
+}
+
+.container .dailyquest #dailygramatika {
+    padding-left: 10px; 
+}
+
+#daily_kniha_zadani,
+#daily_gramatika_zadani {
+    text-align: center; 
+}
+
+.container .dailyquest #dailyknihy button,
+.container .dailyquest #dailygramatika button {
+    background-color: #888; 
+    color: #fff; 
+    border: none; 
+    border-radius: 20px; 
+    padding: 5% 20%;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.container .dailyquest #dailyknihy button:hover,
+.container .dailyquest #dailygramatika button:hover {
+    background-color: #666; 
+}
+
+
+#daily {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
 #section {
     width: 78%;
     margin: 0 auto; 
