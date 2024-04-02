@@ -40,7 +40,7 @@
     display: flex;
     flex-wrap: wrap;
     flex: 3;
-    position: relative; /* Position relative for pseudo-elements */
+    position: relative; 
 }
 
 #text #divbars::before,
@@ -137,8 +137,8 @@
     padding: 2% 15%;
     cursor: pointer; 
     transition: background-color 0.3s ease;
-    align-items: center; /* Added */
-    justify-content: center; /* Added */
+    align-items: center;
+    justify-content: center;
 }
 
 .container .dailyquest #dailyknihy button:hover,
@@ -162,8 +162,6 @@
     padding: 0px;
     margin-top: 8px;
     margin-bottom: 8px;
-    border-bottom-left-radius: 5px ;
-    border-bottom-right-radius: 5px ;
 }
 
 #section h3{
