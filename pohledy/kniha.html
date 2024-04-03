@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/navstyle.css">
     <link rel="stylesheet" href="../style/knihastyle.css">
+    <script src="../script/filterScript.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 
 </head>
@@ -40,55 +43,25 @@
     <main>
         <div class="container">
 
-            <div id="filter">
-                <select>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
-                <select>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
-                <select>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
-            </div>
-    
-            <div id="whitecont">
-    
-                <div id="mybooklist">
-    
-                    <div class="mybookholder">
-    
-                        <img src="" alt="">
-                        <ul class="mybookinfo">
-                            <li>1</li>
-                            <li>1</li>
-                            <li>1</li>
-                        </ul>
-    
+            <div class="filter">
+
+                <div class="dropdown1">
+                    <button class="dropbtn1" onclick="toggleDropdown()" >Filter1</button>
+                    
+                    <div id="dropdownContent1" class="dropdown-content1">
+                        <input type="text"><br>
+                        <label for="">a</label>
+                        <input type="checkbox" name="" id=""><br>
+                        <label for="">a</label>
+                        <input type="checkbox" name="" id=""><br>
+                        <label for="">a</label>
+                        <input type="checkbox" name="" id=""><br>
                     </div>
-    
-                    <div class="mybookholder">
-    
-                        <img src="" alt="">
-                        <ul class="mybookinfo">
-                            <li>1</li>
-                            <li>1</li>
-                            <li>1</li>
-                        </ul>
-    
-                    </div>
-    
                 </div>
-    
+
             </div>
-    
-        </div>
+     
+
     </main>
 
     <footer>
