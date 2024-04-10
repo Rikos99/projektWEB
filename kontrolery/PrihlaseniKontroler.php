@@ -2,12 +2,25 @@
 class PrihlaseniKontroler extends Kontroler {
     public function zpracuj($parametry) {
 
-        $prihlaseniModel = new prihlaseniModel;
+        $spravceUzivatelu = new SpravceUzivatelu;
 
-        if(isset($_POST["email"])){
-            $prihlaseniModel->checkPrihlaseniForm();
+        if(!empty($_POST)){
+
+            if($spravceUzivatelu->prihlas($_POST)){
+                //uspasne prihlaseni
+                $this->presmeruj("uvod");
+            }
+            else{
+                //chybne prihlaseni
+                $this->presmeruj("prihlaseni");
+            }
+
+            //header( "Location: "."uspesnePrihlaseni" ); // presmerovat na hlavni stranku
+        }
+        else{
+            $this->pohled = "prihlaseni";
         }
 
-        $this->pohled = "prihlaseni";
+
     }
 }

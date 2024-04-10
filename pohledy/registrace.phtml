@@ -20,12 +20,12 @@
 
         <div>
             <label for="">Heslo</label>
-            <input type="password" name="password1" id="">
+            <input type="password" name="heslo" id="">
         </div>
 
         <div>
             <label for="">Potvrzeni Hesla</label>
-            <input type="password" name="password2" id="">
+            <input type="password" name="heslo2" id="">
         </div>
 
     </div>
@@ -38,6 +38,6 @@
         <p>Zadejte autentikacni znaky poslane na email</p>
         <input type="text" name="authCode" id="" maxlength="6" required>
         <input type="submit" value="Odeslat">
-        <p id="chybaAutentikaceP" style="display: none">Chyba autentikace zadejte znovu</p>
     </form>
 </div>
+<p id="chyboveHlaseni"><?= ($_SESSION["zpravy"]["registrace"]["chyba"] ?? "") ?></p>

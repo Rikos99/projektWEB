@@ -2,16 +2,35 @@
 class RegistraceKontroler extends Kontroler {
     public function zpracuj($parametry) {
 
-        //require("phpMailer\phpMailerController.php");
-
         $registraceModel = new RegistraceModel;
+        $SpravceUzivatelu = new SpravceUzivatelu;
 
         if(isset($_POST["jmeno"])){
-            $registraceModel->checkRegisterFom();
-        }
+
+            $regRes = $registraceModel->checkRegisterForm($SpravceUzivatelu);
+            if ($regRes == -1) {
+                $_SESSION["zpravy"]["registrace"]["chyba"] = "Hesla se neshoduji.";
+                $this->presmeruj("registrace");
+            } else if ($regRes == -2) {
+                $_SESSION["zpravy"]["registrace"]["chyba"] = "Uzivatel s timto emailem jiz existuje.";
+                $this->presmeruj("registrace");
+            }
+            unset($_SESSION["zpravy"]["registrace"]["chyba"]);
+        }else
 
         if(isset($_POST["authCode"])){
-            $registraceModel->checkAuthFom();
+            if($registraceModel->checkAuthForm()){ // uspesna registrace
+                $SpravceUzivatelu->vytvoritUzivatele($_SESSION["prevPost"]);
+
+                unset($_SESSION["authCode"]);
+                unset($_SESSION["zpravy"]["registrace"]["chyba"]);
+
+                $this->presmeruj("prihlaseni");
+            }
+            else{// neuspesna registrace
+                $this->presmeruj("registrace");
+                $_SESSION["zpravy"]["registrace"]["chyba"] = "Spatne autorizacni kod.";
+            }
         }
 
         $this->pohled = "registrace";

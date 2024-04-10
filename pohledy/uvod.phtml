@@ -61,7 +61,7 @@
 
             <div id="profile-info">
                 <h3>Profile</h3>
-                <p>Jmeno:</p>
+                <p>Jmeno: <?php echo (!empty($_SESSION['uzivatel']))?$_SESSION['uzivatel']['jmeno']:'Nikdo neni prihlaseny'; ?></p>
                 <p>Streak:</p>
             </div>
 

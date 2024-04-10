@@ -2,6 +2,13 @@
 abstract class Kontroler {
     protected $pohled = ""; // název souboru s pohledem (bez přípony .phtml)
     protected $data = []; //pole pro data
+    protected $prihlasenyUzivatel;
+
+    public function __construct()
+    {
+        $spravceUzivatelu = new SpravceUzivatelu;
+        $this->prihlasenyUzivatel = $spravceUzivatelu->vratPrihlasenehoUzivatele();
+    }
 
     abstract public function zpracuj($parametry);
 
