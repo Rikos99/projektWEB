@@ -10,10 +10,11 @@ $URL = "//" . $_SERVER['HTTP_HOST'];
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knyha</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
 <header>
@@ -23,7 +24,7 @@ $URL = "//" . $_SERVER['HTTP_HOST'];
 <div class="navigation">
     <nav>
         <ul>
-            <li><a href="<?=$URL?>/uvod"><span>Knihy</span></a></li>
+            <li><a href="uvod"><span>Knihy</span></a></li>
             <li><a href=""><span>Gramatika</span></a></li>
             <li><a href=""><span>Materiály</span></a></li>
             <li class="dropdown" id="profil">

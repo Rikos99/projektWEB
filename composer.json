@@ -1,0 +1,27 @@
+{
+  "name": "test/test",
+  "description": "description",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Richard Dluhoš",
+      "email": "r.dluhos.st@spseiostrava.cz"
+    },
+    {
+      "name": "Stanislav Janča",
+      "email": "s.janca.st@spseiostrava.cz"
+    },
+    {
+      "name": "Lukáš Iwoniak",
+      "email": "l.iwoniak.st@spseiostrava.cz"
+    },
+    {
+      "name": "Mariana Bartečková",
+      "email": "m.barteckova.st@spseiostrava.cz"
+    }
+  ],
+  "license": ["MIT"],
+  "require": {
+    "phpmailer/phpmailer": "6.9.*"
+  }
+}
