@@ -1,3 +1,12 @@
+:root{
+
+--primary-color: #E06E7C;
+--secondary-color:#7EC0C5 ; /* optional - zaměnit za tercial colot*/
+--tercial-color:#b5e9c5 ;
+
+}
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;

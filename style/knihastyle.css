@@ -4,12 +4,19 @@
     min-width:25%;
     margin: 0 1%;
     padding:0 ;
+    background-color: bisque;  
 }
 
 .filter * {
     width: 100%;
 
 }
+
+#filterbackground{
+    width: 30%;
+    margin-right: 20px;
+}
+
 
 main {
     margin: 0 20%;
@@ -21,7 +28,7 @@ main {
     align-items: flex-start;
     position: relative;
     margin-top: 5px;
-
+    align-items: stretch;
 }
 
 .dropdown1 {
@@ -59,6 +66,13 @@ main {
     left: 0;
     z-index: 1;
     margin-bottom: 10px;
+    transition: transform 0.8s ease-in-out;
+    animation: slideIn 0.5s forwards; 
+}
+
+.dropdown-content1 .show {
+    display: block;
+    transform: translateY(-100%); 
 }
 
 .dropdown-content1 input[type="checkbox"] {
@@ -68,6 +82,8 @@ main {
 .dropdown-content1 a:hover {
     background-color: #f1f1f1;
 }
+
+
 
 .show {
     display: block;
@@ -81,3 +97,15 @@ main {
     margin-top: 150px; 
 }
 
+/*animace*/
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
