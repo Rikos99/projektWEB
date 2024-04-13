@@ -1,0 +1,62 @@
+<script src="../js/vytvareniPrispevku/selectory.js"></script>
+<script src="../js/vytvareniPrispevku/inputFileReader.js"></script>
+<script src="../js/vytvareniPrispevku/comToPhp.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.4/mammoth.browser.min.js"></script>
+
+<body>
+
+<form method="POST">
+
+    <label for="">Nazev prispevku</label>
+    <input type="text" name="nazevPrispevku" required>
+
+    <label for="">Typ prispevku</label>
+    <select name="typPrispevku" id="typPrispevkuId" required>
+        <option value="R">Rozbor</option>
+        <option value="C">Ctenarsky denik</option>
+        <option value="Z">Zapisky</option>  //? jak pojmenovat
+    </select>
+
+    <label for="">Knihy</label>
+    <select name="vyberKnizky" id="vyberKnizky" required>
+        <?php if (isset($this->data['predurcenaKnihaString'])) {
+                echo "<option selected value='" . $this->data['predurcenaKnihaId'] . "'>" . $this->data['predurcenaKnihaString'] . "</option>";
+                }
+                else {
+                    foreach ($this->data['vsechnyKnihy'] as $kniha) {
+                        echo "<option value='" . $kniha['id'] . "'>" . $kniha['nazev'] . " - " . $kniha['autor'] . "</option>";
+                    }
+                }
+            ?>
+    </select>
+
+
+    <div>
+        <label>
+            <textarea name="content" id="hlavniEditor"></textarea>
+            <textarea name="textareaContentJakoHtml" id="textareaContentJakoHtml" hidden="hidden" required></textarea>
+        </label>
+    </div>
+
+    <label for="">Nahrat vlastni dokument</label>
+    <input type="file" id="fileInput">
+    <button type="submit">Nahrat</button>
+
+
+</form>
+
+<div id="zahoditOkenko" hidden="hidden">
+    <p>Chcete zahodit dosud nasapny text?</p>
+    <button id="zahoditA">ANO</button>
+    <button id="zahoditN">NE</button>
+</div>
+
+
+</body>
+<script src="../ckeditor/ckeditor.js"></script>
+<script>    CKEDITOR.replace( 'content' ,
+        {
+            language:'cs',
+            customConfig: '../js/vytvareniPrispevku/ckEditorConfig.js',
+            skin: 'n1theme'}
+    );  </script>
