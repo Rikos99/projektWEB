@@ -1,0 +1,43 @@
+<script src="../js/registrace.js"></script>
+
+<form action="" method="post">
+
+    <div>
+        <div>
+            <label for="">Jmeno</label>
+            <input type="text" name="jmeno" id="" required>
+        </div>
+
+        <div>
+            <label for="">Prijmeni</label>
+            <input type="text" name="prijmeni" id="" >
+        </div>
+
+        <div>
+            <label for="">Email</label>
+            <input type="email" name="email" id=""> <!--nepovinne-->
+        </div>
+
+        <div>
+            <label for="">Heslo</label>
+            <input type="password" name="heslo" id="">
+        </div>
+
+        <div>
+            <label for="">Potvrzeni Hesla</label>
+            <input type="password" name="heslo2" id="">
+        </div>
+
+    </div>
+    <input type="submit" value="Odeslat">
+
+</form>
+
+<div id="autentikacniOkenkoDiv" style="display: none">
+    <form action="" method="post">
+        <p>Zadejte autentikacni znaky poslane na email</p>
+        <input type="text" name="authCode" id="" maxlength="6" required>
+        <input type="submit" value="Odeslat">
+    </form>
+</div>
+<p id="chyboveHlaseni"><?= ($_SESSION["zpravy"]["registrace"]["chyba"] ?? "") ?></p>
