@@ -2,6 +2,6 @@
 class UvodKontroler extends Kontroler {
     public function zpracuj($parametry) {
         $this->pohled = "uvod";
-        $this->cssCesty=["style/style.css", "style/navstyle.css", "style/maintextstyle.css", "style/sidemainstyle.css"];
+        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
     }
 }
