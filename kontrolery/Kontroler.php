@@ -3,6 +3,7 @@ abstract class Kontroler {
     protected $pohled = ""; // název souboru s pohledem (bez přípony .phtml)
     protected $data = []; //pole pro data
     protected $prihlasenyUzivatel;
+    protected array $cssCesty = [];
 
     public function __construct()
     {
