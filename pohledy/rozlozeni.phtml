@@ -1,8 +1,11 @@
 <?php
+
+/*
 //TODO vyměnit URL při hostingu
 //header( "Location: ".(empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."?authWindow" );
 
 $URL = "//" . $_SERVER['HTTP_HOST'];
+*/
 
 
 ?>
@@ -13,8 +16,14 @@ $URL = "//" . $_SERVER['HTTP_HOST'];
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knyha</title>
-    <link rel="stylesheet" href="style/style.css">
+    <title></title> <!-- TODO DOPLNIT AUTOMATICKÉ TITLES -->
+
+    <?php
+        foreach ($this->kontroler->cssCesty as $cesta)
+        {
+            echo '<link rel="stylesheet" href="style/'. $cesta .'">';
+        }
+    ?>
     <link rel="icon" type="image/x-icon" href="obrazky/favicon.ico">
 </head>
 <body>
@@ -28,13 +37,28 @@ $URL = "//" . $_SERVER['HTTP_HOST'];
             <li><a href="uvod"><span>Knihy</span></a></li>
             <li><a href=""><span>Gramatika</span></a></li>
             <li><a href=""><span>Materiály</span></a></li>
-            <li class="dropdown" id="profil">
-                <a href=""><span>Profil</span></a>
-                <div class="dropdown-content">
-                    <a href="">Nastavení</a>
-                    <a href="">Odhlásit se</a>
-                </div>
-            </li>
+
+            <?php
+            if($this->kontroler->prihlasenyUzivatel==false)
+            {
+                ?>
+                <li><a href="prihlaseni"><span>Přihlásit</span></a></li>
+                <?php
+            }
+            else
+            {
+                ?>
+                <li class="dropdown" id="profil">
+                    <a href=""><span>Profil</span></a>
+                    <div class="dropdown-content">
+                        <a href="">Nastavení</a>
+                        <a href="odhlaseni">Odhlásit se</a>
+                    </div>
+                </li>
+                <?php
+            }
+            ?>
+
         </ul>
     </nav>
 </div>
