@@ -3,6 +3,7 @@ class PrihlaseniKontroler extends Kontroler {
     public function zpracuj($parametry) {
 
         $spravceUzivatelu = new SpravceUzivatelu;
+        $this->cssCesty=["style.css", "loginSite.css", "navstyle.css"];
 
         if(!empty($_POST)){
 

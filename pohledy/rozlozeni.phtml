@@ -39,7 +39,7 @@ $URL = "//" . $_SERVER['HTTP_HOST'];
             <li><a href=""><span>Materiály</span></a></li>
 
             <?php
-            if($this->kontroler->prihlasenyUzivatel==false)
+            if(!$this->kontroler->prihlasenyUzivatel)
             {
                 ?>
                 <li><a href="prihlaseni"><span>Přihlásit</span></a></li>
