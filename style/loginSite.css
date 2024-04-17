@@ -1,0 +1,58 @@
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    height: 100%;
+}
+
+#LoginOutline {
+    background-color: aqua;
+    border: 1px solid #555;
+    border-radius: 5px;
+    max-width: 50%;
+    min-width: 20%;
+    max-height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    
+}
+
+#freeSpace{
+
+    padding: 5%;
+    align-items: center;s
+}
+
+#LogInputs{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+
+
+#LogInputs input[type="text"] {
+    margin: 5% 3%;
+}
+
+#LogInputs input[type="button"] {
+    width: 100%;
+    margin-bottom: 2%;
+}
+

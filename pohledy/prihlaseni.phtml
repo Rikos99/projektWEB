@@ -1,20 +1,27 @@
-<form action="" method="post">
+<div class="container">
 
-    <div>
+<div id="LoginOutline">
 
-        <div>
-            <label for="">Email</label>
-            <input type="email" name="email" id=""> <!--nepovinne-->
+    <div id="freeSpace">
+
+        <h3>Přihlaste se</h3>
+        <div id="form">
+
+            <form action="" method="post">
+
+                <div id="LogInputs">
+                    <input type="text" name="email" id="email" placeholder="Email">
+                    <input type="text" name="password" id="heslo" placeholder="Password">
+                    <input type="submit" value="Login">
+                    <p id="chybnePrihlaseni" style="display: none">Chyba autentikace zadejte znovu</p>
+                    <a href="registrace">Registrace</a>
+                </div>
+
+            </form>
+
         </div>
-
-        <div>
-            <label for="">Heslo</label>
-            <input type="password" name="heslo" id="">
-        </div>
-
     </div>
-    <input type="submit" value="Odeslat">
-    <p id="chybnePrihlaseni" style="display: none">Chyba autentikace zadejte znovu</p>
 
+</div>
 
-</form
+</div>
