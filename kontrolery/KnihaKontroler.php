@@ -6,6 +6,8 @@ class KnihaKontroler extends Kontroler
     {
 
         $objektyModel = new ObjektyModel;
+        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
+        $this->data["title"] = "Kniha"; //TODO název knihy místo "Kniha"
 
         if (
             isset($parametry[0]) &&

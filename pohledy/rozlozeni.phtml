@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 <?php
 
 /*
@@ -8,18 +7,15 @@
 $URL = "//" . $_SERVER['HTTP_HOST'];
 */
 
-
 ?>
 
-=======
->>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="cs">
 <head>
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title> <!-- TODO DOPLNIT AUTOMATICKÉ TITLES -->
+    <title><?php echo $this->kontroler->data["title"]?> | Knihovna</title> <!-- TODO DOPLNIT AUTOMATICKÉ TITLES -->
 
     <?php
         foreach ($this->kontroler->cssCesty as $cesta)
@@ -31,15 +27,15 @@ $URL = "//" . $_SERVER['HTTP_HOST'];
 </head>
 <body>
 <header>
-    <h1>Knyhy na maturak hyhy</h1>
+    <h1><a href="">Knyhy na maturak hyhy</a></h1>
 </header>
 
 <div class="navigation">
     <nav>
         <ul>
-            <li><a href="uvod"><span>Knihy</span></a></li>
+            <li><a href="knihy"><span>Knihy</span></a></li>
             <li><a href=""><span>Gramatika</span></a></li>
-            <li><a href=""><span>Materiály</span></a></li>
+            <li><a href="prispevky"><span>Materiály</span></a></li>
 
             <?php
             if(!$this->kontroler->prihlasenyUzivatel)

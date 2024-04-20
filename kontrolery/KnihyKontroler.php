@@ -5,6 +5,8 @@ class KnihyKontroler extends Kontroler {
 
         $objektyModel = new ObjektyModel;
 
+        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
+
         $this->data['vsechnyKnihy'] =
             $objektyModel->vsechnyKnihyFiltr($objektyModel->arrayToAssociative($parametry));
 
