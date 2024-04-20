@@ -58,10 +58,11 @@
 
 
         <div id="sidediv">
+            <?php /*print_r($_SESSION['uzivatel'])*/?>
 
             <div id="profile-info">
                 <h3>Profile</h3>
-                <p>Jmeno: <?php echo (!empty($_SESSION['uzivatel']))?$_SESSION['uzivatel']['jmeno']:'Nikdo neni prihlaseny'; ?></p>
+                <p>Jmeno: <?php echo (!empty($_SESSION['uzivatel']))?$_SESSION['uzivatel']['Jmeno']:'Nikdo neni prihlaseny'; ?></p>
                 <p>Streak:</p>
             </div>
 

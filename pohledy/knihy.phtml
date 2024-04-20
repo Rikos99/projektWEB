@@ -1,0 +1,60 @@
+<?php
+ $hlavickyTabulky = [ // NASTAVENI HLAVICEK TABULKY
+        "Kniha",
+        "Autor",
+        "Obdobi"
+    ];
+
+    $data = array(); // NASTAVENI RADKU TABULKY
+    foreach ($this->data['vsechnyKnihy'] as $prispevek) {
+        $data[] = array(
+            [$prispevek['nazevKniha'], "kniha/" . $prispevek['idKniha']],
+            [$prispevek['jmenoAutora']." ".$prispevek['prijmeniAutora'] , "autor/" . $prispevek['idAutora']],
+            [$prispevek['nazevObdobi'], "prispevky/knihy/obdobi/" . $prispevek['idObdobi']],
+        );
+    }
+?>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 0 10px;
+    }
+</style>
+
+
+<table>
+
+    <thead>
+    <?php // VLOZENI HLAVICEK TABULKY
+    foreach ($hlavickyTabulky as $hlavicka) {
+        echo "<th>$hlavicka</th>";
+    }
+    ?>
+    </thead>
+
+    <tbody>
+    <?php
+    foreach ($data as $radek){ // VKLADANI RADKU S DATY
+        echo "<tr>";
+        foreach ($radek as $value) {
+            echo "<td><a href='$value[1]'>$value[0]</a></td>";
+        }
+        echo "</tr>";
+    }
+    ?>
+    </tbody>
+
+</table>
+
+
+<p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
+    if (isset($_SESSION["zpravy"]["knihy"]["chybaNacteni"])) {
+        echo $_SESSION["zpravy"]["knihy"]["chybaNacteni"] ;
+        echo "<br>";
+        echo "<a href='knihy'>Zobrazit vsechny</a>";
+    }
+
+    ?>
+</p>

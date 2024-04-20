@@ -4,13 +4,13 @@ class VytvareniPrispevkuModel
 {
 
     public function prispevekDoDatabaze(): void{
-
         Db::vloz("prispevky", [
-            "nazev" => $_POST["nazevPrispevku"],
-            "typ" => $_POST["typPrispevku"],
-            "obsah" => $_POST["textareaContentJakoHtml"],
-            "knihaID" => $_POST["vyberKnizky"],
-            "autorID" => $_SESSION["uzivatel"]["id"] ]);
+            "Nazev" => $_POST["nazevPrispevku"],
+            "Obsah" => $_POST["textareaContentJakoHtml"],
+            "Typ" => $_POST["typPrispevku"],
+            "knihaId" => $_POST["vyberKnizky"],
+            "uzivatelId" => $_SESSION["uzivatel"]["Id"]]);
+
     }
 
     public function prispevekDoSouboru(): void {

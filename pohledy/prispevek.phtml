@@ -1,0 +1,20 @@
+<?php
+
+$jedenPrispevek = $this->data['jedenPrispevek']; // kombinace prispevku,knizky,uzivatele
+
+//                                     PRO DEBUG/ VYPSANI DAT Z DATABAZE
+/*
+print "<pre>";
+print_r($jedenPrispevek);
+echo "<br><br>";
+*/
+
+?>
+
+
+
+<h1><?= $jedenPrispevek["nazevPrispevku"] ?></h1>
+<h2><a href="/uzivatel/<?= $jedenPrispevek["idUzivatele"] ?>"><?= $jedenPrispevek["jmenoUzivatele"]." ".$jedenPrispevek["prijmeniUzivatele"] ?></a></h2>
+<h2><a href="/kniha/<?= $jedenPrispevek["idKniha"] ?>"><?= $jedenPrispevek["nazevKniha"]." ".$jedenPrispevek["jmenoAutora"]." ".$jedenPrispevek["prijmeniAutora"] ?></a></h2>
+
+<div><?= $jedenPrispevek["obsahPrispevku"] ?></div>
