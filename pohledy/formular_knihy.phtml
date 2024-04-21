@@ -1,0 +1,9 @@
+
+
+<form action="UlozeniKnihKontroler/ulozit" method="POST">
+    <?php foreach ($this->data["vsechny_knihy"] as $kniha): ?>
+        <input type="checkbox" name="selected_books[]" value="<?php echo $kniha['Id']; ?>">
+        <label><?php echo $kniha['Nazev']; ?> (<?php echo $kniha['Autor']; ?>)</label><br>
+    <?php endforeach; ?>
+    <input type="submit" value="Uložit vybrané knihy">
+</form>
