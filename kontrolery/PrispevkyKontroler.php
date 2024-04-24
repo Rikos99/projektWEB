@@ -5,12 +5,11 @@ class PrispevkyKontroler extends Kontroler {
 
         $objektyModel = new ObjektyModel;
 
-        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
-        $this->data["title"] = "Příspěvky";
 
         $this->data['vsechnyPrispevky'] =
             $objektyModel->vsechnyPrispevkyFiltr($objektyModel->arrayToAssociative($parametry));
         $this->pohled = "prispevky";
+        $this->data["title"] = "Příspěvky";
 
     }
 }

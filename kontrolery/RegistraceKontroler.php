@@ -5,7 +5,6 @@ class RegistraceKontroler extends Kontroler {
         $registraceModel = new RegistraceModel;
         $SpravceUzivatelu = new SpravceUzivatelu;
 
-        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
         $this->data["title"] = "Registrace";
 
         if(isset($_POST["jmeno"])){

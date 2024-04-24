@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $this->kontroler->data["title"]?> | Knihovna</title> <!-- TODO DOPLNIT AUTOMATICKÉ TITLES -->
 
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/navstyle.css">
+    <link rel="stylesheet" href="style/maintextstyle.css">
+    <link rel="stylesheet" href="style/sidemainstyle.css">
+
     <?php
         foreach ($this->kontroler->cssCesty as $cesta)
         {
@@ -22,8 +27,9 @@
 <div class="navigation">
     <nav>
         <ul>
+            <li><a href=""><span>Úvod</span></a></li>
             <li><a href="knihy"><span>Knihy</span></a></li>
-            <li><a href=""><span>Gramatika</span></a></li>
+            <li><a href="gramatika"><span>Gramatika</span></a></li>
             <li><a href="prispevky"><span>Materiály</span></a></li>
 
             <?php

@@ -61,7 +61,7 @@ main {
 .dropdown-content1 {
     display: none;
     position: sticky;
-    max-width: calc(100%-2px);
+    max-width: calc(100% - 2px);
     top: calc(100% + 5px);
     left: 0;
     z-index: 1;
