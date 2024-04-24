@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2024 at 02:12 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Apr 24, 2024 at 10:08 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `databaze`
+-- Database: `knihovnickamaturitkadatabaze`
 --
 
 -- --------------------------------------------------------
@@ -249,7 +249,7 @@ INSERT INTO `obdobi` (`Id`, `Nazev`) VALUES
 CREATE TABLE `prispevky` (
   `Id` int(11) NOT NULL,
   `Nazev` varchar(100) NOT NULL,
-  `Obsah` varchar(800) NOT NULL,
+  `Obsah` text NOT NULL,
   `DatumNahrani` date NOT NULL DEFAULT current_timestamp(),
   `Typ` int(11) NOT NULL,
   `KnihaId` int(11) DEFAULT NULL,
@@ -257,6 +257,15 @@ CREATE TABLE `prispevky` (
   `AutorId` int(11) DEFAULT NULL,
   `UzivatelId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prispevky`
+--
+
+INSERT INTO `prispevky` (`Id`, `Nazev`, `Obsah`, `DatumNahrani`, `Typ`, `KnihaId`, `ObdobiId`, `AutorId`, `UzivatelId`) VALUES
+(9, 'nenavidim tuhle knihu', '<div class=\"messageGroupWrapper__1fce2\" style=\"-webkit-text-stroke-width:0px; background:var(--background-primary); border-radius:4px; border:1px solid var(--background-tertiary); color:#000000; font-family:\"gg sans\",\"Noto Sans\",\"Helvetica Neue\",Helvetica,Arial,sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; margin-bottom:6px; margin-left:0; margin-right:0; margin-top:0; orphans:2; outline:0px; overflow:hidden; padding:0px; position:relative; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; user-select:none; vertical-align:baseline; white-space:normal; widows:2; word-spacing:0px\">\r\n<div class=', '2024-04-24', 3, 66, NULL, NULL, 3),
+(10, 'miluju tuhle knihu', '<p>vskutku miluju tuhle knihu</p>\r\n', '2024-04-24', 1, 71, NULL, NULL, 3),
+(11, 'MRDKA', '<p>NENÁVIDÍM TUHLE KNIHU</p>\r\n\r\n<ol style=\"margin-left:0; margin-right:0\">\r\n</ol>\r\n', '2024-04-24', 1, 59, NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -337,7 +346,8 @@ CREATE TABLE `uzivatele` (
 
 INSERT INTO `uzivatele` (`Id`, `jmeno`, `prijmeni`, `prezdivka`, `email`, `heslo`, `ikona`, `role`, `trida`) VALUES
 (1, 'Pepik', 'Vrch', NULL, 'pepik@rfger.gr', '56b1db8133d9eb398aabd376f07bf8ab5fc584ea0b8bd6a1770200cb613ca005', NULL, NULL, NULL),
-(2, 'Stanislav', 'Janča', NULL, 's.janca.st@spseiostrava.cz', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, NULL, NULL);
+(2, 'Stanislav', 'Janča', NULL, 's.janca.st@spseiostrava.cz', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, NULL, NULL),
+(3, 'Richard', 'Dluhoš', NULL, 'r.dluhos.st@spseiostrava.cz', '56b1db8133d9eb398aabd376f07bf8ab5fc584ea0b8bd6a1770200cb613ca005', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -468,7 +478,7 @@ ALTER TABLE `obdobi`
 -- AUTO_INCREMENT for table `prispevky`
 --
 ALTER TABLE `prispevky`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `skoly`
@@ -492,7 +502,7 @@ ALTER TABLE `typyprispevku`
 -- AUTO_INCREMENT for table `uzivatele`
 --
 ALTER TABLE `uzivatele`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
