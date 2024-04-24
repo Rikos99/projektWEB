@@ -1,0 +1,33 @@
+<div>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0 10px;
+        }
+    </style>
+
+    <h1>Autori</h1>
+
+    <ul>
+        <?php
+
+
+        foreach ($this->data['autori'] as $autor){
+            echo "<li><a href='autor/" . $autor['idAutora'] . "'>" . $autor['jmenoAutora'] . " " . $autor['prijmeniAutora'] . "</a></li>";
+        }
+
+
+        ?>
+    </ul>
+    <p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
+        if (isset($_SESSION["zpravy"]["prispevky"]["chybaNacteni"])) {
+            echo $_SESSION["zpravy"]["prispevky"]["chybaNacteni"] ;
+            echo "<br>";
+            echo "<a href='prispevky'>Zobrazit vsechny</a>";
+        }
+
+        ?>
+    </p>
+
+</div>
