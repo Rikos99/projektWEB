@@ -1,49 +1,18 @@
 <?php
-session_start();
 
-class ProfilKontroler {
-    private $databaze;
+class ProfilKontroler extends Kontroler {
+    public function zpracuj($parametry){
 
-    public function __construct($databaze) {
-        $this->databaze = $databaze;
-    }
-
-    public function zobrazitFormular() {
-        include_once("profil.phtml");
-    }
-
-    public function aktualizovatProfil() {
-        $jmeno = htmlspecialchars(trim($_POST["jmeno"]));
-        $prijmeni = htmlspecialchars(trim($_POST["prijmeni"]));
-        $prezdivka = htmlspecialchars(trim($_POST["prezdivka"]));
-        $heslo = htmlspecialchars($_POST["heslo"]);
-        $role = htmlspecialchars($_POST["role"]);
-        $trida = htmlspecialchars(trim($_POST["trida"]));
-
-        if (empty($jmeno) || empty($prijmeni) || empty($prezdivka) || empty($heslo) || empty($role) || empty($trida)) {
-            $_SESSION["zpravy"]["chyba"] = "Všechna pole jsou povinná.";
-            return;
-        }
-
-        $idUzivatele = $_SESSION['idUzivatele'];
-
-        $stmt = $this->databaze->prepare("UPDATE uzivatele SET jmeno=?, prijmeni=?, prezdivka=?, heslo=?, role=?, trida=? WHERE id=?");
-        $hashedHeslo = password_hash($heslo, PASSWORD_DEFAULT);
-        $stmt->bind_param("sssssii", $jmeno, $prijmeni, $prezdivka, $hashedHeslo, $role, $trida, $idUzivatele);
+        $profilModel = new ProfilModel();
         
-        if ($stmt->execute()) {
-            $_SESSION["zpravy"]["uspech"] = "Profil byl úspěšně aktualizován.";
-        } else {
-            $_SESSION["zpravy"]["chyba"] = "Nepodařilo se aktualizovat profil.";
+        if(!empty($_POST)){
+            $profilModel->aktualizovatprofil();   
+             
         }
-        $stmt->close();
+        $this->pohled = "profil";
+        $this->data["infoProfilu"] = $profilModel->ziskatInfoUzivatele($_SESSION["uzivatel"]["Id"]);
+       print_r($this->data["infoProfilu"]);
     }
-}
 
-$kontroler = new ProfilKontroler($databaze);
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ulozit"])) {
-    $kontroler->aktualizovatProfil();
-} else {
-    $kontroler->zobrazitFormular();
+    
 }
-?>

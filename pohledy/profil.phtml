@@ -8,18 +8,26 @@
         unset($_SESSION["zpravy"]["chyba"]);
     }
 ?>
-<form action="ulozitNastaveniProfilu" method="post" enctype="multipart/form-data">
+
+<?php 
+print_r($this->data["infoProfilu"]);
+?>
+
+<form action="" method="post">
     <label for="jmeno">Jméno:</label>
-    <input type="text" id="jmeno" name="jmeno"><br>
+    <input type="text" id="jmeno" name="jmeno"><br><!-- do kazdeho vlozit info z data["infoProfilu"] -->
 
     <label for="prijmeni">Příjmení:</label>
-    <input type="text" id="prijmeni" name="prijmeni"><br>
+    <input type="text" id="prijmeni" name="prijmeni"><?php echo $this->data["infoProfilu"]["prijmeni"] ?><br>
 
     <label for="prezdivka">Přezdívka:</label>
     <input type="text" id="prezdivka" name="prezdivka"><br>
 
     <label for="heslo">Heslo:</label>
     <input type="password" id="heslo" name="heslo"><br>
+
+    <label for="heslo">Heslo:</label>
+    <input type="password" id="heslo2" name="heslo2"><br>
 
     <label for="profilovka">Profilovka:</label>
     <input type="file" id="profilovka" name="profilovka"><br>
