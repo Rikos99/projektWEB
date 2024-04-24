@@ -5,6 +5,9 @@ class PrispevekKontroler extends Kontroler {
 
         $objektyModel = new ObjektyModel;
 
+        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
+        $this->data["title"] = "Příspěvek";
+
         if(
             isset($parametry[0]) &&
             is_numeric($parametry[0]) &&

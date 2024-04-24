@@ -1,0 +1,38 @@
+<?php 
+    if(isset($_SESSION["zpravy"]["uspech"])) {
+        echo "<p class='uspech'>" . $_SESSION["zpravy"]["uspech"] . "</p>";
+        unset($_SESSION["zpravy"]["uspech"]);
+    }
+    if(isset($_SESSION["zpravy"]["chyba"])) {
+        echo "<p class='chyba'>" . $_SESSION["zpravy"]["chyba"] . "</p>";
+        unset($_SESSION["zpravy"]["chyba"]);
+    }
+?>
+<form action="ulozitNastaveniProfilu" method="post" enctype="multipart/form-data">
+    <label for="jmeno">Jméno:</label>
+    <input type="text" id="jmeno" name="jmeno"><br>
+
+    <label for="prijmeni">Příjmení:</label>
+    <input type="text" id="prijmeni" name="prijmeni"><br>
+
+    <label for="prezdivka">Přezdívka:</label>
+    <input type="text" id="prezdivka" name="prezdivka"><br>
+
+    <label for="heslo">Heslo:</label>
+    <input type="password" id="heslo" name="heslo"><br>
+
+    <label for="profilovka">Profilovka:</label>
+    <input type="file" id="profilovka" name="profilovka"><br>
+
+    <label for="role">Role:</label>
+    <select id="role" name="role">
+        <option value="admin">Admin</option>
+        <option value="editor">Editor</option>
+        <option value="user">User</option>
+    </select><br>
+
+    <label for="trida">Třída:</label>
+    <input type="text" id="trida" name="trida"><br>
+
+    <input type="submit" name="ulozit" value="Uložit změny">
+</form>

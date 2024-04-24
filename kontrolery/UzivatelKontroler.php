@@ -5,6 +5,9 @@ class UzivatelKontroler extends Kontroler
     public function zpracuj($parametry)
     {
 
+        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
+        $this->data["title"] = "Uživatel"; //TODO Nick/Jméno uživatele místo "Uživatel"
+
         $objektyModel = new ObjektyModel;
 
         if(

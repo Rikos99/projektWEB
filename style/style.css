@@ -37,3 +37,8 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+header a
+{
+    color: #fff;
+    text-decoration: none;
+}
