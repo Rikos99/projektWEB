@@ -10,4 +10,4 @@ function nactiTridu($nazevTridy) {
 
 spl_autoload_register("nactiTridu");
 
-Db::pripoj("localhost", "root", "", "databaze");
+Db::pripoj("localhost", "root", "", "knihovnickamaturitkadatabaze");
