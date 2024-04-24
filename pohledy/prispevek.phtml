@@ -17,4 +17,6 @@ echo "<br><br>";
 <h2><a href="/uzivatel/<?= $jedenPrispevek["idUzivatele"] ?>"><?= $jedenPrispevek["jmenoUzivatele"]." ".$jedenPrispevek["prijmeniUzivatele"] ?></a></h2>
 <h2><a href="/kniha/<?= $jedenPrispevek["idKniha"] ?>"><?= $jedenPrispevek["nazevKniha"]." ".$jedenPrispevek["jmenoAutora"]." ".$jedenPrispevek["prijmeniAutora"] ?></a></h2>
 
-<div><?= $jedenPrispevek["obsahPrispevku"] ?></div>
+<?php
+
+echo $jedenPrispevek["obsahPrispevku"];
