@@ -1,14 +1,43 @@
 <main>
+
     <div class="container">
 
         <div id="text">
 
-            <div id="divtext">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident quidem doloremque dolorem harum obcaecati asperiores ea, dolor, aliquam quis maxime quas reiciendis ab deserunt voluptates nostrum, atque soluta! Consectetur, delectus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident quidem doloremque dolorem harum obcaecati asperiores ea, dolor, aliquam quis maxime quas reiciendis ab deserunt voluptates nostrum, atque soluta! Consectetur, delectus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident quidem doloremque dolorem harum obcaecati asperiores ea, dolor, aliquam quis maxime quas reiciendis ab deserunt voluptates nostrum, atque soluta! Consectetur, delectus.</p>
+            <span id="daily">
+                    <div id="dailyoutline">
+                        <h3>Daily questy</h3>
+                        <div class="dailyquest">
 
-            </div>
+                            <!-- Dodat podmínkování se zprávou, pokud je vše hotovo tak nějak to dát vědět (zaškrtnutí / zpáva o dokončení všeho) -->
+
+
+                            <!-- dodat linky na daily questy a dodělat generaci questů podle generace-->
+                            <div id="dailyknihy">
+                                <div id="daily_kniha_zadani">
+                                    <p>Začít denní quest -knihy-</p>
+                                    <a href="#"><button>začít</button></a>
+                                </div>
+                                <div id="daily_kniha_zadani">
+                                    <p>Začít denní quest -knihy-</p>
+                                    <a href="#"><button>začít</button></a>
+                                </div>
+
+                            </div>
+                            <div id="dailygramatika">
+                                <div id="daily_gramatika_zadani">
+                                    <p>Začít daily quest -gramatika-</p>
+                                    <a href="#"><button>začít</button></a>
+                                </div>
+                                <div id="daily_gramatika_zadani">
+                                    <p>Začít daily quest -gramatika-</p>
+                                    <a href="#"><button>začít</button></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </span>
 
 
             <div id="section">
@@ -58,22 +87,16 @@
 
 
         <div id="sidediv">
-            <?php /*print_r($_SESSION['uzivatel'])*/?>
 
             <div id="profile-info">
-                <h3>Profile</h3>
-                <p>Jmeno: <?php echo (!empty($_SESSION['uzivatel']))?$_SESSION['uzivatel']['jmeno']:'Nikdo neni prihlaseny'; ?></p>
+                <h3>Profil</h3>
+                <p>Jmeno: <?php echo $this->data["jmeno"] ?></p>
                 <p>Streak:</p>
             </div>
 
             <div id="nastenka">
                 <h3>Nástěnka</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, tempore, consectetur ea quas amet molestiae in numquam natus fuga illo veritatis sit optio nisi cumque asperiores ipsum reiciendis velit aliquid.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, tempore, consectetur ea quas amet molestiae in numquam natus fuga illo veritatis sit optio nisi cumque asperiores ipsum reiciendis velit aliquid.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, tempore, consectetur ea quas amet molestiae in numquam natus fuga illo veritatis sit optio nisi cumque asperiores ipsum reiciendis velit aliquid.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, tempore, consectetur ea quas amet molestiae in numquam natus fuga illo veritatis sit optio nisi cumque asperiores ipsum reiciendis velit aliquid.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, tempore, consectetur ea quas amet molestiae in numquam natus fuga illo veritatis sit optio nisi cumque asperiores ipsum reiciendis velit aliquid.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, tempore, consectetur ea quas amet molestiae in numquam natus fuga illo veritatis sit optio nisi cumque asperiores ipsum reiciendis velit aliquid.</p>
+
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, tempore, consectetur ea quas amet molestiae in numquam natus fuga illo veritatis sit optio nisi cumque asperiores ipsum reiciendis velit aliquid.</p>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, tempore, consectetur ea quas amet molestiae in numquam natus fuga illo veritatis sit optio nisi cumque asperiores ipsum reiciendis velit aliquid.</p>
             </div>

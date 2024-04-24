@@ -12,7 +12,7 @@ class VytvareniPrispevkuKontroler extends Kontroler
 
             $objektyModel = new ObjektyModel;
 
-+            $this->data["title"] = "Nový Příspěvek";
+            $this->data["title"] = "Nový Příspěvek";
 
             if(
                 isset($parametry[0]) && $parametry[0] == "kniha" &&
