@@ -13,11 +13,11 @@ class AutorKontroler extends Kontroler
         Db::dotaz("SELECT * FROM autori WHERE id = ?", [$parametry[0]]) > 0){
 
         $this->data['autor'] = Db::dotazJeden("SELECT * FROM autori WHERE id = ?", [$parametry[0]]);
-        unset($_SESSION["zpravy"]["autor"]["chybaNacteni"]);
-    }
+
+        $this->pohled = "autor";}
     else{
-        $_SESSION["zpravy"]["autor"]["chybaNacteni"] = "Takovy uzivatel neexistuje";
+        $this->presmeruj("autori");
     }
-    $this->pohled = "autor";
+
 }
 }

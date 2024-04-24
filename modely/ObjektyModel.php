@@ -194,6 +194,31 @@ class ObjektyModel
         return Db::dotazVsechny($sql); // VRAT VSECHNY PRISPEVKY S FILTREM
     }
 
+    public function vsichniAutoriFiltr($parametry){
+        $sql = "
+            SELECT ".
+            $this->formatovatAliasy(
+                [$this->vysledkyProAutora]
+            ).
+            " FROM autori
+            ";
+        if (empty($parametry)){ // KDYZ NEJSOU PARAMETRY, TAK VSECHNY KNIHY
+            unset($_SESSION["zpravy"]["knihy"]);
+            return Db::dotazVsechny($sql);
+        }
+
+        // ID AUTORA
+        if (isset($parametry['autor']) && is_numeric($parametry['autor'])) {
+            $sql .= " WHERE autori.id =".$parametry['autor'];
+        }
+        if(empty(Db::dotazVsechny($sql))){ // JESTLIZE NEJSOU KNIHY S FILTREM
+            $_SESSION["zpravy"]["autori"]["chybaNacteni"] = "Nenalezeny žádné knihy s temito parametry";
+            return [];
+        }
+        unset($_SESSION["zpravy"]["autori"]);
+        return Db::dotazVsechny($sql); // VRAT VSECHNY KNIHY S FILTREM
+    }
+
 
 
     public function arrayToAssociative($array) {
