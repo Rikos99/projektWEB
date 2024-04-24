@@ -7,7 +7,6 @@ class AutorKontroler extends Kontroler
 
     $objektyModel = new ObjektyModel;
 
-    $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
     $this->data["title"] = "Autor";
 
 

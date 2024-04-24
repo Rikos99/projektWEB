@@ -5,8 +5,8 @@ class UzivatelKontroler extends Kontroler
     public function zpracuj($parametry)
     {
 
-        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
-        $this->data["title"] = "Uživatel"; //TODO Nick/Jméno uživatele místo "Uživatel"
+        $dotaz = Db::dotazJeden("SELECT jmeno, prijmeni FROM uzivatele");
+        $this->data["title"] = $dotaz["jmeno"] . " " . $dotaz["prijmeni"]; //TODO Nick/Jméno uživatele místo "Uživatel"
 
         $objektyModel = new ObjektyModel;
 
