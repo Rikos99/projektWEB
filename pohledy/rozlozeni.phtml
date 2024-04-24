@@ -17,6 +17,11 @@ $URL = "//" . $_SERVER['HTTP_HOST'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $this->kontroler->data["title"]?> | Knihovna</title> <!-- TODO DOPLNIT AUTOMATICKÉ TITLES -->
 
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/navstyle.css">
+    <link rel="stylesheet" href="style/maintextstyle.css">
+    <link rel="stylesheet" href="style/sidemainstyle.css">
+
     <?php
         foreach ($this->kontroler->cssCesty as $cesta)
         {
