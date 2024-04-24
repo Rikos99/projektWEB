@@ -3,7 +3,7 @@
 class KnihyKontroler extends Kontroler {
     public function zpracuj($parametry) {
 
-        $this->cssCesty=[""];
+        $this->cssCesty=["knihastyle.css"];
 
 
         $objektyModel = new ObjektyModel;
