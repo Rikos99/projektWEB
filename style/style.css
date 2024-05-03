@@ -1,8 +1,15 @@
 :root{
+    
+--black: black;
+--white: #d4d4d4;
 
---primary-color: #E06E7C;
---secondary-color:#7EC0C5 ; /* optional - zaměnit za tercial colot*/
---tercial-color:#b5e9c5 ;
+--un-color: #2E3837;
+--dos-color:#166678 ; 
+--tres-color:#7DB9B3 ;
+--quatro-color:#E1F6F4;
+--pento-color:#DDCAD9;
+
+--div-separator:#c0c0c0;
 
 }
 
@@ -14,7 +21,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #d4d4d4;
+    background-color: var(--white);
 }
 
 main{
@@ -32,13 +39,13 @@ main{
 
 header,
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--un-color);
+    color: var(--white);
     text-align: center;
     padding: 20px 0;
 }
 header a
 {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
 }

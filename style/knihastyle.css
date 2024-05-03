@@ -1,22 +1,21 @@
 .filter {
     height: 100%;
     position: relative;
-    min-width:25%;
+    width: 15%; /* Set width to 15% */
+    min-width: 200px; /* Set a minimum width to ensure usability */
     margin: 0 1%;
-    padding:0 ;
-    background-color: bisque;  
+    padding: 0;
+    background-color: bisque;
 }
 
 .filter * {
     width: 100%;
-
 }
 
-#filterbackground{
+#filterbackground {
     width: 30%;
     margin-right: 20px;
 }
-
 
 main {
     margin: 0 20%;
@@ -27,7 +26,6 @@ main {
     margin: 0 20px;
     align-items: flex-start;
     position: relative;
-    margin-top: 5px;
     align-items: stretch;
 }
 
@@ -35,7 +33,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    position: relative; 
+    position: relative;
 }
 
 .dropbtn1 {
@@ -45,17 +43,17 @@ main {
 }
 
 .dropdown-content1 input[type="text"] {
-    width: 100%; 
+    width: 100%;
     margin-bottom: 10px;
     padding: 8px;
     border: 1px solid #fff;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .dropdown-content1 input[type="text"]:focus {
     outline: none;
     border-color: #fff;
-    box-shadow: none; 
+    box-shadow: none;
 }
 
 .dropdown-content1 {
@@ -67,12 +65,12 @@ main {
     z-index: 1;
     margin-bottom: 10px;
     transition: transform 0.8s ease-in-out;
-    animation: slideIn 0.5s forwards; 
+    animation: slideIn 0.5s forwards;
 }
 
 .dropdown-content1 .show {
     display: block;
-    transform: translateY(-100%); 
+    transform: translateY(-100%);
 }
 
 .dropdown-content1 input[type="checkbox"] {
@@ -83,8 +81,6 @@ main {
     background-color: #f1f1f1;
 }
 
-
-
 .show {
     display: block;
 }
@@ -94,18 +90,68 @@ main {
 }
 
 .show + .text {
-    margin-top: 150px; 
+    margin-top: 150px;
 }
 
-/*animace*/
+/* animace */
 
 @keyframes slideIn {
     from {
         opacity: 0;
         transform: translateY(-15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0%);
     }
+}
+
+/* KONEC FILTRU */
+
+/* pro jednotlivé odkazy v popisu knihy */
+
+.knihainfo {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 30%;
+    height: 70%;
+    margin-right: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.knihainfo img {
+    max-width: 70%;
+    max-height: 70%;
+    margin: 0;
+    padding: 0;
+}
+
+.knihainfo a {
+    text-decoration: none;
+    color: #333;
+    margin: 0; 
+    padding: 0;
+}
+
+.knihainfo div {
+    margin-top: 10px;
+}
+
+
+.row_info {
+    margin-top: 20px;
+    margin-left: 5%; 
+    margin-right: 5%; 
+    text-align: center; 
+    background-color: var(--dos-color); 
+    max-width: 75%;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; 
+    height: auto;
+    margin-bottom: 20px; 
 }
