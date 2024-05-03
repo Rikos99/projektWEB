@@ -27,6 +27,7 @@ main {
     align-items: flex-start;
     position: relative;
     align-items: stretch;
+    z-index: 0;
 }
 
 .dropdown1 {
@@ -121,7 +122,10 @@ main {
     margin-right: 20px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    position: relative;
+
 }
+
 
 .knihainfo img {
     max-width: 70%;
@@ -154,4 +158,5 @@ main {
     width: 100%; 
     height: auto;
     margin-bottom: 20px; 
+    z-index: -1;
 }

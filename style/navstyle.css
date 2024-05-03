@@ -20,7 +20,7 @@ nav ul {
 nav ul li {
     margin: 0 0px; /* Při záložkách upravit na 0 1px */
     background-color: var(--un-color);
-    opacity: 80%;
+    opacity: 95%;
     /* Kdybychom chtěli z navigace udělat "Záložky"
     border-bottom-left-radius:15px ;
     border-bottom-right-radius: 15px;
@@ -60,6 +60,7 @@ nav ul li a:hover {
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 1;
 }
 
 .dropdown-content {
@@ -68,7 +69,6 @@ nav ul li a:hover {
     background-color: var(--white);
     min-width: 160px;
     box-shadow: -8px 8px 16px 0px var(--un-color);
-    z-index: 1;
     left: auto;
     right: 0;
 }
