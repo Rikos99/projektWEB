@@ -87,15 +87,15 @@
                 <div class="row_info">
                     <?php foreach ($data as $row) : ?>
                         <div class="knihainfo">
+                        <img src="book_image_<?php echo $cell[1]; ?>.jpg" alt="Book Image">
                             <?php foreach ($row as $cell) : ?>
                                 <div class="cell">
-                                    <img src="book_image_<?php echo $cell[1]; ?>.jpg" alt="Book Image">
                                     <div>
                                         <a href="<?php echo $cell[1]; ?>"><?php echo $cell[0]; ?></a>
-                                        <button class="addToLibraryBtn">Add to Library</button>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
+                            <button class="addToLibraryBtn">Add to Library</button>
                         </div>
                     <?php endforeach; ?>
                 </div>
