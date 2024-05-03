@@ -5,7 +5,7 @@
     min-width: 200px; /* Set a minimum width to ensure usability */
     margin: 0 1%;
     padding: 0;
-    background-color: bisque;
+    background-color: var(--dos-color);
 }
 
 .filter * {
@@ -47,13 +47,13 @@ main {
     width: 100%;
     margin-bottom: 10px;
     padding: 8px;
-    border: 1px solid #fff;
+    border: 1px solid var(--white);
     box-sizing: border-box;
 }
 
 .dropdown-content1 input[type="text"]:focus {
     outline: none;
-    border-color: #fff;
+    border-color: var(--white);
     box-shadow: none;
 }
 
@@ -72,6 +72,7 @@ main {
 .dropdown-content1 .show {
     display: block;
     transform: translateY(-100%);
+    width: 100%;
 }
 
 .dropdown-content1 input[type="checkbox"] {
@@ -79,7 +80,7 @@ main {
 }
 
 .dropdown-content1 a:hover {
-    background-color: #f1f1f1;
+    background-color: var(--white);
 }
 
 .show {
@@ -113,7 +114,7 @@ main {
 /* pro jednotlivé odkazy v popisu knihy */
 
 .knihainfo {
-    background-color: white;
+    background-color: var(--white);
     padding: 10px;
     margin-bottom: 10px;
     display: inline-block;
@@ -136,7 +137,7 @@ main {
 
 .knihainfo a {
     text-decoration: none;
-    color: #333;
+    color: var(--un-color);
     margin: 0; 
     padding: 0;
 }

@@ -31,7 +31,7 @@
                         <button class="dropbtn1">Autoři</button>
                         
                         <div id="dropdownContent1" class="dropdown-content1">
-                            <input type="text" placeholder="textový filtr"><br>
+                            <input type="text" id="TextFilter1" placeholder="textový filtr"><br>
                             <label for="">a</label>
                             <input type="checkbox" name="" id=""><br>
                             <label for="">a</label>
@@ -46,7 +46,7 @@
                         <button class="dropbtn1">Období</button>
                         
                         <div id="dropdownContent1" class="dropdown-content1">
-                            <input type="text" placeholder="textový filtr"><br>
+                            <input type="text" id="TextFilter2" placeholder="textový filtr"><br>
                             <label for="">a</label>
                             <input type="checkbox" name="" id=""><br>
                             <label for="">a</label>
@@ -67,7 +67,7 @@
                         <button class="dropbtn1">Knihy</button>
                         
                         <div id="dropdownContent1" class="dropdown-content1">
-                            <input type="text" placeholder="textový filtr"><br>
+                            <input type="text" id="TextFilter3" placeholder="textový filtr"><br>
                             <label for="">a</label>
                             <input type="checkbox" name="" id=""><br>
                             <label for="">a</label>
@@ -87,13 +87,18 @@
                 <div class="row_info">
                     <?php foreach ($data as $row) : ?>
                         <div class="knihainfo">
+
                         <img src="book_image_<?php echo $cell[1]; ?>.jpg" alt="Book Image">
+
                             <?php foreach ($row as $cell) : ?>
                                 <div class="cell">
+
                                     <div>
                                         <a href="<?php echo $cell[1]; ?>"><?php echo $cell[0]; ?></a>
                                     </div>
+
                                 </div>
+
                             <?php endforeach; ?>
                             <button class="addToLibraryBtn">Add to Library</button>
                         </div>
@@ -126,6 +131,19 @@
         function addToLibrary(bookTitle) {
 
             console.log('Adding book to library: ' + bookTitle);
+        }
+    });
+
+</script>
+
+<!-- Získávání textu z textového filtru -->
+
+<script>
+        const inputElement = document.getElementById('TextFilter1');
+
+    inputElement.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+             console.log('Entered text:', inputElement.value);
         }
     });
 </script>
