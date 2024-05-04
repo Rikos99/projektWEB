@@ -1,0 +1,41 @@
+<main>
+
+    <div>
+        <input type="text" name="ICO" id="ICO" placeholder="IČO">
+        <input type="button" id="button" value="Vyhledat">
+
+    </div>
+
+    <script src="js/hledatSkolu.js"></script>
+    <script>
+        document.getElementById("button").addEventListener("click", function ()
+        {
+            const input = document.getElementById("ICO");
+            let skola = getARESInformationFromICO(input.value);
+            console.log(skola);
+
+            //TODO nějakým způsobem získat atribut obchodniJmeno z arraye skola
+
+
+            /*
+            skola.then(result => {
+                const obchodniJmeno = result.value.obchodniJmeno;
+                console.log(obchodniJmeno);
+            }).catch(error => {
+                console.error('Chyba při získávání dat:', error);
+            })
+
+             */
+
+            //document.getElementById("predaniPHP").value = skola.obchodniJmeno;
+        });
+
+        /*
+        let skola = getARESInformationFromICO();
+        console.log(skola);
+
+         */
+    </script>
+
+    <input type="hidden" id="predaniPHP">
+</main>
