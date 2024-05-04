@@ -2,8 +2,7 @@
 
 class AutorKontroler extends Kontroler
 {
-    public function zpracuj($parametry)
-{
+    public function zpracuj($parametry) {
 
     $objektyModel = new ObjektyModel;
 
@@ -17,10 +16,14 @@ class AutorKontroler extends Kontroler
 
         $this->data['autor'] = Db::dotazJeden("SELECT * FROM autori WHERE id = ?", [$parametry[0]]);
 
-        $this->pohled = "autor";}
-    else{
-        $this->presmeruj("autori");
-    }
 
-}
+
+        unset($_SESSION["zpravy"]["autor"]["chybaNacteni"]);
+    }
+    else{
+        $_SESSION["zpravy"]["autor"]["chybaNacteni"] = "Autor nenalezen.";
+    }
+    $this->pohled = "autor";
+
+    }
 }

@@ -219,6 +219,35 @@ class ObjektyModel
         return Db::dotazVsechny($sql); // VRAT VSECHNY KNIHY S FILTREM
     }
 
+    public function vsichniAutori()
+    {
+        $sql = 'SELECT * FROM autori';
+        return Db::dotazVsechny($sql);
+    }
+
+    public function vsechnyObdobi()
+    {
+        $sql = 'SELECT * FROM obdobi';
+        return Db::dotazVsechny($sql);
+    }
+
+    public function pridatDoPovinnych($idKnihy, $idUzivatale)
+    {
+        return Db::vloz("knihauzivatel", ["knihaId" => $idKnihy, "uzivatelId" => $idUzivatale, "povinna" => 1]);
+
+    }
+
+    public function odstranitZPovinnych($idKnihy, $idUzivatale){
+        $sql = "DELETE FROM knihauzivatel WHERE knihaId = ? AND uzivatelId = ?";
+        return Db::dotaz($sql, [$idKnihy, $idUzivatale]);
+    }
+
+    public function povinneKnihyUzivatele($idUzivatele)
+    {
+        $sql = 'SELECT * FROM knihauzivatel WHERE uzivatelId = ? AND povinna = 1';
+        return Db::dotazVsechny($sql, [$idUzivatele]);
+    }
+
 
 
     public function arrayToAssociative($array) {
