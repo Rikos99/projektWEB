@@ -31,7 +31,7 @@ class VytvareniPrispevkuKontroler extends Kontroler
             // Poslani prispevku do databaze (formular)
             if (isset($_POST["nazevPrispevku"])) {
                 $vytvareniPrispevkuModel->prispevekDoDatabaze();
-                $this->presmeruj("prispevky/uzivatel/". $_SESSION["uzivatel"]["Id"]);
+                $this->presmeruj("prispevky/uzivatel/". $_SESSION["uzivatel"]["id"]);
             }
 
             $this->data['typyPrispevku'] = Db::dotazVsechny("SELECT * FROM typyprispevku;");

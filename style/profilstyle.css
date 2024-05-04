@@ -1,0 +1,35 @@
+.profilEdit,
+.profilZmena{
+    text-align: center;
+    align-content: center;
+    background-color: var(--dos-color);
+    margin: 5% 35%;
+    border-radius: 5px;
+    padding: 2% 2%;
+    color: var(--white);
+}
+
+
+#info, form{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    background-color: var(--white);
+    text-align: center;
+    align-self: center;
+    width: 350px;
+}
+
+h3{
+    margin-top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+label,
+input{
+    margin-bottom: 5px;
+
+}
+

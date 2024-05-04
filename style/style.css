@@ -44,6 +44,16 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+
+footer{
+
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right:0;
+
+}
+
 header a
 {
     color: var(--white);
