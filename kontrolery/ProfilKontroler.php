@@ -10,6 +10,7 @@ class ProfilKontroler extends Kontroler {
              
         }
         $this->pohled = "profil";
+        $this->data["title"] = "Profil";
         $this->data["infoProfilu"] = $profilModel->ziskatInfoUzivatele($_SESSION["uzivatel"]["Id"]);
        print_r($this->data["infoProfilu"]);
     }
