@@ -76,18 +76,25 @@
             </div>
 
             <div class="text">
+
+
                 <div class="row_info">
+
                     <?php foreach ($data as $row) : ?>
                         <div class="knihainfo" knihaId="<?= $row['idKnihy'] ?>" autorId="<?= $row['idAutora'] ?>" obdobiId="<?= $row['idObdobi'] ?>">
+                    
                             <div class="cell">
                                 <img src="<?= $row['odkazFotky'] ?>" alt="">
                             </div>
+
                             <div class="cell knihaDiv">
                                 <a href="kniha/<?=$row['idKnihy'] ?>"><?=$row['nazevKnihy'] ?></a>
                             </div>
+
                             <div class="cell autorDiv">
                                 <a href="autor/<?=$row['idAutora'] ?>"><?=$row['jmenoAutora'] ?></a>
                             </div>
+
                             <div class="cell obdobiDiv">
                                 <a href="knihy/obdobi/<?=$row['idObdobi'] ?>"><?=$row['nazevObdobi'] ?></a>
                             </div>
@@ -114,11 +121,16 @@
                                 }
                                 ?>
                             </form>
+
                             <povinnostKnihy val="<?php echo (isset($isInPovinneKnihy)) ? $isInPovinneKnihy : false; ?>"></povinnostKnihy>
-                        </div>
+                        </div> <!-- konec knihainfo-->
+
                     <?php endforeach; ?>
                     <p id="zadneKnihy" hidden="hidden">Zadna kniha nevyhovuje pozadavkum</p>
-                </div>
+                
+                </div> <!-- konec rowinfo-->
+
+
             </div>
 
 

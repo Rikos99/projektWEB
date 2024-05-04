@@ -119,11 +119,11 @@ main {
     margin-bottom: 10px;
     display: inline-block;
     width: 30%;
-    height: 70%;
     margin-right: 20px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     position: relative;
+    max-height: 200px;
+    border-radius: 8px;
 
 }
 
@@ -133,6 +133,7 @@ main {
     max-height: 70%;
     margin: 0;
     padding: 0;
+
 }
 
 .knihainfo a {
@@ -140,10 +141,12 @@ main {
     color: var(--un-color);
     margin: 0; 
     padding: 0;
+    
 }
 
 .knihainfo div {
     margin-top: 10px;
+
 }
 
 

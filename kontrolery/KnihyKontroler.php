@@ -17,7 +17,7 @@ class KnihyKontroler extends Kontroler {
         $this->pohled = "knihy";
         $this->data["title"] = "Knihy";
 
-        $this->data['povinneKnihy'] = $objektyModel->povinneKnihyUzivatele($_SESSION['uzivatel']['Id']);
+        $this->data['povinneKnihy'] = $objektyModel->povinneKnihyUzivatele($_SESSION['uzivatel']['id']);
 //        echo '<pre>';
 //        print_r($this->data['povinneKnihy']);
 //        echo '</pre>';

@@ -84,7 +84,7 @@
 }
 
 .container #dailyoutline{
-    background-color: var(--dos-color);
+    background-color: var(--un-color);
     border-radius: 8px;
     padding: 1%;
 }
