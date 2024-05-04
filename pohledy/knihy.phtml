@@ -30,7 +30,7 @@
                         <div id="dropdownContent1" class="dropdown-content1">
                             <input type="text" id="TextFilterKnihy" placeholder="textový filtr"><br>
                             <label for="povinneKnihyInput">Zobrazit pouze moje vybrane</label>
-                            <input type="checkbox" class="povinneKnihy" id="povinneKnihyInput">
+                            <input type="checkbox" class="povinneKnihy" id="povinneKnihyInput" <?= (isset($_SESSION['uzivatel']) ? '' : 'disabled')?>>
 
                         </div>
 
@@ -97,7 +97,7 @@
                                 <input type="hidden" name="idKnihy" value="<?= $row['idKnihy'] ?>">
                                 <?php
                                 if (empty($this->data['povinneKnihy'])) {
-                                    echo '<input type="submit"  class="addToLibraryBtn" name="type" value="pridat_do_povinnych">';
+                                    echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych" '.(isset($_SESSION['uzivatel']) ? '' : 'disabled').'>';
                                 } else {
                                     $isInPovinneKnihy = false;
                                     foreach ($this->data['povinneKnihy'] as $povinneKnihy) {
