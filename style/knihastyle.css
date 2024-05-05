@@ -254,25 +254,28 @@ footer{
 }
 
 .text::-webkit-scrollbar{
-
     max-height:auto ;
-
 }
 
-input[type="submit" i] {
+.text::-webkit-scrollbar-thumb {
+    background-color: var(--un-color); 
+    border-radius: 10px; 
+}
 
+.text::-webkit-scrollbar {
+    width: 8px; 
+}
+
+
+input[type="submit" i] {
     margin-top: 20px;
     background-color: var(--white);
     text-align: center;
     align-self: center;
     outline: none;
     border-radius: 5px;
-
-
 }
 
 input[type="submit" i]:hover{
-
     cursor: pointer;
-
 }
