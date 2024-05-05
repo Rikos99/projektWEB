@@ -264,5 +264,12 @@ class ObjektyModel
         return $assocArray;
     }
 
+    public function pridatKviz($teloKvizu)
+    {
+        Db::vloz("prispevky",[
+
+        ]);
+    }
+
 
 }
