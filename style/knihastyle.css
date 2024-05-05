@@ -185,7 +185,7 @@ footer{
 
 /* pro jednotlivé odkazy v popisu knihy */
 .knihainfo {
-    flex: 1 1 30%; /* Change flex-grow to 1 */
+    flex: 1 1 30%;
     margin: 10px; 
     background-color: var(--white);
     padding: 10px;
@@ -239,7 +239,7 @@ footer{
     z-index: 0; 
 }
 
-p{
+.row_info p{
     align-self:center ;
     background-color: var(--white);
     padding: 20px;
