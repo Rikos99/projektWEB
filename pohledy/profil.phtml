@@ -9,38 +9,43 @@
     }
 ?>
 
-<?php 
-print_r($this->data["infoProfilu"]);
-?>
 
-<form action="" method="post">
-    <label for="jmeno">Jméno:</label>
-    <input type="text" id="jmeno" name="jmeno"><br><!-- do kazdeho vlozit info z data["infoProfilu"] -->
+<div class="profilEdit">
 
-    <label for="prijmeni">Příjmení:</label>
-    <input type="text" id="prijmeni" name="prijmeni"><?php echo $this->data["infoProfilu"]["prijmeni"] ?><br>
+    <h3>Info o Profilu</h3>
 
-    <label for="prezdivka">Přezdívka:</label>
-    <input type="text" id="prezdivka" name="prezdivka"><br>
+        <div id="info">
 
-    <label for="heslo">Heslo:</label>
-    <input type="password" id="heslo" name="heslo"><br>
+            <input type="text" id="jmeno" name="jmeno" placeholder='<?php echo $this->data["infoProfilu"]["jmeno"] ?>' disabled><br><!-- do kazdeho vlozit info z data["infoProfilu"] -->
 
-    <label for="heslo">Heslo:</label>
-    <input type="password" id="heslo2" name="heslo2"><br>
+            <input type="text" id="prijmeni" name="prijmeni" placeholder='<?php echo $this->data["infoProfilu"]["prijmeni"] ?>' disabled><br>
 
-    <label for="profilovka">Profilovka:</label>
-    <input type="file" id="profilovka" name="profilovka"><br>
+            <label for="trida">Třída</label>
+            <input type="text" id="trida" name="trida" disabled><br>
 
-    <label for="role">Role:</label>
-    <select id="role" name="role">
-        <option value="admin">Admin</option>
-        <option value="editor">Editor</option>
-        <option value="user">User</option>
-    </select><br>
+            <label for="role">Postavení</label>
+            <input type="text" id="role" name="role" placeholder="'<?php echo $this->data["infoProfilu"]["role"] ?>'" disabled><br>
 
-    <label for="trida">Třída:</label>
-    <input type="text" id="trida" name="trida"><br>
+        </div>
 
-    <input type="submit" name="ulozit" value="Uložit změny">
-</form>
+
+</div>
+
+<div class="profilZmena">
+
+    <form action="">
+        
+            <h3>Změna hesla</h3>  <!-- DODĚLAT NĚKDY NA ZMĚNU HESLA: FUNKČNOST, PODMÍNKOVÁNÍ PŘI POTVĎTE HESLO -->
+            
+            <input type="password" id="heslo" name="heslo" placeholder="Nové heslo"><br>
+            <input type="password" id="heslo2" name="heslo2" placeholder="Potvrďte heslo"><br>
+            
+
+
+            <input type="submit" name="ulozit" value="Uložit změny">
+    </form>
+
+
+</div>
+
+

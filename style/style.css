@@ -43,7 +43,18 @@ footer {
     color: var(--white);
     text-align: center;
     padding: 20px 0;
+    z-index: 1;
 }
+
+footer{
+
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right:0;
+
+}
+
 header a
 {
     color: var(--white);

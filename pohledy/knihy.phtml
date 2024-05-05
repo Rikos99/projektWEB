@@ -20,9 +20,9 @@
 <div class="container">
             
             <div id="filterbackground">
-
                 <!-- Dodělat animace nahoru zpět a roll dolů s posunem osy y -->
                 <div class="filter">
+                    <h3>Filtr</h3>
 
                     <div class="dropdown1">
                         <button class="dropbtn1">Knihy</button>
@@ -76,18 +76,25 @@
             </div>
 
             <div class="text">
+
+
                 <div class="row_info">
+
                     <?php foreach ($data as $row) : ?>
                         <div class="knihainfo" knihaId="<?= $row['idKnihy'] ?>" autorId="<?= $row['idAutora'] ?>" obdobiId="<?= $row['idObdobi'] ?>">
+                    
                             <div class="cell">
                                 <img src="<?= $row['odkazFotky'] ?>" alt="">
                             </div>
+
                             <div class="cell knihaDiv">
                                 <a href="kniha/<?=$row['idKnihy'] ?>"><?=$row['nazevKnihy'] ?></a>
                             </div>
+
                             <div class="cell autorDiv">
                                 <a href="autor/<?=$row['idAutora'] ?>"><?=$row['jmenoAutora'] ?></a>
                             </div>
+
                             <div class="cell obdobiDiv">
                                 <a href="knihy/obdobi/<?=$row['idObdobi'] ?>"><?=$row['nazevObdobi'] ?></a>
                             </div>
@@ -114,26 +121,35 @@
                                 }
                                 ?>
                             </form>
+
                             <povinnostKnihy val="<?php echo (isset($isInPovinneKnihy)) ? $isInPovinneKnihy : false; ?>"></povinnostKnihy>
-                        </div>
+                        </div> <!-- konec knihainfo-->
+
                     <?php endforeach; ?>
-                    <p id="zadneKnihy" hidden="hidden">Zadna kniha nevyhovuje pozadavkum</p>
-                </div>
+
+                    
+                    <p id="zadneKnihy" hidden="hidden">Ještě jsi si nevybral žádnou knihu</p>
+
+                </div> <!-- konec rowinfo-->
+                
+                
             </div>
 
+            
 
+ 
 
+    <p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
+        if (isset($_SESSION["zpravy"]["knihy"]["chybaNacteni"])) {
+            echo $_SESSION["zpravy"]["knihy"]["chybaNacteni"] ;
+            echo "<br>";
+            echo "<a href='knihy'>Zobrazit vsechny</a>";
+        }
 
+        ?>
+    </p>
 
-<p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
-    if (isset($_SESSION["zpravy"]["knihy"]["chybaNacteni"])) {
-        echo $_SESSION["zpravy"]["knihy"]["chybaNacteni"] ;
-        echo "<br>";
-        echo "<a href='knihy'>Zobrazit vsechny</a>";
-    }
-
-    ?>
-</p>
+</div>
 <!---
 <script>
 
@@ -165,3 +181,4 @@ Získávání textu z textového filtru -->
         });
     </script>
     ---->
+    

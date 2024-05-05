@@ -1,43 +1,28 @@
 <script src="../js/registrace.js"></script>
+<div class="profilZmena">
 
-<form action="" method="post">
+    <h3>Registrace</h3>
 
-    <div>
-        <div>
-            <label for="">Jmeno</label>
-            <input type="text" name="jmeno" id="" required>
-        </div>
-
-        <div>
-            <label for="">Prijmeni</label>
-            <input type="text" name="prijmeni" id="" >
-        </div>
-
-        <div>
-            <label for="">Email</label>
-            <input type="email" name="email" id=""> <!--nepovinne-->
-        </div>
-
-        <div>
-            <label for="">Heslo</label>
-            <input type="password" name="heslo" id="">
-        </div>
-
-        <div>
-            <label for="">Potvrzeni Hesla</label>
-            <input type="password" name="heslo2" id="">
-        </div>
-
-    </div>
-    <input type="submit" value="Odeslat">
-
-</form>
-
-<div id="autentikacniOkenkoDiv" style="display: none">
     <form action="" method="post">
-        <p>Zadejte autentikacni znaky poslane na email</p>
-        <input type="text" name="authCode" id="" maxlength="6" required>
+
+        <input type="text" name="jmeno" id="" placeholder="Jméno" required>
+        <input type="text" name="prijmeni" id="" placeholder="Příjmení">
+        <input type="email" name="email" id="" placeholder="Email" required> 
+        <input type="password" name="heslo" id="" placeholder="Heslo">
+        <input type="password" name="heslo2" id="" placeholder="Potvrďte heslo">
+        
         <input type="submit" value="Odeslat">
+        
     </form>
 </div>
-<p id="chyboveHlaseni"><?= ($_SESSION["zpravy"]["registrace"]["chyba"] ?? "") ?></p>
+
+<div class="profilZmena" id="autentikacniOkenkoDiv" style="display: none">
+    <div id="autentikacniOkenkoDiv" >
+        <form action="" method="post">
+            
+            <input type="text" name="authCode" id="" maxlength="6" placeholder="Zadejte autentikacni znaky poslane na email" required>
+            <input type="submit" value="Odeslat">
+        </form>
+    </div>
+    <p id="chyboveHlaseni"><?= ($_SESSION["zpravy"]["registrace"]["chyba"] ?? "") ?></p>
+</div>

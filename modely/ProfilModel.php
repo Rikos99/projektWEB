@@ -30,10 +30,8 @@ class ProfilModel{
     }
 
     public function ziskatInfoUzivatele($id){
-        //Db::dotazJeden()
-        //vratit info o uzivateli
-
-        return array("prijmeni" => "erfgberag");
+        return  Db::dotazJeden("SELECT * from uzivatele where id = ?", [ $_SESSION["uzivatel"]["Id"] ]); /* Dodělat inner join */
+      
     }
 
 }
