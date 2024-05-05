@@ -1,24 +1,48 @@
 .filter {
     height: 100%;
+    min-height: 85vh;
     position: relative;
-    width: 15%; /* Set width to 15% */
-    min-width: 200px; /* Set a minimum width to ensure usability */
+    width: 15%;
+    min-width: 200px; 
     margin: 0 1%;
     padding: 0;
     background-color: var(--dos-color);
+    text-align: center;
+
 }
 
 .filter * {
     width: 100%;
+    position: sticky;
 }
 
 #filterbackground {
     width: 30%;
-    margin-right: 20px;
+    max-width: 150px;
+    margin-right: 12%;
+}
+
+
+ h3{
+    margin-top: 0;
+    padding-bottom: 15px;
+    border-bottom: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
 }
 
 main {
     margin: 0 20%;
+}
+
+footer{
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: static;
 }
 
 .container {
@@ -45,10 +69,12 @@ main {
 
 .dropdown-content1 input[type="text"] {
     width: 100%;
+    min-width: 100%;
     margin-bottom: 10px;
     padding: 8px;
     border: 1px solid var(--white);
     box-sizing: border-box;
+    align-self: center;
 }
 
 .dropdown-content1 input[type="text"]:focus {
@@ -64,9 +90,50 @@ main {
     top: calc(100% + 5px);
     left: 0;
     z-index: 1;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: 5px;
     margin-bottom: 10px;
     transition: transform 0.8s ease-in-out;
     animation: slideIn 0.5s forwards;
+    max-height: 370px;
+    overflow-y: auto;
+}
+
+.autorFilter {
+    display: flex; 
+    align-items: auto; 
+    overflow-x: hidden;
+}
+
+.autorFilter label {
+    flex: 1 0 90%; 
+    margin-right: 10px; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}
+.autorFilter label {
+    flex: 1; 
+    margin-right: 10px; 
+}
+
+.autorFilter {
+    display: flex; 
+    align-items: center; 
+}
+
+.autorFilter label {
+    flex: 1 0 85%; 
+    margin-right: 10px; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}
+
+.autorCheckbox {
+    flex: 0 0 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .dropdown-content1 .show {
@@ -89,6 +156,9 @@ main {
 
 .text {
     margin-top: 0;
+    align-content: center;
+    justify-content: center;
+
 }
 
 .show + .text {
@@ -111,29 +181,27 @@ main {
 
 /* KONEC FILTRU */
 
-/* pro jednotlivé odkazy v popisu knihy */
 
+
+/* pro jednotlivé odkazy v popisu knihy */
 .knihainfo {
+    flex: 1 1 30%; /* Change flex-grow to 1 */
+    margin: 10px; 
     background-color: var(--white);
     padding: 10px;
-    margin-bottom: 10px;
-    display: inline-block;
-    width: 30%;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    position: relative;
-    max-height: 200px;
     border-radius: 8px;
-
+    width: 200px;
+    height: 200px;
+    max-width: 40%;
+    min-width: 200px;
+    justify-content: center;
 }
 
-
 .knihainfo img {
-    max-width: 70%;
-    max-height: 70%;
+    max-width: 100%; 
+    max-height: 100%;
     margin: 0;
     padding: 0;
-
 }
 
 .knihainfo a {
@@ -146,21 +214,62 @@ main {
 
 .knihainfo div {
     margin-top: 10px;
+    min-width: 30% !important;
 
 }
 
 
 .row_info {
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap;
     margin-top: 20px;
-    margin-left: 5%; 
-    margin-right: 5%; 
-    text-align: center; 
-    background-color: var(--dos-color); 
-    max-width: 75%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    text-align: center;
+    align-self: center;
+    background-color: var(--dos-color);
     padding: 20px;
     border-radius: 10px;
-    width: 100%; 
+    width: 110vh;
+    min-height: 200px; 
     height: auto;
-    margin-bottom: 20px; 
-    z-index: -1;
+    margin-bottom: 20px;
+    z-index: 0; 
+}
+
+p{
+    align-self:center ;
+}
+
+.text{
+
+    max-height: 85vh;
+    overflow-y: scroll;
+
+}
+
+.text::-webkit-scrollbar{
+
+    max-height:auto ;
+
+}
+
+input[type="submit" i] {
+
+    margin-top: 20px;
+    background-color: var(--white);
+    text-align: center;
+    align-self: center;
+    outline: none;
+    border-radius: 5px;
+
+
+}
+
+input[type="submit" i]:hover{
+
+    cursor: pointer;
+
 }

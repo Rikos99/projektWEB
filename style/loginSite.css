@@ -42,6 +42,13 @@ input:focus {
     box-shadow: none;
 }
 
+input[type="submit"]:hover{
+
+    cursor: pointer;
+
+}
+
+
 #LoginOutline a{
     text-decoration: none;
     color:var(--black);

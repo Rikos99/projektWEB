@@ -7,6 +7,8 @@
     border-radius: 5px;
     padding: 2% 2%;
     color: var(--white);
+    margin-bottom: 1%;
+    min-width: fit-content;
 }
 
 
@@ -20,6 +22,12 @@ input{
     text-align: center;
     align-self: center;
     width: 350px;
+}
+
+input[type="submit"]:hover{
+
+    cursor: pointer;
+
 }
 
 h3{

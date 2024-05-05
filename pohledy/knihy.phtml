@@ -20,9 +20,9 @@
 <div class="container">
             
             <div id="filterbackground">
-
                 <!-- Dodělat animace nahoru zpět a roll dolů s posunem osy y -->
                 <div class="filter">
+                    <h3>Filtr</h3>
 
                     <div class="dropdown1">
                         <button class="dropbtn1">Knihy</button>
@@ -126,26 +126,28 @@
                         </div> <!-- konec knihainfo-->
 
                     <?php endforeach; ?>
-                    <p id="zadneKnihy" hidden="hidden">Zadna kniha nevyhovuje pozadavkum</p>
+
                 
                 </div> <!-- konec rowinfo-->
 
 
             </div>
 
+            <p id="zadneKnihy" hidden="hidden">Ještě jsi si nevybral žádnou knihu</p>
 
 
 
+    <p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
+        if (isset($_SESSION["zpravy"]["knihy"]["chybaNacteni"])) {
+            echo $_SESSION["zpravy"]["knihy"]["chybaNacteni"] ;
+            echo "<br>";
+            echo "<a href='knihy'>Zobrazit vsechny</a>";
+        }
 
-<p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
-    if (isset($_SESSION["zpravy"]["knihy"]["chybaNacteni"])) {
-        echo $_SESSION["zpravy"]["knihy"]["chybaNacteni"] ;
-        echo "<br>";
-        echo "<a href='knihy'>Zobrazit vsechny</a>";
-    }
+        ?>
+    </p>
 
-    ?>
-</p>
+</div>
 <!---
 <script>
 
@@ -177,3 +179,4 @@ Získávání textu z textového filtru -->
         });
     </script>
     ---->
+    

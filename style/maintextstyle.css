@@ -113,13 +113,14 @@
     margin-bottom: 10px;
     border-radius: 8px;
     padding: 10px;
-    background-color: var(--dos-color)
+    background-color: var(--un-color);
+    color:var(--white);
 }
 
 
 /* linka mezi daily */
 .container .dailyquest #dailyknihy {
-    border-right: 3px solid var(--dos-color); 
+    border-right: 3px solid var(--un-color); 
     padding-right: 10px; 
 }
 
