@@ -7,22 +7,6 @@ class NovaSkolaKontroler extends Kontroler
         //$this->cssCesty=[""];
         $this->data["title"] = "Nová škola";
         $this->pohled = "novaSkola";
-        /*
-        if()
-        {
 
-        }
-        else
-        {
-            if(!$this->prihlasenyUzivatel)
-            {
-                $this->presmeruj("prihlaseni");
-            }
-            else
-            {
-                $this->pohled = "novaSkola";
-            }
-        }
-        */
     }
 }

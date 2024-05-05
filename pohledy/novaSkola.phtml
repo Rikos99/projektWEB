@@ -13,9 +13,8 @@
             const input = document.getElementById("ICO");
             let skola = getARESInformationFromICO(input.value);
             console.log(skola);
-
-            //TODO nějakým způsobem získat atribut obchodniJmeno z arraye skola
-
+            //TODO nějakým způsobem získat atribut obchodniJmeno z arraye skola do promenne nazev
+            let nazev = "Střední průmyslová škola elektrotechniky a informatiky, Ostrava, příspěvková organizace";
 
             /*
             skola.then(result => {
@@ -27,15 +26,12 @@
 
              */
 
-            //document.getElementById("predaniPHP").value = skola.obchodniJmeno;
+            let date = new Date();
+            date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+
+            document.cookie = "nazev=" + nazev + "; expires=" + date.toGMTString() + "; path=/";
+            //triggernout PHP kod, ktery cookie zaregistruje
         });
-
-        /*
-        let skola = getARESInformationFromICO();
-        console.log(skola);
-
-         */
     </script>
 
-    <input type="hidden" id="predaniPHP">
 </main>
