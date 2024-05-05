@@ -239,7 +239,7 @@ footer{
     z-index: 0; 
 }
 
-.row_info p{
+#zadneKnihy{
     align-self:center ;
     background-color: var(--white);
     padding: 20px;
