@@ -19,7 +19,7 @@ $("document").ready(function(){
                 $(this).parent().hide();
             }
         });
-        console.log($(".knihainfo:hidden").length)
+        moznaNejsouKnizky()
 
         });
 
@@ -107,13 +107,13 @@ $("document").ready(function(){
                     $(e).parent().hide();
                 }
             })
-            moznaNejsouKnizky()
         }
         else{
             $("povinnostKnihy").each(function(i, e) {
                 $(e).parent().show();
             })
         }
+        moznaNejsouKnizky()
     })
 
     function moznaNejsouKnizky(){
