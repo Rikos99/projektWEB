@@ -225,22 +225,22 @@ footer{
 
 .row_info {
     display: flex;
-    justify-content: space-around; 
+    position: relative;
+    justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 20px;
     margin-left: auto;
-    left: auto;
-    right: auto;
+    margin-right: auto;
     text-align: center;
-    align-self: center;
     background-color: var(--dos-color);
     padding: 20px;
     border-radius: 10px;
     width: 110vh;
-    min-height: 200px; 
-    height: auto;
-    margin-bottom: 20px;
-    z-index: 0; 
+    min-height: 200px;
+    height: fit-content;
+    max-height: 80vh; 
+    overflow-y: auto; 
+    overflow-x: hidden;
 }
 
 #zadneKnihy{
@@ -250,23 +250,22 @@ footer{
     border-radius: 15px;
 }
 
-.text{
-
-    max-height: 85vh;
-    overflow-y: scroll;
-
+.text {
+    position: relative;
+    max-height: 80vh; 
+    margin-top: 2vh; 
 }
 
-.text::-webkit-scrollbar{
+.row_info::-webkit-scrollbar{
     max-height:auto ;
 }
 
-.text::-webkit-scrollbar-thumb {
+.row_info::-webkit-scrollbar-thumb {
     background-color: var(--un-color); 
     border-radius: 10px; 
 }
 
-.text::-webkit-scrollbar {
+.row_info::-webkit-scrollbar {
     width: 8px; 
 }
 
