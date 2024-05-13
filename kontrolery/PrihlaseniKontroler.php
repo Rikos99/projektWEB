@@ -26,3 +26,4 @@ class PrihlaseniKontroler extends Kontroler {
 
     }
 }
+?>

@@ -1,51 +1,40 @@
 <?php 
-    if(isset($_SESSION["zpravy"]["uspech"])) {
-        echo "<p class='uspech'>" . $_SESSION["zpravy"]["uspech"] . "</p>";
-        unset($_SESSION["zpravy"]["uspech"]);
-    }
-    if(isset($_SESSION["zpravy"]["chyba"])) {
-        echo "<p class='chyba'>" . $_SESSION["zpravy"]["chyba"] . "</p>";
-        unset($_SESSION["zpravy"]["chyba"]);
-    }
+if(isset($_SESSION["zpravy"]["uspech"])) {
+    echo "<p class='uspech'>" . $_SESSION["zpravy"]["uspech"] . "</p>";
+    unset($_SESSION["zpravy"]["uspech"]);
+}
+if(isset($_SESSION["zpravy"]["chyba"])) {
+    echo "<p class='chyba'>" . $_SESSION["zpravy"]["chyba"] . "</p>";
+    unset($_SESSION["zpravy"]["chyba"]);
+}
 ?>
 
-
 <div class="profilEdit">
-
     <h3>Info o Profilu</h3>
-
-        <div id="info">
-
-            <input type="text" id="jmeno" name="jmeno" placeholder='<?php echo $this->data["infoProfilu"]["jmeno"] ?>' disabled><br><!-- do kazdeho vlozit info z data["infoProfilu"] -->
-
-            <input type="text" id="prijmeni" name="prijmeni" placeholder='<?php echo $this->data["infoProfilu"]["prijmeni"] ?>' disabled><br>
-
+    <div id="info">
+        <form action="" method="post">
+            <label for="jmeno">Jméno</label>
+            <input type="text" id="jmeno" name="jmeno" value="<?php echo isset($this->data["infoProfilu"]["jmeno"]) ? htmlspecialchars($this->data["infoProfilu"]["jmeno"]) : ''; ?>"><br>
+            <label for="prijmeni">Příjmení</label>
+            <input type="text" id="prijmeni" name="prijmeni" value="<?php echo isset($this->data["infoProfilu"]["prijmeni"]) ? htmlspecialchars($this->data["infoProfilu"]["prijmeni"]) : ''; ?>"><br>
+            <label for="prezdivka">Přezdívka</label>
+            <input type="text" id="prezdivka" name="prezdivka" value="<?php echo isset($this->data["infoProfilu"]["prezdivka"]) ? htmlspecialchars($this->data["infoProfilu"]["prezdivka"]) : ''; ?>"><br>
             <label for="trida">Třída</label>
-            <input type="text" id="trida" name="trida" disabled><br>
-
-            <label for="role">Postavení</label>
-            <input type="text" id="role" name="role" placeholder="'<?php echo $this->data["infoProfilu"]["role"] ?>'" disabled><br>
-
-        </div>
-
-
+            <input type="text" id="trida" name="trida" value="<?php echo isset($this->data["infoProfilu"]["nazev_tridy"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_tridy"]) : ''; ?>"><br>
+            <label for="role">Role</label>
+            <input type="text" id="role" name="role" value="<?php echo isset($this->data["infoProfilu"]["nazev_role"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_role"]) : ''; ?>" disabled><br>
+            <h3>Profilová fotka</h3>
+            <input type="file" id="profilovka" name="profilovka">
+            <input type="submit" name="ulozit" value="Uložit změny">
+        </form>
+    </div>
 </div>
 
 <div class="profilZmena">
-
-    <form action="">
-        
-            <h3>Změna hesla</h3>  <!-- DODĚLAT NĚKDY NA ZMĚNU HESLA: FUNKČNOST, PODMÍNKOVÁNÍ PŘI POTVĎTE HESLO -->
-            
-            <input type="password" id="heslo" name="heslo" placeholder="Nové heslo"><br>
-            <input type="password" id="heslo2" name="heslo2" placeholder="Potvrďte heslo"><br>
-            
-
-
-            <input type="submit" name="ulozit" value="Uložit změny">
+    <form action="" method="post">
+        <h3>Změna hesla</h3>
+        <input type="password" id="heslo" name="heslo" placeholder="Nové heslo"><br>
+        <input type="password" id="heslo2" name="heslo2" placeholder="Potvrďte heslo"><br>
+        <input type="submit" name="ulozit_heslo" value="Uložit změny">
     </form>
-
-
 </div>
-
-

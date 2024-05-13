@@ -1,5 +1,4 @@
 <?php
-
 class UzivatelKontroler extends Kontroler
 {
     public function zpracuj($parametry)
@@ -24,3 +23,4 @@ class UzivatelKontroler extends Kontroler
         $this->pohled = "uzivatel";
     }
 }
+?>

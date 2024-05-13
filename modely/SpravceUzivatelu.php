@@ -5,7 +5,12 @@ class SpravceUzivatelu
 
     public function prihlas($prihlasovaciUdaje) {
 
+        require_once("modely/Db.php");
+
         $sql = "SELECT * FROM uzivatele WHERE email = ? AND heslo = ?";
+
+       
+        $db = new Db();
 
         $uzivatel = Db::dotazJeden($sql,[
             $prihlasovaciUdaje['email'],

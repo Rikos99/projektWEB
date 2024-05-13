@@ -41,3 +41,4 @@ class RegistraceKontroler extends Kontroler {
         $this->pohled = "registrace";
     }
 }
+?>

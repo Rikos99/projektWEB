@@ -6,3 +6,4 @@ class UvodKontroler extends Kontroler {
         $this->data["jmeno"] = (!empty($_SESSION['uzivatel']))?$_SESSION['uzivatel']['jmeno']:'Nikdo neni prihlaseny'; //['Jmeno'] // ['jmeno']
     }
 }
+?>
