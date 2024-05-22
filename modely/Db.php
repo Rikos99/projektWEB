@@ -6,11 +6,9 @@ class Db {
     private static $spojeni;
 
     // Připojí se k databázi pomocí daných údajů
-    public static function pripoj($server, $uzivatel, $heslo, $databaze)
-    {
+    public static function pripoj($server, $uzivatel, $heslo, $databaze) {
         try {
-            if (!isset(self::$spojeni)) 
-            {
+            if (!isset(self::$spojeni)) {
                 // Vytvoření PDO objektu pro přístup k databázi
                 self::$spojeni = new PDO(
                     "mysql:host=$server;dbname=$databaze;charset=utf8",
@@ -23,11 +21,12 @@ class Db {
                 );
             }
         } catch (PDOException $e) {
-            // pokud nastane chyba, vypise se chybove hlaseni
+            // Pokud nastane chyba, vypíše se chybové hlášení
             die("Chyba při připojení k databázi: " . $e->getMessage());
         }
+        return self::$spojeni;
     }
-
+    
     // Spustí dotaz a vrátí z něj první řádek
     public static function dotazJeden($dotaz, $parametry = array()) {
         $navrat = self::$spojeni->prepare($dotaz);
