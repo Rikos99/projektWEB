@@ -2,7 +2,7 @@
 #text {
     flex: 3;
     padding: 20px;
-    background-color: #e7e7e7;
+    background-color: var(--div-separator);
     border-radius: 5px;
     margin-right: 10px;
     display: flex;
@@ -18,12 +18,12 @@
     max-width: 20%;
     min-width: 20%;
     border-radius: 15px;
-    background-color: #555;
+    background-color: var(--dos-color);
     text-align: center;
 }
 
 #text #divbars div p {
-    color: #f4f4f4;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -49,17 +49,17 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 7px; /* Width of the lines */
-    background-color: #555; /* Color of the lines */
+    width: 7px; /*Tloušťka */
+    background-color: var(--white); /* Barva linek */
     border-radius: 5px;
 }
 
 #text #divbars::before {
-    left: -8%; /* Position of the left line */
+    left: -8%; /* Pozice levé linky u sekce Cvičení */
 }
 
 #text #divbars::after {
-    right: -8%; /* Position of the right line */
+    right: -8%; /* Pozice pravé linky u sekce Cvičení */
 }
 
 #text #divbars #divbartext{
@@ -74,7 +74,7 @@
 
 .container .dailyquest{
 
-    background-color: #555;
+    background-color: var(--tres-color);
     padding: 1% 2%;
     border-radius: 8px;
     max-height: fit-content;
@@ -84,7 +84,7 @@
 }
 
 .container #dailyoutline{
-    background-color: #666;
+    background-color: var(--un-color);
     border-radius: 8px;
     padding: 1%;
 }
@@ -92,6 +92,8 @@
 #dailyoutline h3 {
     text-align: center;
     margin: 8px auto 15px auto;
+    color: var(--white);
+    width: 100%;
 }
 
 .container .dailyquest #dailyknihy,
@@ -101,6 +103,7 @@
     align-items: center; 
     width: 100%; 
     flex-direction: column;
+    margin-top: 10px;
 }
 
 .container .dailyquest #dailyknihy > div,
@@ -110,13 +113,14 @@
     margin-bottom: 10px;
     border-radius: 8px;
     padding: 10px;
-    background-color: #444444a6;
+    background-color: var(--un-color);
+    color:var(--white);
 }
 
 
-
+/* linka mezi daily */
 .container .dailyquest #dailyknihy {
-    border-right: 3px solid #666; 
+    border-right: 3px solid var(--un-color); 
     padding-right: 10px; 
 }
 
@@ -135,9 +139,9 @@
     font-size: larger;
     align-items: center;
     justify-content: center;
-    background-color: #888; 
-    color: #fff; 
-    border: 2px solid #333; 
+    background-color: var(--quatro-color); /*výplň buttonu*/
+    color: var(--un-color);  /*barva textu*/
+    border: 2px solid var(--un-color); 
     border-radius: 30px; 
     padding: 2% 15%;
     cursor: pointer; 
@@ -149,6 +153,7 @@
 .container .dailyquest #dailyknihy button:hover,
 .container .dailyquest #dailygramatika button:hover {
     background-color: #666; 
+    color: var(--quatro-color);
 }
 
 
@@ -162,7 +167,7 @@
     width: 100%;
     margin: 0 auto; 
     text-align: center;
-    background-color: #333;
+    background-color: var(--un-color);
     color: #e7e7e7;
     padding: 0px;
     margin-top: 8px;
@@ -170,8 +175,8 @@
 }
 
 #section h3{
-width: 100%;
-max-height:50% ;
-margin: 2px 0px;
+    width: 100%;
+    max-height:50% ;
+    margin: 2px 0px;
 
 }

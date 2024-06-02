@@ -18,8 +18,6 @@ class RegistraceModel
 
     function checkAuthForm(){
 
-        echo $_POST["authCode"];
-        echo $_SESSION["authCode"];
         if($_POST["authCode"] == $_SESSION["authCode"]){
             return 1;
         }

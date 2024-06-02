@@ -4,26 +4,45 @@ class VytvareniPrispevkuKontroler extends Kontroler
 {
     public function zpracuj($parametry) {
 
-        $vytvareniPrispevkuModel = new VytvareniPrispevkuModel;
+        if($this->prihlasenyUzivatel)
+        {
+            unset($_SESSION["zpravy"]["prihlasovani"]["duvodPresmerovani"]);
 
-        $knihyModel = new KnihyModel;
+            $vytvareniPrispevkuModel = new VytvareniPrispevkuModel;
 
-        if( isset($parametry[0]) && $parametry[0] == "kniha" && isset($parametry[1]) && is_numeric($parametry[1])) {
-            $predurcenaKniha = $knihyModel->knihaPodleId(intval($parametry[1]));
-            $this->data['predurcenaKnihaString'] = $predurcenaKniha["nazev"] . " - " . $predurcenaKniha["autor"];
-            $this->data['predurcenaKnihaId'] = $parametry[1];
+            $objektyModel = new ObjektyModel;
+
+            $this->data["title"] = "Nový Příspěvek";
+
+            if(
+                isset($parametry[0]) && $parametry[0] == "kniha" &&
+                isset($parametry[1]) && is_numeric($parametry[1]) &&
+                (Db::dotaz("SELECT * FROM knihy WHERE id=?", [$parametry[1]]) > 0)
+            ) {
+                $predurcenaKniha = $objektyModel->knihaPodleId(intval($parametry[1]));
+                $this->data['predurcenaKnihaString'] = $predurcenaKniha["nazevKniha"] . " - " . $predurcenaKniha["jmenoAutora"] . " " . $predurcenaKniha["prijmeniAutora"];
+                $this->data['predurcenaKnihaId'] = $parametry[1];
+            }
+
+            if (!isset($this->data['predurcenaKnihaString'])){
+                $this->data['vsechnyKnihy'] = $objektyModel->vsechnyKnihy();
+            }
+
+            // Poslani prispevku do databaze (formular)
+            if (isset($_POST["nazevPrispevku"])) {
+                $vytvareniPrispevkuModel->prispevekDoDatabaze();
+                $this->presmeruj("prispevky/uzivatel/". $_SESSION["uzivatel"]["id"]);
+            }
+
+            $this->data['typyPrispevku'] = Db::dotazVsechny("SELECT * FROM typyprispevku;");
+
+            $this->pohled = "vytvareniPrispevku";
         }
-
-        if (!isset($this->data['predurcenaKnihaString'])){
-            $this->data['vsechnyKnihy'] = $knihyModel->vsechnyKnihy();
+        else
+        {
+            $_SESSION["zpravy"]["prihlasovani"]["duvodPresmerovani"] = "Nejste přihlášen.";
+            $this->presmeruj("prihlaseni");
         }
-
-        // Poslani prispevku do databaze (formular)
-        if (isset($_POST["nazevPrispevku"])) {
-            $vytvareniPrispevkuModel->prispevekDoDatabaze();
-        }
-
-        $this->pohled = "vytvareniPrispevku";
     }
 
 }

@@ -2,6 +2,8 @@
 class UvodKontroler extends Kontroler {
     public function zpracuj($parametry) {
         $this->pohled = "uvod";
-        $this->cssCesty=["style.css", "navstyle.css", "maintextstyle.css", "sidemainstyle.css"];
+        $this->data["title"] = "Úvod";
+        $this->data["jmeno"] = (!empty($_SESSION['uzivatel']))?$_SESSION['uzivatel']['jmeno']:'Nikdo neni prihlaseny'; //['Jmeno'] // ['jmeno']
     }
 }
+?>

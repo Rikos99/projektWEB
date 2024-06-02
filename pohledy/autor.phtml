@@ -1,0 +1,18 @@
+<pre> <!-- VYPIS vseho *** POTOM SMAZAT -->
+<?php
+print_r($this->data['autor'] ?? '');
+?>
+</pre>
+
+
+
+
+<p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
+    if (isset($_SESSION["zpravy"]["autor"]["chybaNacteni"])) {
+        echo $_SESSION["zpravy"]["autor"]["chybaNacteni"] ;
+        echo "<br>";
+        echo "<a href=''>Jit na uvodni obrazovku</a>";
+    }
+
+    ?>
+</p>

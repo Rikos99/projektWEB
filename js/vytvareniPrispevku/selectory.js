@@ -1,4 +1,5 @@
 var predlohaText = "";
+var predlohaCesta = "../PredlohyPrispevku";
 
 document.addEventListener("DOMContentLoaded", function(event){
 
@@ -14,22 +15,23 @@ document.addEventListener("DOMContentLoaded", function(event){
 
 function changeTextArea(typ){
 
-    let textArea = document.getElementById("hlavniEditor");
+    //let textArea = document.getElementById("hlavniEditor");
 
     switch (typ) {
         case "R":{
-            setPredlohu("predlohy/rozbor.html");
+            setPredlohu(predlohaCesta + "/rozbor.html");
         }break;
         case "C":{
-            setPredlohu("predlohy/ctenarsky.html");
+            setPredlohu(predlohaCesta + "/ctenarsky.html");
         }break;
         case "Z":{
-            setPredlohu("predlohy/zapisky.html");
+            setPredlohu(predlohaCesta + "/zapisky.html");
         }
     }
 }
 
 function setPredlohu(nazevSouboru) {
+    console.log(nazevSouboru);
     fetch(nazevSouboru)
         .then(response => {
             if (!response.ok) {

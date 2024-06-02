@@ -1,0 +1,37 @@
+<main>
+
+    <div>
+        <input type="text" name="ICO" id="ICO" placeholder="IČO">
+        <input type="button" id="button" value="Vyhledat">
+
+    </div>
+
+    <script src="js/hledatSkolu.js"></script>
+    <script>
+        document.getElementById("button").addEventListener("click", function ()
+        {
+            const input = document.getElementById("ICO");
+            let skola = getARESInformationFromICO(input.value);
+            console.log(skola);
+            //TODO nějakým způsobem získat atribut obchodniJmeno z arraye skola do promenne nazev
+            let nazev = "Střední průmyslová škola elektrotechniky a informatiky, Ostrava, příspěvková organizace";
+
+            /*
+            skola.then(result => {
+                const obchodniJmeno = result.value.obchodniJmeno;
+                console.log(obchodniJmeno);
+            }).catch(error => {
+                console.error('Chyba při získávání dat:', error);
+            })
+
+             */
+
+            let date = new Date();
+            date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+
+            document.cookie = "nazev=" + nazev + "; expires=" + date.toGMTString() + "; path=/";
+            //triggernout PHP kod, ktery cookie zaregistruje
+        });
+    </script>
+
+</main>

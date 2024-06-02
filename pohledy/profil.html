@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nastavení profilu</title>
+</head>
+<body>
+    <header>
+        <h1>Nastavení profilu</h1>
+    </header>
+
+    <div class="navigation">
+        <nav>
+            <ul>
+                <li><a href="./index.html"><span>Hlavní stánka</span></a></li>
+                <li><a href="./kniha.html"><span>Knihy</span></a></li>
+                <li><a href=""><span>Gramatika</span></a></li>
+                <li><a href=""><span>Materiály</span></a></li>
+                <li class="dropdown" id="profil">
+                    <a href="./profil.html"><span>Profil</span></a>
+                    <div class="dropdown-content">
+                        <a href="">Nastavení</a>
+                        <a href="">Odhlásit se</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <?php include_once("profil.phtml"); ?>
+
+</body>
+</html>

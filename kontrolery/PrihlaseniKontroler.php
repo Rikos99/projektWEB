@@ -4,6 +4,7 @@ class PrihlaseniKontroler extends Kontroler {
 
         $spravceUzivatelu = new SpravceUzivatelu;
         $this->cssCesty=["style.css", "loginSite.css", "navstyle.css"];
+        $this->data["title"] = "Přihlášení";
 
         if(!empty($_POST)){
 
@@ -25,3 +26,4 @@ class PrihlaseniKontroler extends Kontroler {
 
     }
 }
+?>

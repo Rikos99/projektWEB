@@ -5,6 +5,10 @@ class RegistraceKontroler extends Kontroler {
         $registraceModel = new RegistraceModel;
         $SpravceUzivatelu = new SpravceUzivatelu;
 
+        $this->data["title"] = "Registrace";
+        $this->cssCesty=["profilstyle.css"];
+
+
         if(isset($_POST["jmeno"])){
 
             $regRes = $registraceModel->checkRegisterForm($SpravceUzivatelu);
@@ -23,16 +27,18 @@ class RegistraceKontroler extends Kontroler {
                 $SpravceUzivatelu->vytvoritUzivatele($_SESSION["prevPost"]);
 
                 unset($_SESSION["authCode"]);
+                unset($_SESSION["prevPost"]);
                 unset($_SESSION["zpravy"]["registrace"]["chyba"]);
 
                 $this->presmeruj("prihlaseni");
             }
             else{// neuspesna registrace
                 $this->presmeruj("registrace");
-                $_SESSION["zpravy"]["registrace"]["chyba"] = "Spatne autorizacni kod.";
+                $_SESSION["zpravy"]["registrace"]["chyba"] = "Spatny autorizacni kod.";
             }
         }
 
         $this->pohled = "registrace";
     }
 }
+?>

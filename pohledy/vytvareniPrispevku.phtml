@@ -10,26 +10,29 @@
     <label for="">Nazev prispevku</label>
     <input type="text" name="nazevPrispevku" required>
 
-    <label for="">Typ prispevku</label>
+    <label for="typPrispevkuId">Typ prispevku</label>
     <select name="typPrispevku" id="typPrispevkuId" required>
-        <option value="R">Rozbor</option>
-        <option value="C">Ctenarsky denik</option>
-        <option value="Z">Zapisky</option>  //? jak pojmenovat
+        <?php
+        foreach ($this->data['typyPrispevku'] as $tp) {
+            if ($tp['Id'] != 4){
+                echo "<option value=".$tp['Id'].">".$tp["typ"]."</option>";
+            }
+        }
+        ?>
     </select>
 
     <label for="">Knihy</label>
     <select name="vyberKnizky" id="vyberKnizky" required>
         <?php if (isset($this->data['predurcenaKnihaString'])) {
-                echo "<option selected value='" . $this->data['predurcenaKnihaId'] . "'>" . $this->data['predurcenaKnihaString'] . "</option>";
-                }
-                else {
-                    foreach ($this->data['vsechnyKnihy'] as $kniha) {
-                        echo "<option value='" . $kniha['id'] . "'>" . $kniha['nazev'] . " - " . $kniha['autor'] . "</option>";
-                    }
-                }
-            ?>
+            echo "<option selected value='" . $this->data['predurcenaKnihaId'] . "'>" . $this->data['predurcenaKnihaString'] . "</option>";
+        }
+        else {
+            foreach ($this->data['vsechnyKnihy'] as $kniha) {
+                echo "<option value='" . $kniha['idKniha'] . "'>" . $kniha['nazevKniha'] . " - " . $kniha['jmenoAutora'] ." ". $kniha['prijmeniAutora'] . "</option>";
+            }
+        }
+        ?>
     </select>
-
 
     <div>
         <label>
@@ -59,4 +62,5 @@
             language:'cs',
             customConfig: '../js/vytvareniPrispevku/ckEditorConfig.js',
             skin: 'n1theme'}
-    );  </script>
+    );
+</script>
