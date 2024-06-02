@@ -1,5 +1,6 @@
 :root{
 
+--white: #d4d4d4 ;
 --primary-color: #E06E7C;
 --secondary-color:#7EC0C5 ; /* optional - zaměnit za tercial colot*/
 --tercial-color:#b5e9c5 ;
@@ -14,7 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #d4d4d4;
+    background-color: var(white) ;
 }
 
 main{
@@ -33,7 +34,7 @@ main{
 header,
 footer {
     background-color: #333;
-    color: #fff;
+    color: var(white);
     text-align: center;
     padding: 20px 0;
 }
