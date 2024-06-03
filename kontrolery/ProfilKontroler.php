@@ -15,6 +15,9 @@ class ProfilKontroler extends Kontroler {
     }
 
     public function zpracuj($parametry){
+
+        $this->cssCesty=["profilstyle.css"];
+
         if(isset($_POST["ulozit"])){
             $jmeno = isset($_POST["jmeno"]) ? $_POST["jmeno"] : "";
             $prijmeni = isset($_POST["prijmeni"]) ? $_POST["prijmeni"] : "";

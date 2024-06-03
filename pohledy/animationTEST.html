@@ -9,8 +9,8 @@
 
     <style>
         :root {
-            --book-width: 200px;
-            --book-height: 300px;
+            --book-width: 180px;
+            --book-height: 240px;
         }
 
         .transition {
@@ -114,52 +114,55 @@
     <div class="wrap">
         <div class="perspective">
           <div class="book-wrap">
-            <div class="book book-1"></div>
+            <div class="book book-1" style="background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e25b3ac3-7ce4-4af7-8a36-7c1ddbee5532/dfdyafz-8bdc6334-be5d-4d3e-b142-10fe8921639a.png/v1/fit/w_828,h_1210,q_70,strp/_ota__book_cover_design_1_by_jastra93_dfdyafz-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTg3MSIsInBhdGgiOiJcL2ZcL2UyNWIzYWMzLTdjZTQtNGFmNy04YTM2LTdjMWRkYmVlNTUzMlwvZGZkeWFmei04YmRjNjMzNC1iZTVkLTRkM2UtYjE0Mi0xMGZlODkyMTYzOWEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.sF6yQoNssWVOjpeIVbuo2iczCWZfZ2LT_uGjTjTD590) black no-repeat center center;
+            "></div>
             <div class="title book-1"></div>
             <div class="book-back book-1">
               <div class="text">
-                <h3>Bla bal bla</h3>
+                <h3><div class="knihainfo" knihaId="<?= $row['idKnihy'] ?>" autorId="<?= $row['idAutora'] ?>" obdobiId="<?= $row['idObdobi'] ?>"></h3>
                 <p><span>
-                    Autor
+                    <div class="cell autorDiv">
+                        <a href="autor/<?=$row['idAutora'] ?>"><?=$row['jmenoAutora'] ?></a>
+                    </div>
                     </span>
                     <span>
-                        IDK něco navíc
+                        <div class="cell obdobiDiv">
+                            <a href="knihy/obdobi/<?=$row['idObdobi'] ?>"><?=$row['nazevObdobi'] ?></a>
+                        </div>
                     </span>
-                    
                     </p>
-                    <p><span>BOTTOM TEXT XD</span></p>
 
-                    <button>Přidat hihahohahi</button>
+
+                    <form action="" method="post">
+                        <input type="hidden" name="idKnihy" value="<?= $row['idKnihy'] ?>">
+                        <?php
+                        if (empty($this->data['povinneKnihy'])) {
+                            echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych" '.(isset($_SESSION['uzivatel']) ? '' : 'disabled').'>';
+                        } else {
+                            $isInPovinneKnihy = false;
+                            foreach ($this->data['povinneKnihy'] as $povinneKnihy) {
+                                if ($povinneKnihy['knihaId'] == $row['idKnihy']) {
+                                    $isInPovinneKnihy = true;
+                                    break;
+                                }
+                            }
+                            if ($isInPovinneKnihy) {
+                                echo '<input type="submit" class="addToLibraryBtn" name="type" value="odebrat_z_povinnych">';
+                            } else {
+                                echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych">';
+                            }
+                        }
+                        ?>
+                    </form>
+
+                    <povinnostKnihy val="<?php echo (isset($isInPovinneKnihy)) ? $isInPovinneKnihy : false; ?>"></povinnostKnihy>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="wrap">
-        <div class="perspective">
-          <div class="book-wrap">
-            <div class="book book-1"></div>
-            <div class="title book-1"></div>
-            <div class="book-back book-1">
-              <div class="text">
-                <h3>Bla bal bla</h3>
-                <p><span>
-                    Autor
-                    </span>
-                    <span>
-                        IDK něco navíc
-                    </span>
-                    
-                    </p>
-                    <p><span>BOTTOM TEXT XD</span></p>
-
-                    <button>Přidat hihahohahi</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
     <script>
         $(document).ready(function(){

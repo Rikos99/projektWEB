@@ -12,20 +12,27 @@ if(isset($_SESSION["zpravy"]["chyba"])) {
 <div class="profilEdit">
     <h3>Info o Profilu</h3>
     <div id="info">
-        <form action="" method="post">
+
             <label for="jmeno">Jméno</label>
-            <input type="text" id="jmeno" name="jmeno" value="<?php echo isset($this->data["infoProfilu"]["jmeno"]) ? htmlspecialchars($this->data["infoProfilu"]["jmeno"]) : ''; ?>"><br>
+            <input type="text" id="jmeno" name="jmeno" value="<?php echo isset($this->data["infoProfilu"]["jmeno"]) ? htmlspecialchars($this->data["infoProfilu"]["jmeno"]) : ''; ?>" disabled><br>
+            
             <label for="prijmeni">Příjmení</label>
-            <input type="text" id="prijmeni" name="prijmeni" value="<?php echo isset($this->data["infoProfilu"]["prijmeni"]) ? htmlspecialchars($this->data["infoProfilu"]["prijmeni"]) : ''; ?>"><br>
-            <label for="prezdivka">Přezdívka</label>
-            <input type="text" id="prezdivka" name="prezdivka" value="<?php echo isset($this->data["infoProfilu"]["prezdivka"]) ? htmlspecialchars($this->data["infoProfilu"]["prezdivka"]) : ''; ?>"><br>
+            <input type="text" id="prijmeni" name="prijmeni" value="<?php echo isset($this->data["infoProfilu"]["prijmeni"]) ? htmlspecialchars($this->data["infoProfilu"]["prijmeni"]) : ''; ?>" disabled><br>
+            
+            <label for="prezdivka">Přezdívka</label> 
+            <input type="text" id="prezdivka" name="prezdivka" value="<?php echo isset($this->data["infoProfilu"]["prezdivka"]) ? htmlspecialchars($this->data["infoProfilu"]["prezdivka"]) : ''; ?>" ><br>
+            
             <label for="trida">Třída</label>
-            <input type="text" id="trida" name="trida" value="<?php echo isset($this->data["infoProfilu"]["nazev_tridy"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_tridy"]) : ''; ?>"><br>
+            <input type="text" id="trida" name="trida" value="<?php echo isset($this->data["infoProfilu"]["nazev_tridy"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_tridy"]) : ''; ?>" disabled><br>
+            
             <label for="role">Role</label>
             <input type="text" id="role" name="role" value="<?php echo isset($this->data["infoProfilu"]["nazev_role"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_role"]) : ''; ?>" disabled><br>
+            
             <h3>Profilová fotka</h3>
+        <form action="" method="post">
             <input type="file" id="profilovka" name="profilovka">
             <input type="submit" name="ulozit" value="Uložit změny">
+
         </form>
     </div>
 </div>

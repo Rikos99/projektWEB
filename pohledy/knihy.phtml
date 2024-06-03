@@ -1,4 +1,4 @@
-    <script src="../js/filterScript.js" defer></script>
+<script src="../js/filterScript.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <?php
@@ -18,124 +18,124 @@
     ?>
 
 <div class="container">
-            
-            <div id="filterbackground">
-                <!-- Dodělat animace nahoru zpět a roll dolů s posunem osy y -->
-                <div class="filter">
-                    <h3>Filtr</h3>
-
-                    <div class="dropdown1">
-                        <button class="dropbtn1">Knihy</button>
-
-                        <div id="dropdownContent1" class="dropdown-content1">
-                            <input type="text" id="TextFilterKnihy" placeholder="textový filtr"><br>
-                            <label for="povinneKnihyInput">Zobrazit pouze moje vybrane</label>
-                            <input type="checkbox" class="povinneKnihy" id="povinneKnihyInput" <?= (isset($_SESSION['uzivatel']) ? '' : 'disabled')?>>
-
-                        </div>
-
+        <div id="filterbackground">
+            <div class="filter">
+                <h3>Filtr</h3>
+                <div class="dropdown1">
+                    <button class="dropbtn1">Knihy</button>
+                    <div id="dropdownContent1" class="dropdown-content1">
+                        <input type="text" id="TextFilterKnihy" placeholder="textový filtr"><br>
+                        <label for="povinneKnihyInput">Zobrazit pouze moje vybrane</label>
+                        <input type="checkbox" class="povinneKnihy" id="povinneKnihyInput" <?= (isset($_SESSION['uzivatel']) ? '' : 'disabled') ?>>
                     </div>
-
-                    <div class="dropdown1">
-                        <button class="dropbtn1">Autoři</button>
-                        
-                        <div id="dropdownContent1" class="dropdown-content1" >
-                            <label for="TextFilterAutori"></label>
-                            <input type="text" id="TextFilterAutori" placeholder="textový filtr"><br>
-                            <?php foreach ($this->data['vsichniAutori'] as $autor): ?>
-                                <div class="autorFilter" autorId="<?=  $autor['Id']?>">
-
-                                    <label for=""><?=  $autor['Jmeno']." ".$autor['Prijmeni'] ?></label>
-                                    <input type="checkbox"  id="">
-
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-
+                </div>
+                <div class="dropdown1">
+                    <button class="dropbtn1">Autoři</button>
+                    <div id="dropdownContent1" class="dropdown-content1">
+                        <label for="TextFilterAutori"></label>
+                        <input type="text" id="TextFilterAutori" placeholder="textový filtr"><br>
+                        <?php foreach ($this->data['vsichniAutori'] as $autor): ?>
+                            <div class="autorFilter" autorId="<?= $autor['Id'] ?>">
+                                <label for=""><?= $autor['Jmeno']." ".$autor['Prijmeni'] ?></label>
+                                <input type="checkbox" id="">
+                            </div>
+                        <?php endforeach ?>
                     </div>
-
-                    <div class="dropdown1">
-                        <button class="dropbtn1">Období</button>
-                        
-                        <div id="dropdownContent1" class="dropdown-content1">
-                            <!-- <input type="text" id="TextFilterObdobi" placeholder="textový filtr"><br> -->
-                            <?php foreach ($this->data['vsechnyObdobi'] as $obdobi): ?>
-                                <div class="obdobiFilter"  obdobiId="<?=  $obdobi['Id']?>">
-
-                                    <label for=""><?= $obdobi['Nazev']?></label>
-                                    <input type="checkbox" id="">
-
-                                </div>
-                            <?php endforeach ?>
-
-                        </div>
-
+                </div>
+                <div class="dropdown1">
+                    <button class="dropbtn1">Období</button>
+                    <div id="dropdownContent1" class="dropdown-content1">
+                        <?php foreach ($this->data['vsechnyObdobi'] as $obdobi): ?>
+                            <div class="obdobiFilter" obdobiId="<?= $obdobi['Id'] ?>">
+                                <label for=""><?= $obdobi['Nazev'] ?></label>
+                                <input type="checkbox" id="">
+                            </div>
+                        <?php endforeach ?>
                     </div>
-
                 </div>
             </div>
+        </div>
+        <div class="text">
+            <div class="row_info" style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <?php foreach ($data as $row) : ?>
+                    <div class="knihainfo" knihaId="<?= $row['idKnihy'] ?>" autorId="<?= $row['idAutora'] ?>" obdobiId="<?= $row['idObdobi'] ?>">
+                    <div class="wrap">
+        <div class="perspective">
+          <div class="book-wrap">
+            <div class="book book-1" style="background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e25b3ac3-7ce4-4af7-8a36-7c1ddbee5532/dfdyafz-8bdc6334-be5d-4d3e-b142-10fe8921639a.png/v1/fit/w_828,h_1210,q_70,strp/_ota__book_cover_design_1_by_jastra93_dfdyafz-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTg3MSIsInBhdGgiOiJcL2ZcL2UyNWIzYWMzLTdjZTQtNGFmNy04YTM2LTdjMWRkYmVlNTUzMlwvZGZkeWFmei04YmRjNjMzNC1iZTVkLTRkM2UtYjE0Mi0xMGZlODkyMTYzOWEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.sF6yQoNssWVOjpeIVbuo2iczCWZfZ2LT_uGjTjTD590) black no-repeat center center;
+            "></div>
+            <div class="title book-1"></div>
+            <div class="book-back book-1">
+              <div class="text">
+                <h3><div class="knihainfo" knihaId="<?= $row['idKnihy'] ?>" autorId="<?= $row['idAutora'] ?>" obdobiId="<?= $row['idObdobi'] ?>"></h3>
+                <p><span>
+                    <div class="cell autorDiv">
+                        <a href="autor/<?=$row['idAutora'] ?>"><?=$row['jmenoAutora'] ?></a>
+                    </div>
+                    </span>
+                    <span>
+                        <div class="cell obdobiDiv">
+                            <a href="knihy/obdobi/<?=$row['idObdobi'] ?>"><?=$row['nazevObdobi'] ?></a>
+                        </div>
+                    </span>
+                    </p>
 
-            <div class="text">
 
-
-                <div class="row_info">
-
-                    <?php foreach ($data as $row) : ?>
-                        <div class="knihainfo" knihaId="<?= $row['idKnihy'] ?>" autorId="<?= $row['idAutora'] ?>" obdobiId="<?= $row['idObdobi'] ?>">
-                    
-                            <div class="cell">
-                                <img src="<?= $row['odkazFotky'] ?>" alt="">
-                            </div>
-
-                            <div class="cell knihaDiv">
-                                <a href="kniha/<?=$row['idKnihy'] ?>"><?=$row['nazevKnihy'] ?></a>
-                            </div>
-
-                            <div class="cell autorDiv">
-                                <a href="autor/<?=$row['idAutora'] ?>"><?=$row['jmenoAutora'] ?></a>
-                            </div>
-
-                            <div class="cell obdobiDiv">
-                                <a href="knihy/obdobi/<?=$row['idObdobi'] ?>"><?=$row['nazevObdobi'] ?></a>
-                            </div>
-
-
-                            <form action="" method="post">
-                                <input type="hidden" name="idKnihy" value="<?= $row['idKnihy'] ?>">
-                                <?php
-                                if (empty($this->data['povinneKnihy'])) {
-                                    echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych" '.(isset($_SESSION['uzivatel']) ? '' : 'disabled').'>';
-                                } else {
-                                    $isInPovinneKnihy = false;
-                                    foreach ($this->data['povinneKnihy'] as $povinneKnihy) {
-                                        if ($povinneKnihy['knihaId'] == $row['idKnihy']) {
-                                            $isInPovinneKnihy = true;
-                                            break;
-                                        }
-                                    }
-                                    if ($isInPovinneKnihy) {
-                                        echo '<input type="submit" class="addToLibraryBtn" name="type" value="odebrat_z_povinnych">';
-                                    } else {
-                                        echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych">';
-                                    }
+                    <form action="" method="post">
+                        <input type="hidden" name="idKnihy" value="<?= $row['idKnihy'] ?>">
+                        <?php
+                        if (empty($this->data['povinneKnihy'])) {
+                            echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych" '.(isset($_SESSION['uzivatel']) ? '' : 'disabled').'>';
+                        } else {
+                            $isInPovinneKnihy = false;
+                            foreach ($this->data['povinneKnihy'] as $povinneKnihy) {
+                                if ($povinneKnihy['knihaId'] == $row['idKnihy']) {
+                                    $isInPovinneKnihy = true;
+                                    break;
                                 }
-                                ?>
-                            </form>
+                            }
+                            if ($isInPovinneKnihy) {
+                                echo '<input type="submit" class="addToLibraryBtn" name="type" value="odebrat_z_povinnych">';
+                            } else {
+                                echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych">';
+                            }
+                        }
+                        ?>
+                    </form>
 
-                            <povinnostKnihy val="<?php echo (isset($isInPovinneKnihy)) ? $isInPovinneKnihy : false; ?>"></povinnostKnihy>
-                        </div> <!-- konec knihainfo-->
-
-                    <?php endforeach; ?>
-
-                    
-                    <p id="zadneKnihy" hidden="hidden">Ještě jsi si nevybral žádnou knihu</p>
-
-                </div> <!-- konec rowinfo-->
-                
-                
+                    <povinnostKnihy val="<?php echo (isset($isInPovinneKnihy)) ? $isInPovinneKnihy : false; ?>"></povinnostKnihy>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            
+    <script>
+        $(document).ready(function(){
+            $(".book").mouseenter(function(){
+                $(this).parent(".book-wrap").addClass("rotate");
+            });
+
+            $(".book").mouseleave(function(){
+                $(this).parent(".book-wrap").removeClass("rotate");
+            });
+
+            $(".book").click(function(){
+                $(this).parent(".book-wrap").addClass("flip");
+            });
+
+            $(".book-back").click(function(){
+                $(this).parent(".book-wrap").removeClass("flip");
+            });
+        });
+    </script>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+
+
 
  
 

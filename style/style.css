@@ -44,6 +44,7 @@ footer {
     text-align: center;
     padding: 20px 0;
     z-index: 1;
+    bottom: 0;
 }
 
 footer{
@@ -60,3 +61,4 @@ header a
     color: var(--white);
     text-decoration: none;
 }
+
