@@ -86,10 +86,10 @@ class ProfilModel {
     
     
     public function ziskatInfoUzivatele($id) {
-        return Db::dotazJeden("SELECT u.*, t.Trida AS nazev_tridy, r.role AS nazev_role 
+        return Db::dotazJeden("SELECT u.*, t.Nazev AS nazev_tridy, r.role AS nazev_role 
                                 FROM uzivatele u
-                                INNER JOIN tridy t ON u.trida = t.Id
-                                INNER JOIN role r ON u.role = r.role
+                                LEFT JOIN tridy t ON u.trida = t.Id
+                                LEFT JOIN role r ON u.role = r.role
                                 WHERE u.Id = ?", [$id]);
     }
 }
