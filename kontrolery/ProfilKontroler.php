@@ -14,7 +14,13 @@ class ProfilKontroler extends Kontroler {
         $this->prihlasenyUzivatel = $this->vratPrihlasenehoUzivatele();
     }
 
+
+
     public function zpracuj($parametry) {
+
+        $this->cssCesty=["profil.css"];
+
+
         if (isset($_POST["ulozit_heslo"])) {
             //zmena hesla
             $noveHeslo = isset($_POST["nove_heslo"]) ? $_POST["nove_heslo"] : null;

@@ -23,6 +23,7 @@
   "license": ["MIT"],
   "require": {
     "phpmailer/phpmailer": "6.9.*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-json": "*"
   }
 }

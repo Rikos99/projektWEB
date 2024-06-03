@@ -13,7 +13,7 @@ class VytvareniKvizuKontroler extends Kontroler
             echo htmlspecialchars(print_r($_POST, true));
             echo '</pre>';
 
-            //$objektyModel->pridatKviz($_POST['teloKvizu']);
+            $objektyModel->pridatKviz($_POST['nazevKvizu'],$_POST['kniha'],$_POST['teloKvizu'],json_decode($_POST['spravneOdpovedi'],true));
         }
 
         if(
