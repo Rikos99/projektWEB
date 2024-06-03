@@ -1,47 +1,58 @@
-<?php 
-if(isset($_SESSION["zpravy"]["uspech"])) {
-    echo "<p class='uspech'>" . $_SESSION["zpravy"]["uspech"] . "</p>";
-    unset($_SESSION["zpravy"]["uspech"]);
-}
-if(isset($_SESSION["zpravy"]["chyba"])) {
-    echo "<p class='chyba'>" . $_SESSION["zpravy"]["chyba"] . "</p>";
-    unset($_SESSION["zpravy"]["chyba"]);
-}
-?>
-
 <div class="profilEdit">
-    <h3>Info o Profilu</h3>
+    
+    <?php 
+    // povoli zobrazeni kladne zpravy
+    if (isset($_SESSION["zpravy"]["uspech"])) {
+        echo "<p class='uspech'>" . $_SESSION["zpravy"]["uspech"] . "</p>";
+        unset($_SESSION["zpravy"]["uspech"]);
+    }
+    if (isset($_SESSION["zpravy"]["chyba"])) {
+        echo "<p class='chyba'>" . $_SESSION["zpravy"]["chyba"] . "</p>";
+        unset($_SESSION["zpravy"]["chyba"]);
+    }
+    ?>
+    
+<!-- Profilovka
+    htmlspecialchars = zabezpeceni aby se zadany text neprecetl jako kod -->
     <div id="info">
+        <?php if (isset($this->data["infoProfilu"]["ikona"]) && !empty($this->data["infoProfilu"]["ikona"])): ?>
+            <img src="<?php echo htmlspecialchars($this->data["infoProfilu"]["ikona"]); ?>" alt="Profilový obrázek">
+        <?php else: ?>
+            <p>Žádný profilový obrázek není k dispozici.</p>
+        <?php endif; ?>
 
-            <label for="jmeno">Jméno</label>
-            <input type="text" id="jmeno" name="jmeno" value="<?php echo isset($this->data["infoProfilu"]["jmeno"]) ? htmlspecialchars($this->data["infoProfilu"]["jmeno"]) : ''; ?>" disabled><br>
-            
-            <label for="prijmeni">Příjmení</label>
-            <input type="text" id="prijmeni" name="prijmeni" value="<?php echo isset($this->data["infoProfilu"]["prijmeni"]) ? htmlspecialchars($this->data["infoProfilu"]["prijmeni"]) : ''; ?>" disabled><br>
-            
-            <label for="prezdivka">Přezdívka</label> 
-            <input type="text" id="prezdivka" name="prezdivka" value="<?php echo isset($this->data["infoProfilu"]["prezdivka"]) ? htmlspecialchars($this->data["infoProfilu"]["prezdivka"]) : ''; ?>" ><br>
-            
-            <label for="trida">Třída</label>
-            <input type="text" id="trida" name="trida" value="<?php echo isset($this->data["infoProfilu"]["nazev_tridy"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_tridy"]) : ''; ?>" disabled><br>
-            
-            <label for="role">Role</label>
-            <input type="text" id="role" name="role" value="<?php echo isset($this->data["infoProfilu"]["nazev_role"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_role"]) : ''; ?>" disabled><br>
-            
-            <h3>Profilová fotka</h3>
-        <form action="" method="post">
+        <h3>Nahrát profilový obrázek</h3>
+        <form action="" method="post" enctype="multipart/form-data">
             <input type="file" id="profilovka" name="profilovka">
-            <input type="submit" name="ulozit" value="Uložit změny">
+            <input type="submit" name="nahrat_obrazek" value="Nahrát obrázek">
+        </form>
 
+    <!-- info o uzivateli -->
+        <label for="jmeno">Jméno</label>
+        <span><?php echo isset($this->data["infoProfilu"]["jmeno"]) ? htmlspecialchars($this->data["infoProfilu"]["jmeno"]) : ''; ?></span><br>
+
+        <label for="prijmeni">Příjmení</label>
+        <span><?php echo isset($this->data["infoProfilu"]["prijmeni"]) ? htmlspecialchars($this->data["infoProfilu"]["prijmeni"]) : ''; ?></span><br>
+
+        <form action="" method="post">
+            <label for="prezdivka">Přezdívka</label>
+            <input type="text" id="prezdivka" name="prezdivka" value="<?php echo isset($this->data["infoProfilu"]["prezdivka"]) ? htmlspecialchars($this->data["infoProfilu"]["prezdivka"]) : ''; ?>"><br>
+            <input type="submit" name="ulozit" value="Uložit změny">
+        </form>
+
+        <label for="trida">Třída</label>
+        <span><?php echo isset($this->data["infoProfilu"]["nazev_tridy"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_tridy"]) : ''; ?></span><br>
+        
+        <label for="role">Role</label>
+        <span><?php echo isset($this->data["infoProfilu"]["nazev_role"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_role"]) : ''; ?></span><br>
+    </div>
+
+    <div class="profilZmena">
+        <h3>Změna hesla</h3>
+        <form action="" method="post">
+            <input type="password" id="nove_heslo" name="nove_heslo" placeholder="Nové heslo"><br>
+            <input type="password" id="potvrzeni_hesla" name="potvrzeni_hesla" placeholder="Potvrďte heslo"><br>
+            <input type="submit" name="ulozit_heslo" value="Uložit změny">
         </form>
     </div>
-</div>
-
-<div class="profilZmena">
-    <form action="" method="post">
-        <h3>Změna hesla</h3>
-        <input type="password" id="heslo" name="heslo" placeholder="Nové heslo"><br>
-        <input type="password" id="heslo2" name="heslo2" placeholder="Potvrďte heslo"><br>
-        <input type="submit" name="ulozit_heslo" value="Uložit změny">
-    </form>
 </div>
