@@ -55,6 +55,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="text">
             <div class="row_info" style="display: flex; flex-wrap: wrap; justify-content: center;">
                 <?php foreach ($data as $row) : ?>
@@ -62,17 +64,16 @@
                     <div class="wrap">
         <div class="perspective">
           <div class="book-wrap">
-            <div class="book book-1" style="background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e25b3ac3-7ce4-4af7-8a36-7c1ddbee5532/dfdyafz-8bdc6334-be5d-4d3e-b142-10fe8921639a.png/v1/fit/w_828,h_1210,q_70,strp/_ota__book_cover_design_1_by_jastra93_dfdyafz-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTg3MSIsInBhdGgiOiJcL2ZcL2UyNWIzYWMzLTdjZTQtNGFmNy04YTM2LTdjMWRkYmVlNTUzMlwvZGZkeWFmei04YmRjNjMzNC1iZTVkLTRkM2UtYjE0Mi0xMGZlODkyMTYzOWEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.sF6yQoNssWVOjpeIVbuo2iczCWZfZ2LT_uGjTjTD590) black no-repeat center center;
-            "></div>
+            <div class="book book-1"></div>
             <div class="title book-1"></div>
             <div class="book-back book-1">
               <div class="text">
-                <h3><div class="knihainfo" knihaId="<?= $row['idKnihy'] ?>" autorId="<?= $row['idAutora'] ?>" obdobiId="<?= $row['idObdobi'] ?>"></h3>
+                <h5><a href="kniha/<?=$row['idKnihy'] ?>"><?=$row['nazevKnihy'] ?></a></h5>
                 <p><span>
                     <div class="cell autorDiv">
                         <a href="autor/<?=$row['idAutora'] ?>"><?=$row['jmenoAutora'] ?></a>
                     </div>
-                    </span>
+                    </span><br>
                     <span>
                         <div class="cell obdobiDiv">
                             <a href="knihy/obdobi/<?=$row['idObdobi'] ?>"><?=$row['nazevObdobi'] ?></a>

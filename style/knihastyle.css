@@ -190,16 +190,15 @@ footer{
 
 /* pro jednotlivé odkazy v popisu knihy */
 .knihainfo {
-
     margin: 10px; 
     background-color: var(--white);
     padding: 10px;
+    padding-top: 25px;
     border-radius: 8px;
-    width: 500px;
-    height: 200px;
-    max-width: 40%;
-    min-width: 200px;
+    width: auto;
+    height: auto;
     justify-content: center;
+    align-content: center;
 }
 
 
@@ -274,8 +273,8 @@ input[type="submit" i]:hover{
 /*Book animation*/
 
 :root {
-    --book-width: 90px;
-    --book-height: 130px;
+    --book-width: 200px;
+    --book-height: 280px;
 }
 
 .transition {
@@ -288,17 +287,19 @@ input[type="submit" i]:hover{
 
 
 .wrap {
-    height: 80%;
+    height: 100%;
     max-width: 300px;
     margin: 0 auto;
     text-align: center;
     position: relative;
+    margin: 10px;
+    
 }
 
 .perspective {
-    width: 100%;
-    height: 100%;
-    perspective: 300px;
+    width: var(--book-width) ;
+    height:var(--book-height) ;
+    perspective: 100%;
     transform-style: preserve-3d;
     overflow: hidden;
 }
@@ -340,8 +341,8 @@ input[type="submit" i]:hover{
 }
 
 .book-back {
-    width: var(--book-width);
-    height: var(--book-height);
+    width: calc(var(--book-width)-20%);
+    height: calc(var(--book-height)-20%);
     background-color: #D06255;
     position: absolute;
     top: 0;
@@ -351,15 +352,18 @@ input[type="submit" i]:hover{
     margin: auto;
     cursor: pointer;
     transform: rotate(180deg) translateZ(-30px) translateX(5px);
+
 }
 
 .book-back .text {
     transform: rotateX(180deg);
     position: absolute;
-    bottom: 30px;
-    padding: 20px;
     text-align: left;
-    color: #fff;
+    color: var(--dos-color);
+    text-align: center;
+    justify-content: center;
+    padding-right:7px ;
+    top: 40px;
 }
 
 .rotate {
