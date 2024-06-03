@@ -53,6 +53,7 @@ footer{
     position: relative;
     align-items: stretch;
     z-index: 0;
+
 }
 
 .dropdown1 {
@@ -159,10 +160,10 @@ footer{
 }
 
 .text {
-    margin-top: 0;
     align-content: center;
     justify-content: center;
-
+    margin-bottom: 35px;
+    
 }
 
 .show + .text {
@@ -189,39 +190,28 @@ footer{
 
 /* pro jednotlivé odkazy v popisu knihy */
 .knihainfo {
-    flex: 1 1 30%;
     margin: 10px; 
     background-color: var(--white);
     padding: 10px;
+    padding-top: 40px;
+    padding-bottom: 15px;
     border-radius: 8px;
-    width: 200px;
-    height: 200px;
-    max-width: 40%;
-    min-width: 200px;
+    width: auto;
+    max-width:220px ;
+    height: auto;
     justify-content: center;
+    align-content: center;
 }
 
-.knihainfo img {
-    max-width: 100%; 
-    max-height: 100%;
-    margin: 0;
-    padding: 0;
-}
 
 .knihainfo a {
     text-decoration: none;
     color: var(--un-color);
     margin: 0; 
+    margin-bottom: 15px;
     padding: 0;
     
 }
-
-.knihainfo div {
-    margin-top: 10px;
-    min-width: 30% !important;
-
-}
-
 
 .row_info {
     display: flex;
@@ -281,4 +271,115 @@ input[type="submit" i] {
 
 input[type="submit" i]:hover{
     cursor: pointer;
+}
+
+/*Book animation*/
+
+:root {
+    --book-width: 200px;
+    --book-height: 280px;
+}
+
+.transition {
+    transition: all ease-out 0.6s;
+    -webkit-transition: all ease-out 0.6s;
+    -moz-transition: all ease-out 0.6s;
+    -ms-transition: all ease-out 0.6s;
+    -o-transition: all ease-out 0.6s;
+}
+
+
+.wrap {
+    height: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    margin: 10px;
+    
+}
+
+.perspective {
+    width: var(--book-width) ;
+    height:var(--book-height) ;
+    perspective: 100%;
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
+
+.book-wrap {
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: ease-out 0.4s;
+}
+
+.book {
+    width: var(--book-width);
+    height: var(--book-height);
+    background: /*DODAT OBRÁZEK */ url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e25b3ac3-7ce4-4af7-8a36-7c1ddbee5532/dfdyafz-8bdc6334-be5d-4d3e-b142-10fe8921639a.png/v1/fit/w_828,h_1210,q_70,strp/_ota__book_cover_design_1_by_jastra93_dfdyafz-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTg3MSIsInBhdGgiOiJcL2ZcL2UyNWIzYWMzLTdjZTQtNGFmNy04YTM2LTdjMWRkYmVlNTUzMlwvZGZkeWFmei04YmRjNjMzNC1iZTVkLTRkM2UtYjE0Mi0xMGZlODkyMTYzOWEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.sF6yQoNssWVOjpeIVbuo2iczCWZfZ2LT_uGjTjTD590) black no-repeat center center; /*HEY YOOOOOOOOOOO UPRAVA POTOM HJAHOOO*/
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+
+.title {
+    content: "";
+    height: var(--book-height);
+    width: 30px;
+    position: absolute;
+    right: 0;
+    left: calc(-1 * (var(--book-width) + 1px));
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #AB4747;
+    transform: rotateY(-80deg) translateX(-14px);
+}
+
+.book-back {
+    width: calc(var(--book-width)-20%);
+    height: calc(var(--book-height)-20%);
+    background-color: #D06255; /*Pak upravit podle žánru v databazi*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+    transform: rotate(180deg) translateZ(-30px) translateX(5px);
+
+}
+
+.book-back .text {
+    transform: rotateX(180deg);
+    position: absolute;
+    text-align: left;
+    color: black;
+    text-align: center;
+    justify-content: center;
+    padding-right:7px ;
+    top: 40px;
+}
+
+.book-back .text h5 a{
+
+    text-decoration:underline ;
+    font-size: large;
+
+}
+
+.rotate {
+    transform: rotateY(30deg);
+}
+
+.flip {
+    transform: rotateY(180deg);
 }
