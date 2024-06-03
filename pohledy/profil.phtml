@@ -1,6 +1,9 @@
+<script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
 <div class="profilEdit">
     
-    <?php 
+    <!--<|?php  Není potřeba zde 
     // povoli zobrazeni kladne zpravy
     if (isset($_SESSION["zpravy"]["uspech"])) {
         echo "<p class='uspech'>" . $_SESSION["zpravy"]["uspech"] . "</p>";
@@ -10,22 +13,27 @@
         echo "<p class='chyba'>" . $_SESSION["zpravy"]["chyba"] . "</p>";
         unset($_SESSION["zpravy"]["chyba"]);
     }
-    ?>
+    ?> -->
     
 <!-- Profilovka
     htmlspecialchars = zabezpeceni aby se zadany text neprecetl jako kod -->
     <div id="info">
-        <?php if (isset($this->data["infoProfilu"]["ikona"]) && !empty($this->data["infoProfilu"]["ikona"])): ?>
-            <img src="<?php echo htmlspecialchars($this->data["infoProfilu"]["ikona"]); ?>" alt="Profilový obrázek">
-        <?php else: ?>
-            <p>Žádný profilový obrázek není k dispozici.</p>
+    <h3>Profil</h3>
+
+     <?php if (isset($this->data["infoProfilu"]["ikona"]) && !empty($this->data["infoProfilu"]["ikona"])): ?>
+        <!-- Obrázek zobrazení -->    
+        <img src="<?php echo htmlspecialchars($this->data["infoProfilu"]["ikona"]); ?>" alt="Profilový obrázek">
         <?php endif; ?>
 
-        <h3>Nahrát profilový obrázek</h3>
         <form action="" method="post" enctype="multipart/form-data">
-            <input type="file" id="profilovka" name="profilovka">
+            <input type="file" id="profilovka" name="profilovka" class="profilovka" required>
             <input type="submit" name="nahrat_obrazek" value="Nahrát obrázek">
         </form>
+
+
+
+
+
 
     <!-- info o uzivateli -->
         <label for="jmeno">Jméno</label>
@@ -47,12 +55,10 @@
         <span><?php echo isset($this->data["infoProfilu"]["nazev_role"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_role"]) : ''; ?></span><br>
     </div>
 
-    <div class="profilZmena">
         <h3>Změna hesla</h3>
         <form action="" method="post">
             <input type="password" id="nove_heslo" name="nove_heslo" placeholder="Nové heslo"><br>
             <input type="password" id="potvrzeni_hesla" name="potvrzeni_hesla" placeholder="Potvrďte heslo"><br>
             <input type="submit" name="ulozit_heslo" value="Uložit změny">
         </form>
-    </div>
 </div>

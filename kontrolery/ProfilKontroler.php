@@ -1,7 +1,9 @@
+
 <?php
 require_once("modely/Db.php");
 require_once("modely/ProfilModel.php");
 require_once("modely/config.php");
+
 
 class ProfilKontroler extends Kontroler {
     private $profilModel;
@@ -15,6 +17,8 @@ class ProfilKontroler extends Kontroler {
     }
 
     public function zpracuj($parametry) {
+
+        $this->cssCesty=["profilstyle.css"];
         if (isset($_POST["ulozit_heslo"])) {
             //zmena hesla
             $noveHeslo = isset($_POST["nove_heslo"]) ? $_POST["nove_heslo"] : null;

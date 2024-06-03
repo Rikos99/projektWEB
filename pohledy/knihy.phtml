@@ -61,6 +61,7 @@
             <div class="row_info" style="display: flex; flex-wrap: wrap; justify-content: center;">
                 <?php foreach ($data as $row) : ?>
                     <div class="knihainfo" knihaId="<?= $row['idKnihy'] ?>" autorId="<?= $row['idAutora'] ?>" obdobiId="<?= $row['idObdobi'] ?>">
+                    <h4><a href="kniha/<?=$row['idKnihy'] ?>"><?=$row['nazevKnihy'] ?></a></h4>
                     <div class="wrap">
         <div class="perspective">
           <div class="book-wrap">
@@ -68,7 +69,7 @@
             <div class="title book-1"></div>
             <div class="book-back book-1">
               <div class="text">
-                <h5><a href="kniha/<?=$row['idKnihy'] ?>"><?=$row['nazevKnihy'] ?></a></h5>
+
                 <p><span>
                     <div class="cell autorDiv">
                         <a href="autor/<?=$row['idAutora'] ?>"><?=$row['jmenoAutora'] ?></a>

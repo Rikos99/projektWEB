@@ -193,9 +193,11 @@ footer{
     margin: 10px; 
     background-color: var(--white);
     padding: 10px;
-    padding-top: 25px;
+    padding-top: 40px;
+    padding-bottom: 15px;
     border-radius: 8px;
     width: auto;
+    max-width:220px ;
     height: auto;
     justify-content: center;
     align-content: center;
@@ -206,6 +208,7 @@ footer{
     text-decoration: none;
     color: var(--un-color);
     margin: 0; 
+    margin-bottom: 15px;
     padding: 0;
     
 }
@@ -343,7 +346,7 @@ input[type="submit" i]:hover{
 .book-back {
     width: calc(var(--book-width)-20%);
     height: calc(var(--book-height)-20%);
-    background-color: #D06255;
+    background-color: #D06255; /*Pak upravit podle žánru v databazi*/
     position: absolute;
     top: 0;
     left: 0;
@@ -359,18 +362,24 @@ input[type="submit" i]:hover{
     transform: rotateX(180deg);
     position: absolute;
     text-align: left;
-    color: var(--dos-color);
+    color: black;
     text-align: center;
     justify-content: center;
     padding-right:7px ;
     top: 40px;
 }
 
+.book-back .text h5 a{
+
+    text-decoration:underline ;
+    font-size: large;
+
+}
+
 .rotate {
-    transform: rotateY(20deg);
+    transform: rotateY(30deg);
 }
 
 .flip {
     transform: rotateY(180deg);
 }
-
