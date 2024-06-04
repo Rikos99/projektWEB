@@ -7,8 +7,5 @@ class NovaSkolaKontroler extends Kontroler
         //$this->cssCesty=[""];
         $this->data["title"] = "Nová škola";
         $this->pohled = "novaSkola";
-
-        $skola = new NovaSkolaModel();
-        $skola->pridatSkolu();
     }
 }

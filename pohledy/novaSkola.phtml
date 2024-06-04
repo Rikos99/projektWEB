@@ -9,7 +9,7 @@
     <script src="js/hledatSkolu.js"></script>
     <script>
         document.getElementById("button").addEventListener("click", async function () {
-            const input = document.getElementById("ICO");
+            const input = document.getElementById("ICO"); //00602132
             //TODO nějakým způsobem získat atribut obchodniJmeno z arraye skola do promenne nazev
 
             let response = await fetch("https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/" + input.value).then(response => {
@@ -35,6 +35,9 @@
             date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
 
             document.cookie = "nazev=" + nazev + "; expires=" + date.toGMTString() + "; path=/";
+            document.cookie = "ico=" + input.value + "; expires=" + date.toGMTString() + "; path=/";
+
+            window.location.replace("pridatSkolu");
         });
     </script>
 
