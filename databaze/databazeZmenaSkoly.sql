@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2024 at 08:06 PM
+-- Generation Time: Jun 04, 2024 at 08:51 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -217,6 +217,35 @@ CREATE TABLE `komentare` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kvizy`
+--
+
+CREATE TABLE `kvizy` (
+  `Id` int(11) NOT NULL,
+  `Nazev` varchar(50) NOT NULL,
+  `Obsah` text NOT NULL,
+  `SpravneOdpovedi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`SpravneOdpovedi`)),
+  `DatumNahrani` date NOT NULL DEFAULT current_timestamp(),
+  `KnihaId` int(11) DEFAULT NULL,
+  `ObdobiId` int(11) DEFAULT NULL,
+  `AutorId` int(11) DEFAULT NULL,
+  `UzivatelId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `kvizy`
+--
+
+INSERT INTO `kvizy` (`Id`, `Nazev`, `Obsah`, `SpravneOdpovedi`, `DatumNahrani`, `KnihaId`, `ObdobiId`, `AutorId`, `UzivatelId`) VALUES
+(5, 'trhtr', '<form><div class=\"formOtazka\" indexing=\"1\"><h2 class=\"formOtazkaText\">1. hrtht</h2><div class=\"formOdpovedi\" id=\"formOdpovedi1\"><label class=\"formOdpovedLabel\">a) hrthrt</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"a\"><label class=\"formOdpovedLabel\">b) htrhtr</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"b\"></div></div><input></form>', '{\"1\":[\"a\"]}', '2024-06-03', 52, NULL, NULL, 2),
+(6, 'trhtr', '<form><div class=\"formOtazka\" indexing=\"1\"><h2 class=\"formOtazkaText\">1. hrtht</h2><div class=\"formOdpovedi\" id=\"formOdpovedi1\"><label class=\"formOdpovedLabel\">a) hrthrt</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"a\"><label class=\"formOdpovedLabel\">b) htrhtr</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"b\"></div></div><input></form>', '{\"1\":[\"a\"]}', '2024-06-03', 52, NULL, NULL, 2),
+(7, '', '<form><div class=\"formOtazka\" indexing=\"1\"><h2 class=\"formOtazkaText\">1. htr</h2><div class=\"formOdpovedi\" id=\"formOdpovedi1\"><label class=\"formOdpovedLabel\">a) reger</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"a\"><label class=\"formOdpovedLabel\">b) gr</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"b\"></div></div><input type=\"submit\"></form>', '{\"1\":[\"a\"]}', '2024-06-03', 52, NULL, NULL, 2),
+(8, 'literally 1984', '<form><div class=\"formOtazka\" indexing=\"1\"><h2 class=\"formOtazkaText\">1. Jak se jmenovala hlavní postava?</h2><div class=\"formOdpovedi\" id=\"formOdpovedi1\"><label class=\"formOdpovedLabel\">a) Winston Churchill</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"a\"><label class=\"formOdpovedLabel\">b) Winston Smith</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"b\"></div></div><div class=\"formOtazka\" indexing=\"2\"><h2 class=\"formOtazkaText\">2. Jak skončila hlavní postava?</h2><div class=\"formOdpovedi\" id=\"formOdpovedi1\"><label class=\"formOdpovedLabel\">a) Žila šťastně až do smrti</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-2-\" indexing=\"a\"><label class=\"formOdpovedLabel\">b) Milovala Velkého Bratra</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-2-\" indexing=\"b\"></div></div><input type=\"submit\"></form>', '{\"1\":[\"a\"],\"2\":[\"a\"]}', '2024-06-04', 91, NULL, NULL, 3),
+(9, 'literally 1984', '<form><div class=\"formOtazka\" indexing=\"1\"><h2 class=\"formOtazkaText\">1. Jak se jmenovala hlavní postava?</h2><div class=\"formOdpovedi\" id=\"formOdpovedi1\"><label class=\"formOdpovedLabel\">a) Winston Churchill</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"a\"><label class=\"formOdpovedLabel\">b) Winston Smith</label><input type=\"radio\" class=\"formOdpovedInput\" name=\"otakza-1-\" indexing=\"b\"></div></div><div class=\"formOtazka\" indexing=\"2\"><h2 class=\"formOtazkaText\">2. Které z těchto hesel můžeme najít na plakátech s Velkým Bratrem?</h2><div class=\"formOdpovedi\" id=\"formOdpovedi3\"><label class=\"formOdpovedLabel\">a) Válka je mír</label><input type=\"checkbox\" class=\"formOdpovedInput\" name=\"otakza-2-a\" indexing=\"a\"><label class=\"formOdpovedLabel\">b) Nevědomost je síla</label><input type=\"checkbox\" class=\"formOdpovedInput\" name=\"otakza-2-b\" indexing=\"b\"><label class=\"formOdpovedLabel\">c) Svoboda je otroctví</label><input type=\"checkbox\" class=\"formOdpovedInput\" name=\"otakza-2-c\" indexing=\"c\"><label class=\"formOdpovedLabel\">d) Práce šlechtí</label><input type=\"checkbox\" class=\"formOdpovedInput\" name=\"otakza-2-d\" indexing=\"d\"></div></div><input type=\"submit\"></form>', '{\"1\":[\"a\"],\"2\":[\"a\",\"b\",\"c\"]}', '2024-06-04', 91, NULL, NULL, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nahlaseni`
 --
 
@@ -314,16 +343,15 @@ INSERT INTO `skoly` (`Id`, `Nazev`, `ICO`) VALUES
 CREATE TABLE `tridy` (
   `Id` int(11) NOT NULL,
   `Trida` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_czech_ci NOT NULL,
-  `Skola` int(11) NOT NULL,
-  `Zkratka` varchar(20) NOT NULL
+  `Skola` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tridy`
 --
 
-INSERT INTO `tridy` (`Id`, `Trida`, `Skola`, `Zkratka`) VALUES
-(2, 'I3B', 2, 'spšeiostrava');
+INSERT INTO `tridy` (`Id`, `Trida`, `Skola`) VALUES
+(2, 'I3B', 2);
 
 -- --------------------------------------------------------
 
@@ -370,7 +398,8 @@ CREATE TABLE `uzivatele` (
 INSERT INTO `uzivatele` (`Id`, `jmeno`, `prijmeni`, `prezdivka`, `email`, `heslo`, `ikona`, `role`, `trida`) VALUES
 (1, 'Pepik', 'Vrch', 'pepos', 'pepik@rfger.gr', '56b1db8133d9eb398aabd376f07bf8ab5fc584ea0b8bd6a1770200cb613ca005', NULL, 'student', 2),
 (2, 'Stanislav', 'Janča', 'buh2', 's.janca.st@spseiostrava.cz', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'obrazky/jesus.jpg', 'admin', 2),
-(3, 'Richard', 'Dluhoš', NULL, 'r.dluhos.st@spseiostrava.cz', '56b1db8133d9eb398aabd376f07bf8ab5fc584ea0b8bd6a1770200cb613ca005', NULL, NULL, NULL);
+(3, 'Richard', 'Dluhoš', NULL, 'r.dluhos.st@spseiostrava.cz', '56b1db8133d9eb398aabd376f07bf8ab5fc584ea0b8bd6a1770200cb613ca005', NULL, NULL, NULL),
+(4, 'Richard', 'Dluhoš', NULL, 'rikosak99@gmail.com', '56b1db8133d9eb398aabd376f07bf8ab5fc584ea0b8bd6a1770200cb613ca005', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -424,6 +453,16 @@ ALTER TABLE `knihy`
 ALTER TABLE `komentare`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `PrispevekId` (`PrispevekId`),
+  ADD KEY `UzivatelId` (`UzivatelId`);
+
+--
+-- Indexes for table `kvizy`
+--
+ALTER TABLE `kvizy`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `AutorId` (`AutorId`),
+  ADD KEY `KnihaId` (`KnihaId`),
+  ADD KEY `ObdobiId` (`ObdobiId`),
   ADD KEY `UzivatelId` (`UzivatelId`);
 
 --
@@ -513,6 +552,12 @@ ALTER TABLE `komentare`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `kvizy`
+--
+ALTER TABLE `kvizy`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `nahlaseni`
 --
 ALTER TABLE `nahlaseni`
@@ -552,7 +597,7 @@ ALTER TABLE `typyprispevku`
 -- AUTO_INCREMENT for table `uzivatele`
 --
 ALTER TABLE `uzivatele`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `zanry`
@@ -585,6 +630,15 @@ ALTER TABLE `knihy`
 ALTER TABLE `komentare`
   ADD CONSTRAINT `komentare_ibfk_1` FOREIGN KEY (`PrispevekId`) REFERENCES `prispevky` (`Id`),
   ADD CONSTRAINT `komentare_ibfk_2` FOREIGN KEY (`UzivatelId`) REFERENCES `uzivatele` (`Id`);
+
+--
+-- Constraints for table `kvizy`
+--
+ALTER TABLE `kvizy`
+  ADD CONSTRAINT `kvizy_ibfk_1` FOREIGN KEY (`AutorId`) REFERENCES `autori` (`Id`),
+  ADD CONSTRAINT `kvizy_ibfk_2` FOREIGN KEY (`KnihaId`) REFERENCES `knihy` (`Id`),
+  ADD CONSTRAINT `kvizy_ibfk_3` FOREIGN KEY (`ObdobiId`) REFERENCES `obdobi` (`Id`),
+  ADD CONSTRAINT `kvizy_ibfk_4` FOREIGN KEY (`UzivatelId`) REFERENCES `uzivatele` (`Id`);
 
 --
 -- Constraints for table `nahlaseni`
