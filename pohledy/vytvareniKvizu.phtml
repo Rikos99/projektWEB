@@ -2,9 +2,16 @@
     #vytvareniKvizu {
     display: flex;
     }
-    #htmlTextDiv, #vyslednyFormular, #grafickeVkladaniDiv {
+    #vyslednyFormular, #graficke {
         width: 50%;
     }
+    #grafickeVkladaniDiv {
+        padding: 0;
+    }
+    #graficke {
+        background-color: #1a8fce;
+    }
+
     .otazka {
         background-color: #2e9ad0;
         margin: 10px 0 ;
@@ -17,7 +24,8 @@
     }
 </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--<script src="../js/vytvareniKvizu.js"></script>-->
 <script src="../js/vytvareniKvizu.js"></script>
 
 <main>
@@ -44,14 +52,16 @@
 
                 <div id="strukturaFormulare"></div>
 
-                <div id="spravneOdpovedi"></div>
-                <input type="hidden" name="spravneOdpovedi" id="spravneOdpovediInput" value="">
-                <input type="submit" value="Dokoncit Kviz" disabled>
+                <label for="spravneOdpovediInput">Spravne odpovedi</label>
+                <input type="text" name="spravneOdpovedi" id="spravneOdpovediInput" value="" readonly>
 
             </div>
-            <div id="grafickeVkladaniDiv" style="background-color: #0e7fe1">
+            <div id="graficke">
+                <div id="grafickeVkladaniDiv" style="background-color: #0e7fe1">
+                </div>
                 <button id="vytvoritOtazku" type="button">Vytvorit otazku</button>
             </div>
+
         </div>
 
 
@@ -59,6 +69,5 @@
         <input type="submit" value="Vytvorit kviz" id="vyrvoritKviz">
     </form>
 
-    <button id="updateButton" type="button">Udpate</button>
 
 </main>

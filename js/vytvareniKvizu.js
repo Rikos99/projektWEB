@@ -1,308 +1,231 @@
-$(document).ready(function(){
+var otazky = [];
 
-    $("#updateButton").on("click", updateVyslednehoKvizu)
+document.addEventListener('DOMContentLoaded', function(){
 
-    $("#vytvoritOtazku").on("click", function() { // pridani otazky
-        /*let idOtazky = $("#grafickeVkladaniDiv div.otazka").map(function(){return $(this).attr("idOtazky")}).get()
-        console.log(idOtazky)*/
 
-        let div = $("<div>", {class: "otazka"/*, idOtazky: idOtazky*/}); // vytvoreni divu
 
-        let otazkaInputLabel = $("<label>", {for: "otazkaInput",class: "otazkaInputLabel", text: /*idOtazky+*/"Otazka: "});
-        let otazkaInput = $("<input>", {type: "text", class: "otazkaInput"});
-
-        let odpovediDiv = $("<div>", {class: "odpovediDiv"});
-        let pridatOdpovedButton = $("<button>", {text: "PridatOdpoved", class: "pridatOdpovedButton", type: "button"});
-
-
-        let select = $("<select>", {class: "druhInputu"}); // pridani selektoru na pridani druhu odpovedi
-        let options = [
-            ("<option value='jedna'>Jedna spravna odpoved</option>"),
-            ("<option value='vice'>Vice spravnych odpovedi</option>")
-        ]
-        select.append(options);
-
-        let odebratOtazkuButton = $("<button>", {text: "Odebrat Otazku", class: "odebratOtazkuButton", type: "button"});
-
-        let pridatOtazkuButton = $("<button>", {text: "Pridat Otazku", class: "pridatOtazkuButton", type: "button"});
-
-        div.append(otazkaInputLabel)
-        div.append(otazkaInput)
-        div.append("<br>")
-        div.append(select);
-        div.append("<br>")
-        div.append(odpovediDiv)
-        div.append("<br>")
-        div.append(pridatOdpovedButton);
-        div.append("<br>")
-        div.append(pridatOtazkuButton);
-        div.append(odebratOtazkuButton);
-
-
-        $("#vytvoritOtazku").before(div); // pripojeni divu pred tlactiko na vlozeni otazky
-
-        updateOtazkyOrder()
-
-        //div.find(".pridatOtazkuButton").on("click", (event) => pridatOtazku(event.target))
-
-        div.find(".odebratOtazkuButton").on("click", (event) => odebratOtazku(event.target))
-        div.find(".pridatOdpovedButton").on("click", (event) => pridatMoznouOdpoved(event.target))
-        div.find(".druhInputu").on("change", (event) => zmenaDruhuInputu(event.target))
-    });
-
-    function updateOtazkyOrder(){
-        $("#grafickeVkladaniDiv div.otazka").each(function(index) {
-            $(this).children(".otazkaInputLabel").text((index + 1) + ". Otazka: ");
-            $(this).attr("idOtazky", index + 1);
-        });
-    }
-    function updateOdpovediOrder(){
-        $("#grafickeVkladaniDiv div.otazka").each(function(index) {
-            $(this).children(".odpovedInputLabel").text((index + 1) + ". Odpoved: ");
-            $(this).attr("idOdpovedi", index + 1);
-        });
-    }
-
-
-    function zmenaDruhuInputu(target){
-        checboxy = $(target).parent().find(".odpovedInputSpravna")
-        console.log(checboxy)
-        checboxy.prop("disabled", false)
-        console.log($(target).val())
-        if($(target).val() === "jedna"){
-            checboxy.prop("checked", false)
-        }
-    }
-
-    function odebratOtazku(odebratButton){
-        $(odebratButton).parent(".otazka").remove();
-        console.log($(`#formOtazka [idotazky="${$(odebratButton).parent(".otazka").attr("idOtazky")}"]`))
-        $("#strukturaFormulare").find(".formOtazka" + `[idotazky=${$(odebratButton).parent(".otazka").attr("idOtazky")}]`).remove();
-        updateOtazkyOrder()
-    }
-
-/*
-    function pridatOtazku(target){
-        //let textarea = $("#htmlTextDiv textarea");
-        let divOtazky = $(target).parent();
-        let formDiv = $("#strukturaFormulare")
-
-        console.log(divOtazky)
-        console.log(formDiv)
-
-        validita = otazkaValidni(divOtazky)
-
-        if (validita !== true){
-            if (divOtazky.children(".chybovyTextOtazky").length === 0){
-                divOtazky.append($("<p>", {class: "chybovyTextOtazky", text: validita}));
-            }
-            else {
-                divOtazky.children(".chybovyTextOtazky").text(validita)
-            }
-            return
-        }
-        else{
-            divOtazky.children(".chybovyTextOtazky").remove()
-        }
-
-        let formOtazka = $("<div>", {class: "formOtazka", idOtazky: divOtazky.attr("idOtazky")});
-
-        formOtazka.append($("<h2>", {class: "otazkaH2", text:divOtazky.find(".otazkaInput").val()}));
-        if(divOtazky.find(".druhInputu").val() === "jedna"){divOtazky.attr("idOtazky")
-            $(divOtazky).children(".odpovediDiv").children(".odpovedDiv").each(function(i,e){ // prokazdou odpoved
-                formOtazka.append($("<label>", {for: "otazka"+divOtazky.attr("idotazky"), text: $(e).find(".odpovedInput").val()}));
-                formOtazka.append($("<input>", {type: "radio", name: "otazka="+divOtazky.attr("idotazky"), value: $(e).find(".odpovedInput").val()}));
-            })
-        }
-        else{
-            $(divOtazky).children(".odpovediDiv").children(".odpovedDiv").each(function(i,e){
-                formOtazka.append($("<label>", {for: "otazka"+divOtazky.attr("idotazky"), text: $(e).find(".odpovedInput").val()}));
-                formOtazka.append($("<input>", {type: "checkbox", name: "otazka="+divOtazky.attr("idotazky")+";odpoved="+$(e).attr("idOdpovedi"), value: $(e).find(".odpovedInput").val()}));
-            })
-        }
-
-        formOtazkaHTML = formOtazka.wrap("<p>").parent().html()
-
-        stejne = formDiv.children(`[idOtazky='${formOtazka.attr("idOtazky")}']`)
-
-        if (stejne.length > 0){
-            formDiv.children(`[idOtazky='${formOtazka.attr("idOtazky")}']`).replaceWith(formOtazka);
-        }
-        else{
-            formDiv.append(formOtazka);
-        }
-
-        spravneOdpovedi = $(divOtazky).find(".odpovedInputSpravna:checked").map(function(){
-            return $(this).parent("div").attr("idOdpovedi")}
-        ).get();
-
-        let spravneOdpovediInput = $("#spravneOdpovediInput");
-        let jsonData;
-
-        try {
-            jsonData = JSON.parse(spravneOdpovediInput.val());
-        } catch (error) {
-            jsonData = {};
-        }
-
-        jsonData[formOtazka.attr("idOtazky")] = spravneOdpovedi;
-
-        spravneOdpovediInput.val(JSON.stringify(jsonData));
-
-        console.log(spravneOdpovediInput.val())
-
-    }*/
-
-    function updateVyslednehoKvizu(){
-        $("#strukturaFormulare").empty()
-
-        $("#grafickeVkladaniDiv div.otazka").each(function(i,jednOtazkaDiv){
-            if(praceSValiditou(jednOtazkaDiv)){
-                $("#strukturaFormulare").append(vytvoritFormOtazku(jednOtazkaDiv))
-                pridatSpranvneOdpovedProOtazku(jednOtazkaDiv)
-            }
-        })
-    }
-
-    function pridatSpranvneOdpovedProOtazku(divOtazky){
-        spravneOdpovedi = $(divOtazky).find(".odpovedInputSpravna:checked").map(function(){
-            return $(this).parent("div").attr("idOdpovedi")}
-        ).get();
-
-        let spravneOdpovediInput = $("#spravneOdpovediInput");
-        let jsonData;
-
-        try {
-            jsonData = JSON.parse(spravneOdpovediInput.val());
-        } catch (error) {
-            jsonData = {};
-        }
-
-        jsonData[$(divOtazky).attr("idOtazky")] = spravneOdpovedi;
-
-        spravneOdpovediInput.val(JSON.stringify(jsonData));jsonData[formOtazka.attr("idOtazky")] = spravneOdpovedi;
-
-        spravneOdpovediInput.val(JSON.stringify(jsonData));
-    }
-
-    function otazkaValidni(div){
-        if($(div).find(".otazkaInput").val() === ""){
-            return "Otazka nesmi byt prazdna"
-        }
-
-        jsouOdpovediPrazdne = $(div).find(".odpovedInput").map(function(i,e){return $(e).val() === "";}).get()
-        console.log(jsouOdpovediPrazdne)
-        if (jsouOdpovediPrazdne.includes(true)){
-            console.log("Musi byt vyplneny vsechny odpovedi")
-            return `Odpoved nesmi byt prazdna (${jsouOdpovediPrazdne.indexOf(true) + 1}. odpoved je prazdna)`;
-        }
-
-        if($(div).find(".odpovedInputSpravna:checked").length === 0){
-            return "Musi byt vybrana spravna odpoved"
-        }
-
-        return true
-    }
-
-    function praceSValiditou(jednOtazkaDiv){
-        validita = otazkaValidni(jednOtazkaDiv)
-        divOtazky = $("div.otazka")
-
-        if (validita !== true){
-            if (divOtazky.children(".chybovyTextOtazky").length === 0){ // vytvor p jestli neni
-                divOtazky.append($("<p>", {class: "chybovyTextOtazky", text: validita}));
-            }
-            else {
-                divOtazky.children(".chybovyTextOtazky").text(validita)
-            }
-            return false
-        }
-        divOtazky.children(".chybovyTextOtazky").remove()
-        return true
-    }
-
-
-
-    function vytvoritFormOtazku(divOtazky){
-
-        divOtazky = $(divOtazky)
-        let formOtazka = $("<div>", {class: "formOtazka", idOtazky: divOtazky.attr("idOtazky")}); // divu
-
-
-        formOtazka.append($("<h2>", {class: "otazkaH2", text:divOtazky.find(".otazkaInput").val()})); // text otazky
-        if(divOtazky.find(".druhInputu").val() === "jedna"){divOtazky.attr("idOtazky") // jestlize muze byt jenom jedna odpoved spravne
-            $(divOtazky).children(".odpovediDiv").children(".odpovedDiv").each(function(i,e){ // prokazdou odpoved
-                formOtazka.append($("<label>", {for: "otazka"+divOtazky.attr("idotazky"), text: $(e).find(".odpovedInput").val()})); // label
-                formOtazka.append($("<input>", {type: "radio", name: "otazka="+divOtazky.attr("idotazky"), value: $(e).find(".odpovedInput").val()})); // input checkbox
-            })
-        }
-        else{ // pokud vice spranych odpovedi
-            $(divOtazky).children(".odpovediDiv").children(".odpovedDiv").each(function(i,e){ // pro vsechny odpovedi
-                formOtazka.append($("<label>", {for: "otazka"+divOtazky.attr("idotazky"), text: $(e).find(".odpovedInput").val()})); //bael
-                formOtazka.append($("<input>", {type: "checkbox", name: "otazka="+divOtazky.attr("idotazky")+";odpoved="+$(e).attr("idOdpovedi"), value: $(e).find(".odpovedInput").val()})); // pridat jako radio
-            })
-        }
-
-        return formOtazka
-
-    }
-
-    function pridatMoznouOdpoved(target){
-        console.log(target)
-
-        let pocetOdpovedi = $(target).find(".odpovedInput").length + 1
-
-        let odpovedDiv = $("<div>", {class: "odpovedDiv", idOdpovedi: `${pocetOdpovedi}`});
-
-        odpovedDiv.append($("<label>", {for: `odpovedInput${pocetOdpovedi}`,class: "odpovedInputLabel" , text: `Odpoved ${pocetOdpovedi}: `}));
-        odpovedDiv.append($("<input>", {type: "text", class: "odpovedInput", id: `odpovedInput${pocetOdpovedi}`}));
-        odpovedDiv.append($("<input>", {type: "checkbox", class: "odpovedInputSpravna", id: `odpovedInputSpravna${pocetOdpovedi}`}));
-        odpovedDiv.append($("<label>", {for: `odpovedInputSpravna${pocetOdpovedi}`, text: "Spravna"}));
-        odpovedDiv.append($("<button>", {text: "Odstranit odpoved", class: "smazatOdpovedButton", id: `smazatOdpovedButton${pocetOdpovedi}`, type: "button"}));
-
-        odpovedDiv.append($("<br>"))
-
-        $(target).siblings(".odpovediDiv").append(odpovedDiv);
-
-        otazkaDiv = odpovedDiv.parent().parent(".otazka")
-
-        if (otazkaDiv.find(".odpovedInputSpravna:checked").length > 0 && otazkaDiv.find(".druhInputu").val() === "jedna"){
-            $(odpovedDiv).children(".odpovedInputSpravna").prop("disabled", true)
-        }
-
-        updateOdpovediOrder()
-
-        otazkaDiv.find(`#odpovedInputSpravna${pocetOdpovedi}`).on("change", (event) => vybratSpravnouOdpoved(event.target));
-        otazkaDiv.find(`#smazatOdpovedButton${pocetOdpovedi}`).on("click", (event) => odebratOdpoved(event.target));
-    }
-    function vybratSpravnouOdpoved(target){
-        otazkaDiv = $(target).parent("div").parent("div").parent(".otazka")
-
-        //console.log(otazkaDiv)
-
-        if (otazkaDiv.find(".odpovedInputSpravna:checked").length > 0){
-            if(otazkaDiv.find(".druhInputu").val() === "jedna"){
-                otazkaDiv.find(".odpovedInputSpravna").prop("disabled", true)
-                $(target).prop("disabled", false)
-            }
-            else if($(".druhInputu").val() === "vice"){
-                otazkaDiv.find(".odpovedInputSpravna").prop("disabled", false)
-            }
-        }
-        else {
-            $(".odpovedInputSpravna").prop("disabled", false)
-        }
-    }
-
-    function odebratOdpoved(button){
-        $(button).parent(".odpovedDiv").remove();
-        updateOdpovediOrder()
-    }
-
-    $("#vyrvoritKviz").on("click", (event) => {
-        $("form #teloKvizu").val($("#strukturaFormulare").html())
-
-    });
-
-
+    document.getElementById("vytvoritOtazku").addEventListener('click', vytvoritOtazku)
 })
+function vytvoritOtazku(){
+    const div = document.createElement('div');
+    div.classList.add('otazka');
+
+    const otazkaInputLabel = document.createElement('label');
+    otazkaInputLabel.htmlFor = 'otazkaInput';
+    otazkaInputLabel.classList.add('otazkaInputLabel');
+    otazkaInputLabel.textContent = 'Otazka: ';
+
+    const otazkaInput = document.createElement('input');
+    otazkaInput.type = 'text';
+    otazkaInput.classList.add('otazkaInput');
+
+    const odpovediDiv = document.createElement('div');
+    odpovediDiv.classList.add('odpovediDiv');
+
+    const pridatOdpovedButton = document.createElement('button');
+    pridatOdpovedButton.textContent = 'PridatOdpoved';
+    pridatOdpovedButton.classList.add('pridatOdpovedButton');
+    pridatOdpovedButton.type = 'button';
+
+    const select = document.createElement('select');
+    select.classList.add('druhInputu');
+
+    const option1 = document.createElement('option');
+    option1.value = 'jedna';
+    option1.textContent = 'Jedna spravna odpoved';
+
+    const option2 = document.createElement('option');
+    option2.value = 'vice';
+    option2.textContent = 'Vice spravnych odpovedi';
+
+    select.appendChild(option1);
+    select.appendChild(option2);
+
+    const odebratOtazkuButton = document.createElement('button');
+    odebratOtazkuButton.textContent = 'Odebrat Otazku';
+    odebratOtazkuButton.classList.add('odebratOtazkuButton');
+    odebratOtazkuButton.type = 'button';
+
+
+    otazkaInput.addEventListener('input', () => {update()});
+    select.addEventListener('change', () => {odpovediSpravnost(odpovediDiv, null)});
+    pridatOdpovedButton.addEventListener('click', ()=>{vytvoritOdpoved(odpovediDiv)});
+    odebratOtazkuButton.addEventListener('click', (ev)=>{odebratOtazku(ev.target.parentElement)});
+
+
+    div.appendChild(otazkaInputLabel);
+    div.appendChild(otazkaInput);
+    div.appendChild(document.createElement('br'));
+    div.appendChild(select);
+    div.appendChild(document.createElement('br'));
+    div.appendChild(odpovediDiv);
+    div.appendChild(document.createElement('br'));
+    div.appendChild(pridatOdpovedButton);
+    div.appendChild(document.createElement('br'));
+    div.appendChild(odebratOtazkuButton);
+
+    document.getElementById("grafickeVkladaniDiv").appendChild(div);
+
+    update()
+}
+
+function vytvoritOdpoved(odpovediDiv) {
+    const div = document.createElement('div');
+    div.classList.add('odpoved');
+
+    const odpovedInputLabel = document.createElement('label');
+    odpovedInputLabel.htmlFor = 'odpovedInput';
+    odpovedInputLabel.classList.add('odpovedInputLabel');
+    odpovedInputLabel.textContent = 'Odpoved: ';
+
+    const odpovedInput = document.createElement('input');
+    odpovedInput.type = 'text';
+    odpovedInput.classList.add('odpovedInput');
+
+    const checkboxLabel = document.createElement('label');
+    checkboxLabel.htmlFor = 'checkbox';
+    checkboxLabel.classList.add('checkboxLabel');
+    checkboxLabel.textContent = 'Spravne';
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.classList.add('odpovedInputSpravna');
+    checkbox.disabled = !muzeBytDalsiSpravnaOdpoved(odpovediDiv.parentElement);
+
+    const smazatOdpovedButton = document.createElement('button');
+    smazatOdpovedButton.textContent = 'Odstranit odpoved';
+    smazatOdpovedButton.classList.add('smazatOdpovedButton');
+    smazatOdpovedButton.type = 'button';
+
+
+    div.appendChild(odpovedInputLabel);
+    div.appendChild(odpovedInput);
+    div.appendChild(checkboxLabel);
+    div.appendChild(checkbox);
+    div.appendChild(smazatOdpovedButton);
+
+    odpovedInput.addEventListener('input', () => {update()});
+    checkbox.addEventListener('change', (ev) => {odpovediSpravnost(odpovediDiv, ev.target)});
+    smazatOdpovedButton.addEventListener('click', (ev)=>{odebratOdpoved(ev.target.parentElement)});
+
+
+    odpovediDiv.appendChild(div);
+
+    update()
+}
+
+function muzeBytDalsiSpravnaOdpoved(otazkaDiv){
+    const moznostSpravnychOdpovedi = otazkaDiv.querySelector('.druhInputu').value
+    const pocetSpravnych = Array.from(otazkaDiv.querySelectorAll('.odpovedInputSpravna')).filter((el)=>{return el.checked}).length
+
+    return !(moznostSpravnychOdpovedi === 'jedna' && pocetSpravnych === 1);
+
+}
+
+function odebratOdpoved(odpovedDiv) {
+    odpovedDiv.remove()
+    update()
+}
+
+function odpovediSpravnost(odpovediDiv, target) {
+    const mnozstviSpravnychOdpovedi = odpovediDiv.parentElement.querySelector('.druhInputu').value
+    const pocetSpravnychOdpovedi = Array.from(odpovediDiv.querySelectorAll('.odpovedInputSpravna')).filter((el)=>{return el.checked}).length
+
+    console.log(mnozstviSpravnychOdpovedi)
+    console.log(pocetSpravnychOdpovedi)
+
+    if (mnozstviSpravnychOdpovedi === 'jedna'){
+        if (pocetSpravnychOdpovedi !== 1){
+            console.log(odpovediDiv.querySelectorAll('.odpovedInputSpravna'))
+            odpovediDiv.querySelectorAll('.odpovedInputSpravna')
+                .forEach((el)=>{el.checked = false; el.disabled = false})
+        }
+        else if(pocetSpravnychOdpovedi === 1){
+            Array.from(odpovediDiv.querySelectorAll('.odpovedInputSpravna'))
+                .filter((el)=>{return (el !== target) && (el.checked === false)})
+                .forEach((el)=>{el.disabled = true})
+        }
+    }
+    else if (mnozstviSpravnychOdpovedi === 'vice'){
+        odpovediDiv.querySelectorAll('.odpovedInputSpravna')
+            .forEach((el)=>{el.disabled = false})
+    }
+
+    update()
+}
+
+function vytvoritFormOtazku(otazkaDiv, index) {
+    const formOtazka = document.createElement('div');
+    formOtazka.classList.add('formOtazka');
+    formOtazka.setAttribute('indexing', index);
+
+    const otazkaText = document.createElement('h2');
+    otazkaText.classList.add('formOtazkaText');
+    otazkaText.textContent = `${index}. ${otazkaDiv.querySelector('.otazkaInput').value}`;
+
+    const moznostSpravnychOdpovedi = otazkaDiv.querySelector('.druhInputu').value;
+
+    const typInputuOdpovedi = (moznostSpravnychOdpovedi === 'jedna') ? 'radio' : 'checkbox';
+
+    const formOdpovedi = document.createElement('div');
+    formOdpovedi.classList.add('formOdpovedi');
+
+    for (let i = 0; i < otazkaDiv.querySelectorAll('.odpovedInput').length; i++) {
+        const formOdpovedLabel = document.createElement('label');
+        formOdpovedLabel.classList.add('formOdpovedLabel');
+        const indexing = String.fromCharCode('a'.charCodeAt(0) + i)
+        formOdpovedLabel.textContent = indexing + ") " + otazkaDiv.querySelectorAll('.odpovedInput')[i].value;
+
+        const formOdpoved = document.createElement('input');
+        formOdpoved.type = typInputuOdpovedi;
+        formOdpovedi.id = 'formOdpovedi' + i;
+        formOdpoved.classList.add('formOdpovedInput');
+        formOdpoved.name = 'otakza-' + index + '-' + (typInputuOdpovedi === 'radio' ? '' : indexing);
+        formOdpoved.setAttribute('indexing', indexing);
+
+        formOdpovedi.append(formOdpovedLabel)
+        formOdpovedi.append(formOdpoved)
+    }
+
+    formOtazka.append(otazkaText)
+    formOtazka.append(formOdpovedi)
+
+    return formOtazka
+}
+
+function odebratOtazku(otazkaDiv) {
+    otazkaDiv.remove()
+    update()
+}
+
+
+
+function update() {
+    console.log("UPDATE")
+    const otazky = document.querySelectorAll(".otazka")
+    console.log(otazky)
+
+    let finalForm = document.createElement('form')
+
+
+    let formSpravneOdpovedi = {}
+    for (let i = 0; i < otazky.length; i++) {
+        formSpravneOdpovedi[i+1] = Array.from(otazky[i].querySelectorAll(".odpovedInputSpravna"))
+            .filter(el => el.checked)
+            .map((el, index) => String.fromCharCode('a'.charCodeAt(0) + index))
+
+        finalForm.append(vytvoritFormOtazku(otazky[i], i+1))
+    }
+
+    const submit = document.createElement('input')
+    submit.type = 'submit'
+
+    finalForm.append(submit)
+
+    console.log(finalForm)
+
+    document.getElementById("strukturaFormulare").innerHTML = finalForm.outerHTML
+    document.getElementById("spravneOdpovediInput").value = JSON.stringify(formSpravneOdpovedi)
+
+    document.getElementById("teloKvizu").value = finalForm.outerHTML
+}

@@ -1,154 +1,150 @@
-$(".dropbtn1").on("click",function(){
+function dropDownOpenerSetup() {
+    $(".dropbtn1").on("click",function(){
 
-    $(this).next().toggleClass("show");
+        $(this).next().toggleClass("show");
+
+    })
+}
+
+
+filtrOrig = {
+    'knihy':{
+        'textFilter':'',
+        'povinne':false
+    },
+    'autori':{
+        'textFilter':'',
+        'checkboxFilter':[]
+    },
+    'obdobi':{
+        'checkboxFilter':[]
+    }
+}
+filtr = filtrOrig
+
+document.addEventListener('DOMContentLoaded', function(){
+    dropDownOpenerSetup()
+    resetFilterButtonSetup()
+
+    textFilterSetup()
+    checkboxFilterSetup()
 
 })
 
-filtrovaniAutori = []
-filtrovaneObdobi = []
+function textFilterSetup() {
+    const textFilterKnihy = document.getElementById('TextFilterKnihy')
+    const textFilterAutori = document.getElementById('TextFilterAutori')
 
-$("document").ready(function(){
-
-    $("#TextFilterKnihy").on("input", function(event) { // text filter pro knihy
-        var searchTerm = event.target.value.toLowerCase();
-        $(".knihaDiv").each(function() {
-            var linkText = $(this).children("a").text().toLowerCase();
-            if (linkText.includes(searchTerm)) {
-                $(this).parent().show();
-            } else {
-                $(this).parent().hide();
-            }
-        });
-        moznaNejsouKnizky()
-
-        });
-
-    $("#TextFilterAutori").on("input", function(event) { // text filter pro autory
-        var searchTerm = event.target.value.toLowerCase();
-        $(".autorFilter").each(function(i, e) {
-            console.log(e)
-            var linkText = $(e).children("label").text().toLowerCase();
-
-            if (linkText.includes(searchTerm)) {
-                $(this).show(); // Show the parent of the .autorFilter element
-            } else {
-                $(this).hide(); // Hide the parent of the .autorFilter element
-            }
-        });
-        moznaNejsouKnizky()
-    });
-
-    //// AUTORI FILTER
-    $(".autorFilter").children("input").on("change", function() {
-        filtrovaniAutori = []
-        $(".autorFilter").each(function(i, e) {
-            if ($(e).children("input").is(":checked")) {
-                filtrovaniAutori.push($(e).attr("autorId"))
-            }
-        })
-        showFiltorovaneAutory()
-
+    textFilterKnihy.addEventListener('input', (event) => {
+        filtr['knihy']['textFilter'] = event.target.value
+        console.log(filtr)
+        update()
     })
 
-    function showFiltorovaneAutory(){
-        if (filtrovaniAutori.length == 0) {
-            $(".knihainfo").show();
-            return
-        }
-
-        $(".knihainfo").each(function(i, e) {
-            if( filtrovaniAutori.includes($(e).attr("autorid"))){
-                $(e).show();
-            }else{
-                $(e).hide();
-            }
-        });
-    }
-
-    //obdobi
-
-    $(".obdobiFilter").children("input").on("change", function() {
-        filtrovaneObdobi = []
-        $(".obdobiFilter").each(function(i, e) {
-            if ($(e).children("input").is(":checked")) {
-                filtrovaneObdobi.push($(e).attr("obdobiId"))
-            }
-        })
-        showFiltorovaneObdobi()
-
+    textFilterAutori.addEventListener('input', (event) => {
+        filtr['autori']['textFilter'] = event.target.value
+        console.log(filtr)
+        update()
     })
 
-    function showFiltorovaneObdobi(){
-        if (filtrovaneObdobi.length == 0) {
-            $(".knihainfo").show();
-            return
-        }
+}
 
-        $(".knihainfo").each(function(i, e) {
-            if( filtrovaneObdobi.includes($(e).attr("obdobiId"))){
-                $(e).show();
-            }else{
-                $(e).hide();
+function checkboxFilterSetup() {
+    const checkboxFilterPovinne = document.querySelector('.povinneKnihy')
+    const checkboxFilterAutori = document.querySelectorAll('.autorFilter')
+    const checkboxFilterObdobi = document.querySelectorAll('.obdobiFilter')
+
+    checkboxFilterPovinne.addEventListener('change', (event) => {
+        filtr['knihy']['povinne'] = event.target.checked
+        console.log(filtr)
+        update()
+    })
+
+    checkboxFilterAutori.forEach((inp)=>{
+        inp.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                filtr['autori']['checkboxFilter'].push(event.target.parentElement.querySelector('label').innerText)
             }
-        });
-    }
+            else {
+                filtr['autori']['checkboxFilter'] = filtr['autori']['checkboxFilter'].filter((el)=>{return el !== event.target.parentElement.querySelector('label').innerText})
+            }
+            update()
+        })
+    })
 
-    $("#povinneKnihyInput").on("change", function() {
-        console.log("povinneKnihyInput changed")
-        checked = $(this).is(":checked")
+    checkboxFilterObdobi.forEach((inp)=>{
+        inp.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                filtr['obdobi']['checkboxFilter'].push(event.target.parentElement.querySelector('label').innerText)
+            }
+            else {
+                filtr['obdobi']['checkboxFilter'] = filtr['obdobi']['checkboxFilter'].filter((el)=>{return el !== event.target.parentElement.querySelector('label').innerText})
+            }
+            update()
+        })
+    })
 
-        if (checked){
-            $("povinnostKnihy").each(function(i, e) {
-                if (parseInt($(e).attr("val")) == 1) {
-                    console.log("show")
-                    $(e).parent().show();
-                } else {
-                    console.log("hide")
-                    $(e).parent().hide();
-                }
-            })
+}
+
+function update(){
+    const knihy = document.querySelectorAll('.knihainfo')
+
+    knihy.forEach((kniha=>{
+        const nazev = kniha.querySelector('.nazevKnihy').innerText.toLowerCase()
+        const jmenoAutora = kniha.querySelector('.jmenoAutora').innerText.toLowerCase()
+        const nazevObdobi = kniha.querySelector('.nazevObdobi').innerText.toLowerCase()
+        const jePovinna = kniha.querySelector('.povinnaKniha')
+
+        if(filtr['knihy']['povinne'] === true && !jePovinna){
+            kniha.classList.add('hidden')
         }
+
+        else if (!nazev.includes(filtr['knihy']['textFilter'])){
+            kniha.classList.add('hidden')
+        }
+        else if (!jmenoAutora.includes(filtr['autori']['textFilter'])){
+            kniha.classList.add('hidden')
+        }
+        // else if (!filtr['autori']['checkboxFilter'].map(item => item.toLowerCase()).includes(jmenoAutora)){
+        //     kniha.classList.add('hidden')
+        // }
+        // else if(!filtr['obdobi']['checkboxFilter'].map(item => item.toLowerCase()).includes(nazevObdobi)){
+        //     kniha.classList.add('hidden')
+        // }
         else{
-            $("povinnostKnihy").each(function(i, e) {
-                $(e).parent().show();
-            })
+            kniha.classList.remove('hidden')
         }
-        moznaNejsouKnizky()
-    })
+    }))
 
-    function moznaNejsouKnizky(){
-        if ($(".knihainfo:hidden").length === $(".knihainfo").length) {
-            $("#zadneKnihy").show();
-        }
-        else {
-            $("#zadneKnihy").hide();
-        }
+    console.log(filtr)
+
+
+    if(Array.from(knihy).filter((kniha)=>{return !kniha.classList.contains('hidden')}).length === 0){
+        document.querySelector('#zadneKnihy').classList.remove('hidden')
+        console.log("add")
+    }
+    else{
+        document.querySelector('#zadneKnihy').classList.add('hidden')
     }
 
+}
 
 
-    /*$("#TextFilterObdobi").on("input", function(event) {
-        var searchTerm = event.target.value.toLowerCase();
-        $(".obdobiFilter").each(function(i, e) {
-            console.log(e)
-            var linkText = $(e).children("label").text().toLowerCase();
+function resetFilterButtonSetup() {
+    const resetFilterButton = document.querySelector('.resetFilter')
+    console.log(resetFilterButton)
 
-            console.log(linkText)
-            console.log(searchTerm)
+    resetFilterButton.addEventListener('click',()=>{
+        filtr = JSON.parse(JSON.stringify(filtrOrig));
 
-            if (linkText.includes(searchTerm)) {
-                $(this).show(); // Show the parent of the .autorFilter element
-            } else {
-                $(this).hide(); // Hide the parent of the .autorFilter element
-            }
-        });
-    });*/
+        document.querySelector('.filter').querySelectorAll('input[type=text]').forEach((inp)=>{
+            inp.value = ''
+        })
+        document.querySelector('.filter').querySelectorAll('input[type=checkbox]').forEach((inp)=>{
+            inp.checked = false
+        })
 
-    $()
-
-
-
-
-})
-
-
+        console.log("update")
+        update()
+    })
+}

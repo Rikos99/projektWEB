@@ -264,12 +264,19 @@ class ObjektyModel
         return $assocArray;
     }
 
-    public function pridatKviz($teloKvizu)
+    public function pridatKviz($nazevKvizu, $knihaId,$teloKvizu,$spravneOdpovedi)
     {
-        Db::vloz("prispevky",[
-
-        ]);
+        echo $nazevKvizu;
+        echo $knihaId;
+        echo $teloKvizu;
+        print_r($spravneOdpovedi);
+        echo json_encode($spravneOdpovedi);
+        Db::vloz("kvizy",['Nazev'=>$nazevKvizu,'KnihaId'=>$knihaId,'Obsah'=>$teloKvizu,'SpravneOdpovedi'=>json_encode($spravneOdpovedi),'UzivatelId'=>$_SESSION['uzivatel']['Id']]);
     }
 
+    public function vsechnyKvizy()
+    {
+        return Db::dotazVsechny("SELECT * FROM kvizy");
+    }
 
 }
