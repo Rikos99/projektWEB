@@ -8,13 +8,18 @@
 
     <script src="js/hledatSkolu.js"></script>
     <script>
-        document.getElementById("button").addEventListener("click", function ()
-        {
+        document.getElementById("button").addEventListener("click", async function () {
             const input = document.getElementById("ICO");
-            let skola = getARESInformationFromICO(input.value);
-            console.log(skola);
             //TODO nějakým způsobem získat atribut obchodniJmeno z arraye skola do promenne nazev
-            let nazev = "Střední průmyslová škola elektrotechniky a informatiky, Ostrava, příspěvková organizace";
+
+            let response = await fetch("https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/" + input.value).then(response => {
+                return response.json();
+            })
+
+            console.log(response);
+
+            let nazev = response.obchodniJmeno;
+            console.log(nazev);
 
             /*
             skola.then(result => {
@@ -30,7 +35,6 @@
             date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
 
             document.cookie = "nazev=" + nazev + "; expires=" + date.toGMTString() + "; path=/";
-            //triggernout PHP kod, ktery cookie zaregistruje
         });
     </script>
 

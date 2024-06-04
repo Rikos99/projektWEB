@@ -9,10 +9,12 @@ class NovaSkolaModel
         {
             echo "načtena cookie";
             setcookie("nazev", "", time()-3600);
+
+
         }
         else
         {
-            if(!$this->prihlasenyUzivatel)
+            if(!$this->prihlasenyUzivatel) //nefunguje
             {
                 $this->presmeruj("prihlaseni");
             }
