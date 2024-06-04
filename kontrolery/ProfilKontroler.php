@@ -19,7 +19,7 @@ class ProfilKontroler extends Kontroler {
     public function zpracuj($parametry) {
 
         $this->cssCesty=["profilstyle.css"];
-        //$this->data["title"] = "Profil";
+        $this->data["title"] = "Profil";
 
         if (isset($_POST["ulozit_heslo"])) {
             //zmena hesla
