@@ -7,6 +7,11 @@
 <script src="../js/filterScript.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<!--    <pre>-->
+<!--        --><?php //print_r($this->data['vsechnyKnihyFiltr']) ?>
+<!--    </pre>-->
+
+
     <?php
 
 
@@ -15,7 +20,8 @@
         $data[] = array(
             "odkazFotky" => "odkaz", ///////////////////////////////////// imgsrc vymenit podle databaze ////$prispevek['imgSrc']
             "nazevKnihy" => $prispevek['nazevKniha'], "idKnihy" =>  $prispevek['idKniha'],
-            "jmenoAutora" => $prispevek['jmenoAutora']." ".$prispevek['prijmeniAutora'] , "idAutora" => $prispevek['idAutora'],
+            "jmenoAutora" => $prispevek['jmenoAutora'] . (!empty($prispevek['prijmeniAutora']) ? ' ' . $prispevek['prijmeniAutora'] : ''),
+            "idAutora" => $prispevek['idAutora'],
             "nazevObdobi" => $prispevek['nazevObdobi'], "idObdobi" =>$prispevek['idObdobi']
         );
     }
@@ -93,7 +99,7 @@
                     <form action="" method="post">
                         <input type="hidden" name="idKnihy" value="<?= $row['idKnihy'] ?>">
                         <?php
-                        print_r($this->data['povinneKnihy']);
+//                        print_r($this->data['povinneKnihy']);
                         if (empty($this->data['povinneKnihy'])) {
                             echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych" '.(isset($_SESSION['uzivatel']) ? '' : 'disabled').'>';
                         } else {
