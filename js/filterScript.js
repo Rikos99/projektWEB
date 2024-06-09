@@ -105,12 +105,12 @@ function update(){
         else if (!jmenoAutora.includes(filtr['autori']['textFilter'])){
             kniha.classList.add('hidden')
         }
-        // else if (!filtr['autori']['checkboxFilter'].map(item => item.toLowerCase()).includes(jmenoAutora)){
-        //     kniha.classList.add('hidden')
-        // }
-        // else if(!filtr['obdobi']['checkboxFilter'].map(item => item.toLowerCase()).includes(nazevObdobi)){
-        //     kniha.classList.add('hidden')
-        // }
+        else if (!filtr['autori']['checkboxFilter'].map(item => item.toLowerCase()).includes(jmenoAutora) && filtr['autori']['checkboxFilter'].length > 0){
+            kniha.classList.add('hidden')
+        }
+        else if(!filtr['obdobi']['checkboxFilter'].map(item => item.toLowerCase()).includes(nazevObdobi) && filtr['obdobi']['checkboxFilter'].length > 0){
+            kniha.classList.add('hidden')
+        }
         else{
             kniha.classList.remove('hidden')
         }
@@ -143,6 +143,9 @@ function resetFilterButtonSetup() {
         document.querySelector('.filter').querySelectorAll('input[type=checkbox]').forEach((inp)=>{
             inp.checked = false
         })
+        document.querySelector('#povinneKnihyInput').checked = false
+
+        filtr['knihy']['povinne'] = false
 
         console.log("update")
         update()
