@@ -43,8 +43,18 @@ function textFilterSetup() {
 
     textFilterAutori.addEventListener('input', (event) => {
         filtr['autori']['textFilter'] = event.target.value
-        console.log(filtr)
-        update()
+        const checkboxFiltry = document.querySelectorAll('.autorFilter')
+
+        for (let i = 0; i < checkboxFiltry.length; i++) {
+            const checkboxFiltr = checkboxFiltry[i]
+            console.log(checkboxFiltr.querySelector('label').innerText.toLowerCase())
+            if(checkboxFiltr.querySelector('label').innerText.toLowerCase().includes(event.target.value)) {
+                checkboxFiltr.classList.remove('hidden')
+            }
+            else {
+                checkboxFiltr.classList.add('hidden')
+            }
+        }
     })
 
 }
@@ -102,15 +112,12 @@ function update(){
         else if (!nazev.includes(filtr['knihy']['textFilter'])){
             kniha.classList.add('hidden')
         }
-        else if (!jmenoAutora.includes(filtr['autori']['textFilter'])){
+        else if (!filtr['autori']['checkboxFilter'].map(item => item.toLowerCase()).includes(jmenoAutora) && filtr['autori']['checkboxFilter'].length > 0){
             kniha.classList.add('hidden')
         }
-        // else if (!filtr['autori']['checkboxFilter'].map(item => item.toLowerCase()).includes(jmenoAutora)){
-        //     kniha.classList.add('hidden')
-        // }
-        // else if(!filtr['obdobi']['checkboxFilter'].map(item => item.toLowerCase()).includes(nazevObdobi)){
-        //     kniha.classList.add('hidden')
-        // }
+        else if(!filtr['obdobi']['checkboxFilter'].map(item => item.toLowerCase()).includes(nazevObdobi) && filtr['obdobi']['checkboxFilter'].length > 0){
+            kniha.classList.add('hidden')
+        }
         else{
             kniha.classList.remove('hidden')
         }
@@ -143,6 +150,14 @@ function resetFilterButtonSetup() {
         document.querySelector('.filter').querySelectorAll('input[type=checkbox]').forEach((inp)=>{
             inp.checked = false
         })
+        document.querySelector('#povinneKnihyInput').checked = false
+
+        document.querySelectorAll('.autorFilter').forEach((autorFiltr)=>{
+            autorFiltr.classList.remove('hidden')
+        })
+
+        filtr['knihy']['povinne'] = false
+        filtr['autori']['checkboxFilter'] = []
 
         console.log("update")
         update()
