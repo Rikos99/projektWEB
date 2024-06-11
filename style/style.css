@@ -2,14 +2,28 @@
     
 --black: black;
 --white: #d4d4d4;
-
---un-color: #2E3837;
---dos-color:#166678 ; 
---tres-color:#7DB9B3 ;
---quatro-color:#E1F6F4;
+--background: #646464 ;
+--un-color: #2c2625;
+--dos-color:#4d4848 ; 
+--tres-color:#AF8260 ;
+--quatro-color:#E4C59E;
 --pento-color:#DDCAD9;
 
 --div-separator:#c0c0c0;
+
+/*
+080705
+40434E
+702632
+912F40
+FFFFFA
+------
+111312
+5C0A13
+26408B
+FDFDFF
+C6C5B9
+*/
 
 }
 
@@ -21,7 +35,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: var(--white);
+    background-color: var(--background);
 }
 
 main{

@@ -1,6 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
-
 <div class="profilEdit">
     
     <!--<|?php  Není potřeba zde 
@@ -22,13 +19,18 @@
 
      <?php if (isset($this->data["infoProfilu"]["ikona"]) && !empty($this->data["infoProfilu"]["ikona"])): ?>
         <!-- Obrázek zobrazení -->    
-        <img src="<?php echo htmlspecialchars($this->data["infoProfilu"]["ikona"]); ?>" alt="Profilový obrázek">
-        <?php endif; ?>
-
-        <form action="" method="post" enctype="multipart/form-data">
+        <div id="pfp">
+            <img src="<?php echo htmlspecialchars($this->data["infoProfilu"]["ikona"]); ?>" alt="Profilový obrázek">
+        </div>
+    <?php endif; ?>
+        
+    <div class="pfp">
+    <form action="" method="post" enctype="multipart/form-data">
             <input type="file" id="profilovka" name="profilovka" class="profilovka" required>
             <input type="submit" name="nahrat_obrazek" value="Nahrát obrázek">
         </form>
+    </div>
+
 
 
 
@@ -62,3 +64,156 @@
             <input type="submit" name="ulozit_heslo" value="Uložit změny">
         </form>
 </div>
+<!-- 
+
+<.?php
+
+if (isset($_FILES['croppedImage'])) {
+    $targetDir = "uploads/";
+    $targetFile = $targetDir . basename($_FILES["croppedImage"]["name"]);
+    move_uploaded_file($_FILES["croppedImage"]["tmp_name"], $targetFile);
+
+    $_SESSION["cropped_image"] = $targetFile;
+}
+
+$infoProfilu["cropped_image"] = isset($_SESSION["cropped_image"]) ? $_SESSION["cropped_image"] : '';
+?>
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+</head>
+<div class="profilEdit">
+    <div id="info">
+        <h3>Profil</h3>
+
+        <.?php if (isset($this->data["infoProfilu"]["ikona"]) && !empty($this->data["infoProfilu"]["ikona"])): ?>
+            <div id="pfp">
+                <img id="profilePic" src="<.?php echo htmlspecialchars($this->data["infoProfilu"]["ikona"]); ?>" alt="Profilový obrázek">
+            </div>
+        <.?php endif; ?>
+
+        <form id="profileForm" action="" method="post" enctype="multipart/form-data">
+            <input type="file" id="profilovka" name="profilovka" class="profilovka" required>
+            <input type="submit" name="nahrat_obrazek" value="Nahrát obrázek">
+            <input type="hidden" id="croppedImage" name="croppedImage">
+        </form>
+
+        <label for="jmeno">Jméno</label>
+        <span><.?php echo isset($this->data["infoProfilu"]["jmeno"]) ? htmlspecialchars($this->data["infoProfilu"]["jmeno"]) : ''; ?></span><br>
+
+        <label for="prijmeni">Příjmení</label>
+        <span><.?php echo isset($this->data["infoProfilu"]["prijmeni"]) ? htmlspecialchars($this->data["infoProfilu"]["prijmeni"]) : ''; ?></span><br>
+
+        <form action="" method="post">
+            <label for="prezdivka">Přezdívka</label>
+            <input type="text" id="prezdivka" name="prezdivka" value="<.?php echo isset($this->data["infoProfilu"]["prezdivka"]) ? htmlspecialchars($this->data["infoProfilu"]["prezdivka"]) : ''; ?>"><br>
+            <input type="submit" name="ulozit" value="Uložit změny">
+        </form>
+
+        <label for="trida">Třída</label>
+        <span><.?php echo isset($this->data["infoProfilu"]["nazev_tridy"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_tridy"]) : ''; ?></span><br>
+        
+        <label for="role">Role</label>
+        <span><.?php echo isset($this->data["infoProfilu"]["nazev_role"]) ? htmlspecialchars($this->data["infoProfilu"]["nazev_role"]) : ''; ?></span><br>
+    </div>
+
+    <h3>Změna hesla</h3>
+    <form action="" method="post">
+        <input type="password" id="nove_heslo" name="nove_heslo" placeholder="Nové heslo"><br>
+        <input type="password" id="potvrzeni_hesla" name="potvrzeni_hesla" placeholder="Potvrďte heslo"><br>
+        <input type="submit" name="ulozit_heslo" value="Uložit změny">
+    </form>
+</div>
+
+Cropping Modal 
+<div id="cropModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div>
+            <img id="cropImage" src="" alt="Image to crop">
+        </div>
+        <button id="cropButton">Crop</button>
+        <form id="cropForm" action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="croppedImageInModal" name="croppedImage">
+        </form>
+    </div>
+</div>
+
+<script>
+let cropper;
+const profilePicInput = document.getElementById('profilovka');
+const cropModal = document.getElementById('cropModal');
+const cropImage = document.getElementById('cropImage');
+const closeModal = document.querySelector('.close');
+const cropButton = document.getElementById('cropButton');
+const croppedImageInput = document.getElementById('croppedImage');
+const croppedImageInputInModal = document.getElementById('croppedImageInModal');
+const profileForm = document.getElementById('profileForm');
+const cropForm = document.getElementById('cropForm');
+const profilePic = document.getElementById('profilePic');
+
+profilePicInput.addEventListener('change', function(event) {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+        const file = files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            cropImage.src = e.target.result;
+            cropModal.style.display = 'flex';
+            if (cropper) {
+                cropper.destroy();
+            }
+            cropper = new Cropper(cropImage, {
+                aspectRatio: 1,
+                viewMode: 1,
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+closeModal.addEventListener('click', function() {
+    cropModal.style.display = 'none';
+    if (cropper) {
+        cropper.destroy();
+    }
+});
+
+cropButton.addEventListener('click', function() {
+    const canvas = cropper.getCroppedCanvas({
+        width: 150,
+        height: 150,
+    });
+
+    canvas.toBlob(function(blob) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            croppedImageInput.value = e.target.result;
+            croppedImageInputInModal.value = e.target.result;
+
+            profilePic.src = e.target.result;
+
+            const formData = new FormData();
+            formData.append('croppedImage', blob);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '', true); 
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Profile picture updated successfully');
+                } else {
+                    console.error('Failed to update profile picture');
+                }
+            };
+            xhr.send(formData);
+        };
+        reader.readAsDataURL(blob);
+    });
+
+    cropModal.style.display = 'none';
+    cropper.destroy();
+});
+</script>
+
+-->

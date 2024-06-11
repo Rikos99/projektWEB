@@ -74,7 +74,7 @@
 
 .container .dailyquest{
 
-    background-color: var(--tres-color);
+    background-color: var(--dos-color);
     padding: 1% 2%;
     border-radius: 8px;
     max-height: fit-content;
@@ -152,8 +152,8 @@
 
 .container .dailyquest #dailyknihy button:hover,
 .container .dailyquest #dailygramatika button:hover {
-    background-color: #666; 
-    color: var(--quatro-color);
+    background-color: var(--dos-color); 
+    color: var(--black);
 }
 
 
