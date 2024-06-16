@@ -279,4 +279,16 @@ class ObjektyModel
         return Db::dotazVsechny("SELECT * FROM kvizy");
     }
 
+    function kvizPodleId($id, $ciste)
+    {
+        $sql = 'SELECT * FROM kvizy' . ($ciste ? '':
+        ' JOIN uzivatele ON uzivatele.id = kvizy.UzivatelId').
+        ' WHERE kvizy.id=?';
+
+        return Db::dotazJeden(
+            $sql
+            ,[$id]);
+    }
+
+
 }

@@ -9,11 +9,12 @@ class VytvareniKvizuKontroler extends Kontroler
         $objektyModel = new ObjektyModel();
 
         if (isset($_POST['teloKvizu'])) {
-            echo '<pre>';
-            echo htmlspecialchars(print_r($_POST, true));
-            echo '</pre>';
+//            echo '<pre>';
+//            echo htmlspecialchars(print_r($_POST, true));
+//            echo '</pre>';
 
             $objektyModel->pridatKviz($_POST['nazevKvizu'],$_POST['kniha'],$_POST['teloKvizu'],json_decode($_POST['spravneOdpovedi'],true));
+            $this->presmeruj('kviz'.'\\'.Db::idPoslednihoVlozeneho());
         }
 
         if(

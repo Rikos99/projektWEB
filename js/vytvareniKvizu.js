@@ -1,4 +1,4 @@
-var otazky = [];
+// var otazky = [];
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -155,6 +155,23 @@ function odpovediSpravnost(odpovediDiv, target) {
 }
 
 function vytvoritFormOtazku(otazkaDiv, index) {
+    const vyrvoritKvizButton = document.getElementById('vytvoritKviz');
+    const validace = validaceFormOtazky2(otazkaDiv);//validaceFormOtazky2(otazkaDiv);
+    if (validace !== null) {
+        vyrvoritKvizButton.disabled = true;
+
+        const chybyDiv = document.createElement('div');
+        const nadpis = document.createElement('h3');
+        nadpis.textContent = `Otazka ${index} neni validni`;
+        chybyDiv.append(nadpis);
+        validace.forEach((chybaHlaska)=>{
+            const chybaP = document.createElement('p');
+            chybaP.textContent = '\n' + chybaHlaska;
+            chybyDiv.append(chybaP);
+        })
+        return chybyDiv
+    } else {vyrvoritKvizButton.disabled = false;}
+
     const formOtazka = document.createElement('div');
     formOtazka.classList.add('formOtazka');
     formOtazka.setAttribute('indexing', index);
@@ -198,6 +215,76 @@ function odebratOtazku(otazkaDiv) {
     update()
 }
 
+function validaceFormOtazky1(otazkaDiv) {
+
+    // otazka text
+    const otazkaInput = otazkaDiv.querySelector('.otazkaInput');
+    if (otazkaInput.value === '') {
+        otazkaInput.classList.add('inputKvizuSpatne')
+        console.log("add c")
+    }else {otazkaInput.classList.remove('inputKvizuSpatne')}
+    /*
+    // odpovedi text
+    const odpovedInputsSpatne = Array.from(otazkaDiv.querySelectorAll('.odpovedInput'))
+        .map((el, i) => (el.value === '' ? i : null))
+        .filter(index => index !== null);
+    if (odpovedInputsSpatne.length > 0) {
+        errorLogy.push('Odpoved nesmi byt prazdna')
+        odpovedInputsSpatne.forEach((indexOdpovedi)=>{errorLogy.push(`Odpoved ${indexOdpovedi+1} nesmi byt prazdna`)})
+    }
+    // odpovedi pocet
+    const odpovedi = otazkaDiv.querySelectorAll('.odpovedInput');
+    if (odpovedi.length < 2) {
+        errorLogy.push('Musi byt alespon dve odpovedi')
+    }
+    // odpovedi spravna
+    const spravneOdpovedi = Array.from(otazkaDiv.querySelectorAll('.odpovedInputSpravna')).filter((el)=>{return el.checked}) ;
+    if (spravneOdpovedi.length === 0) {
+        errorLogy.push('Neni vybrana spravna odpoved')
+    }
+
+    console.log(errorLogy)
+
+    if (errorLogy.length > 0) {
+        return errorLogy
+    }*/
+    return null
+}
+
+function validaceFormOtazky2(otazkaDiv) {
+    let errorLogy = [];
+
+    // otazka text
+    if (otazkaDiv.querySelector('.otazkaInput').value === '') {
+        errorLogy.push('Otazka nesmi byt prazdna')
+    }
+    // odpovedi text
+    const odpovedInputsSpatne = Array.from(otazkaDiv.querySelectorAll('.odpovedInput'))
+        .map((el, i) => (el.value === '' ? i : null))
+        .filter(index => index !== null);
+    if (odpovedInputsSpatne.length > 0) {
+        errorLogy.push('Odpoved nesmi byt prazdna')
+        odpovedInputsSpatne.forEach((indexOdpovedi)=>{errorLogy.push(`Odpoved ${indexOdpovedi+1} nesmi byt prazdna`)})
+    }
+    // odpovedi pocet
+    const odpovedi = otazkaDiv.querySelectorAll('.odpovedInput');
+    if (odpovedi.length < 2) {
+        errorLogy.push('Musi byt alespon dve odpovedi')
+    }
+    // odpovedi spravna
+    const spravneOdpovedi = Array.from(otazkaDiv.querySelectorAll('.odpovedInputSpravna')).filter((el)=>{return el.checked}) ;
+    if (spravneOdpovedi.length === 0) {
+        errorLogy.push('Neni vybrana spravna odpoved')
+    }
+
+    console.log(errorLogy)
+
+    if (errorLogy.length > 0) {
+        return errorLogy
+    }
+    return null
+}
+
 
 
 function update() {
@@ -205,7 +292,7 @@ function update() {
     const otazky = document.querySelectorAll(".otazka")
     console.log(otazky)
 
-    let finalForm = document.createElement('form')
+    let finalDiv = document.createElement('div')
 
 
     let formSpravneOdpovedi = {}
@@ -214,18 +301,14 @@ function update() {
             .filter(el => el.checked)
             .map((el, index) => String.fromCharCode('a'.charCodeAt(0) + index))
 
-        finalForm.append(vytvoritFormOtazku(otazky[i], i+1))
+        finalDiv.append(vytvoritFormOtazku(otazky[i], i+1))
     }
 
-    const submit = document.createElement('input')
-    submit.type = 'submit'
 
-    finalForm.append(submit)
+    console.log(finalDiv)
 
-    console.log(finalForm)
-
-    document.getElementById("strukturaFormulare").innerHTML = finalForm.outerHTML
+    document.getElementById("strukturaFormulare").innerHTML = finalDiv.outerHTML
     document.getElementById("spravneOdpovediInput").value = JSON.stringify(formSpravneOdpovedi)
 
-    document.getElementById("teloKvizu").value = finalForm.outerHTML
+    document.getElementById("teloKvizu").value = finalDiv.outerHTML
 }

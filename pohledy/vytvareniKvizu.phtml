@@ -22,6 +22,10 @@
     div, select, input {
         margin: 10px 0;
     }
+
+    .inputKvizuSpatne {
+        background-color: #f58e8e;
+    }
 </style>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
@@ -32,7 +36,7 @@
     <form action="" method="post">
 
         <label for="nazevKvizu">Nazev kvizu</label>
-        <input type="text" name="nazevKvizu" id="nazevKvizu">
+        <input type="text" name="nazevKvizu" id="nazevKvizu" required>
 
         <label for="vyberKnihy"></label>
         <select name="kniha" id="vyberKnihy">
@@ -66,7 +70,7 @@
 
 
         <input type="hidden" id="teloKvizu" name="teloKvizu">
-        <input type="submit" value="Vytvorit kviz" id="vyrvoritKviz">
+        <input type="submit" value="Vytvorit kviz" id="vytvoritKviz">
     </form>
 
 

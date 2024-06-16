@@ -1,0 +1,19 @@
+<!--<pre>-->
+<!---->
+<!--    --><?php
+//    print_r($this->data['kviz']);
+//    ?>
+<!---->
+<!--</pre>-->
+
+<h1><?=$this->data['kviz']['Nazev']?></h1>
+<h3><?=$this->data['kviz']['jmeno']?> <?=$this->data['kviz']['prijmeni']?></h3>
+
+<form action="" method="post">
+
+    <?=$this->data['kviz']['Obsah']?>
+
+    <input type="submit">
+</form>
+
+<h5><?=$this->data['kviz']['DatumNahrani']?></h5>
