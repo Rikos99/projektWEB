@@ -1,9 +1,45 @@
 .navigation {
     display: flex;
-    justify-content: center; 
-    background-color: var(--tres-color); 
+    justify-content: center;
+    background-color: var(--un-color);
     width: 100%;
     margin-top: 0;
+    position: relative;
+}
+
+#toggleNavButton {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0; 
+    height: 100%; 
+    display: flex; 
+    align-items: center; 
+}
+
+#toggleNavButton img{
+    max-height: 100%;
+    z-index: 9999;
+}
+
+#toggleNavButton span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--black);
+    margin: 5px 0;
+}
+
+
+#toggleNavButton span:nth-child(2) {
+    width: 20px;
+}
+
+#toggleNavButton span:nth-child(3) {
+    width: 15px;
 }
 
 nav ul {
@@ -13,19 +49,17 @@ nav ul {
     background-color: var(--dos-color);
     text-align: center;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     flex-grow: 1;
+    position: relative;
 }
 
 nav ul li {
-    margin: 0 0px; /* Při záložkách upravit na 0 1px */
+    margin: 0 0px; 
     background-color: var(--un-color);
     opacity: 95%;
-    /* Kdybychom chtěli z navigace udělat "Záložky"
-    border-bottom-left-radius:15px ;
-    border-bottom-right-radius: 15px;
-    */
+
 }
 
 nav ul li a {
@@ -34,7 +68,7 @@ nav ul li a {
     padding: 10px 20px;
     text-decoration: none;
     color: var(--white);
-    transition: color 0.4s ease;
+    transition: color 0.4s ease, background-color 0.4s ease;
 }
 
 nav ul li a::after {
@@ -44,7 +78,7 @@ nav ul li a::after {
     bottom: -2px;
     width: 0;
     height: 2px;
-    background-color: var(--un-color);
+    background-color: var(--dos-color);
     transition: width 0.4s ease, left 0.4s ease;
 }
 
@@ -70,12 +104,11 @@ nav ul li a:hover {
     background-color: var(--white);
     min-width: 160px;
     box-shadow: -8px 8px 16px 0px var(--un-color);
-    left: auto;
     right: 0;
 }
 
 .dropdown-content a {
-    color: var(--white);
+    color: var(--un-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -97,4 +130,29 @@ nav ul li a:hover {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+    }
+
+    .dropdown-content a {
+        padding: 10px;
+    }
+}
+
+.navigation nav.hide {
+    display: none;
+    /*animace*/
 }

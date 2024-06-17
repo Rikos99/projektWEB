@@ -2,7 +2,8 @@
 .profilZmena{
     text-align: center;
     align-content: center;
-    background-color: var(--dos-color);
+    background-color: var(--un-color);
+    border: 5px solid var(--dos-color);
     margin: 5% 35%;
     border-radius: 5px;
     padding: 2% 2%;

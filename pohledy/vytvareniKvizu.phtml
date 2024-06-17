@@ -1,28 +1,4 @@
-<style>
-    #vytvareniKvizu {
-    display: flex;
-    }
-    #vyslednyFormular, #graficke {
-        width: 50%;
-    }
-    #grafickeVkladaniDiv {
-        padding: 0;
-    }
-    #graficke {
-        background-color: #1a8fce;
-    }
 
-    .otazka {
-        background-color: #2e9ad0;
-        margin: 10px 0 ;
-    }
-    .odpovediDiv {
-        background-color: #b7d9ee;
-    }
-    div, select, input {
-        margin: 10px 0;
-    }
-</style>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
 <!--<script src="../js/vytvareniKvizu.js"></script>-->
@@ -31,6 +7,7 @@
 <main>
     <form action="" method="post">
 
+        <div class="centerKviz">
         <label for="nazevKvizu">Nazev kvizu</label>
         <input type="text" name="nazevKvizu" id="nazevKvizu">
 
@@ -67,6 +44,8 @@
 
         <input type="hidden" id="teloKvizu" name="teloKvizu">
         <input type="submit" value="Vytvorit kviz" id="vyrvoritKviz">
+        </div>
+        
     </form>
 
 

@@ -314,19 +314,6 @@ input[type="submit" i]:hover{
     transition: ease-out 0.4s;
 }
 
-.book {
-    width: var(--book-width);
-    height: var(--book-height);
-    background: /*DODAT OBRÁZEK */ url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e25b3ac3-7ce4-4af7-8a36-7c1ddbee5532/dfdyafz-8bdc6334-be5d-4d3e-b142-10fe8921639a.png/v1/fit/w_828,h_1210,q_70,strp/_ota__book_cover_design_1_by_jastra93_dfdyafz-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTg3MSIsInBhdGgiOiJcL2ZcL2UyNWIzYWMzLTdjZTQtNGFmNy04YTM2LTdjMWRkYmVlNTUzMlwvZGZkeWFmei04YmRjNjMzNC1iZTVkLTRkM2UtYjE0Mi0xMGZlODkyMTYzOWEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.sF6yQoNssWVOjpeIVbuo2iczCWZfZ2LT_uGjTjTD590) black no-repeat center center; /*HEY YOOOOOOOOOOO UPRAVA POTOM HJAHOOO*/
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    cursor: pointer;
-}
 
 
 .title {

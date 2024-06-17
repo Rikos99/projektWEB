@@ -5,6 +5,7 @@ class VytvareniKvizuKontroler extends Kontroler
     public function zpracuj($parametry) {
 
         $this->data["title"] = "Vytvareni Kvizu";
+        $this->cssCesty=["style.css", "kvizStyle.css", "navstyle.css"];
 
         $objektyModel = new ObjektyModel();
 
