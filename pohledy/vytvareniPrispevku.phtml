@@ -7,44 +7,57 @@
 
 <form method="POST">
 
-    <label for="">Nazev prispevku</label>
-    <input type="text" name="nazevPrispevku" required>
-
-    <label for="typPrispevkuId">Typ prispevku</label>
-    <select name="typPrispevku" id="typPrispevkuId" required>
-        <?php
-        foreach ($this->data['typyPrispevku'] as $tp) {
-            if ($tp['Id'] != 4){
-                echo "<option value=".$tp['Id'].">".$tp["typ"]."</option>";
+    <div class="input-group">
+        <label for="typPrispevkuId">Typ prispevku</label>
+        <select name="typPrispevku" id="typPrispevkuId" required>
+            <?php
+            foreach ($this->data['typyPrispevku'] as $tp) {
+                if ($tp['Id'] != 4){
+                    echo "<option value=".$tp['Id'].">".$tp["typ"]."</option>";
+                }
             }
-        }
-        ?>
-    </select>
+            ?>
+        </select>
+    </div>
 
-    <label for="">Knihy</label>
-    <select name="vyberKnizky" id="vyberKnizky" required>
-        <?php if (isset($this->data['predurcenaKnihaString'])) {
-            echo "<option selected value='" . $this->data['predurcenaKnihaId'] . "'>" . $this->data['predurcenaKnihaString'] . "</option>";
-        }
-        else {
-            foreach ($this->data['vsechnyKnihy'] as $kniha) {
-                echo "<option value='" . $kniha['idKniha'] . "'>" . $kniha['nazevKniha'] . " - " . $kniha['jmenoAutora'] ." ". $kniha['prijmeniAutora'] . "</option>";
+    <div class="input-group">
+        <label for="vyberKnizky">Knihy</label>
+        <select name="vyberKnizky" id="vyberKnizky" required>
+            <?php if (isset($this->data['predurcenaKnihaString'])) {
+                echo "<option selected value='" . $this->data['predurcenaKnihaId'] . "'>" . $this->data['predurcenaKnihaString'] . "</option>";
             }
-        }
-        ?>
-    </select>
+            else {
+                foreach ($this->data['vsechnyKnihy'] as $kniha) {
+                    echo "<option value='" . $kniha['idKniha'] . "'>" . $kniha['nazevKniha'] . " - " . $kniha['jmenoAutora'] ." ". $kniha['prijmeniAutora'] . "</option>";
+                }
+            }
+            ?>
+        </select>
+    </div>
 
-    <div>
+    <div class="input-group">
+        <label for="nazevPrispevku">Nazev prispevku</label>
+        <input type="text" name="nazevPrispevku" id="nazevPrispevku" required>
+    </div>
+
+    <div class="input-group">
+        <label for="fileInput">Nahrat vlastni dokument</label>
+        <input type="file" id="fileInput" name="fileInput">
+    </div>
+
+    <div class="input-group">
         <label>
             <textarea name="content" id="hlavniEditor"></textarea>
-            <textarea name="textareaContentJakoHtml" id="textareaContentJakoHtml" hidden="hidden" required></textarea>
         </label>
     </div>
 
-    <label for="">Nahrat vlastni dokument</label>
-    <input type="file" id="fileInput">
-    <button type="submit">Nahrat</button>
+    <div id="zahoditOkenko" hidden="hidden">
+        <p>Chcete zahodit dosud nasapny text?</p>
+        <button id="zahoditA">ANO</button>
+        <button id="zahoditN">NE</button>
+    </div>
 
+    <button type="submit">Nahrat</button>
 
 </form>
 
@@ -57,10 +70,11 @@
 
 </body>
 <script src="../ckeditor/ckeditor.js"></script>
-<script>    CKEDITOR.replace( 'content' ,
-        {
-            language:'cs',
-            customConfig: '../js/vytvareniPrispevku/ckEditorConfig.js',
-            skin: 'n1theme'}
-    );
+<script>
+    CKEDITOR.replace('content', {
+        language: 'cs',
+        customConfig: '../js/vytvareniPrispevku/ckEditorConfig.js',
+        skin: 'n1theme',
+        height: '400px' // Adjust the height as needed
+    });
 </script>

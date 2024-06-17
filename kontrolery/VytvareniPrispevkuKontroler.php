@@ -4,6 +4,8 @@ class VytvareniPrispevkuKontroler extends Kontroler
 {
     public function zpracuj($parametry) {
 
+        $this->cssCesty=["prispevkyStyle.css"];
+
         if($this->prihlasenyUzivatel)
         {
             unset($_SESSION["zpravy"]["prihlasovani"]["duvodPresmerovani"]);

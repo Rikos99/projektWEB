@@ -94,7 +94,7 @@
 }
 
 .container #dailyoutline {
-    background-color: var(--un-color);
+    background-color: var(--header-color);
     border-radius: 8px;
     padding: 1%;
 }
@@ -128,13 +128,13 @@
 .container .dailyquest #dailyknihy #daily_kniha_zadani,
 .container .dailyquest #dailygramatika #daily_gramatika_zadani {
     border-radius: 5px;
-    border: 3px solid var(--un-color);
+    border: 3px solid var(--header-color);
     color: var(--black);
 }
 
 /* Divider between daily sections */
 .container .dailyquest #dailyknihy {
-    border-right: 3px solid var(--un-color);
+    border-right: 3px solid var(--header-color);
     padding-right: 10px;
 }
 
@@ -155,7 +155,7 @@
     justify-content: center;
     background-color: var(--quatro-color);
     color: var(--un-color);
-    border: 2px solid var(--un-color);
+    border: 2px solid var(--header-color);
     border-radius: 30px;
     padding: 2% 15%;
     cursor: pointer;
@@ -179,7 +179,7 @@
     max-height: 3vh;
     margin: 0 auto;
     text-align: center;
-    background-color: var(--un-color);
+    background-color: var(--header-color);
     color: #e7e7e7;
     padding: 0px;
     margin-top: 8px;
