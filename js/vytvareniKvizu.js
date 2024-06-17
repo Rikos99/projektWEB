@@ -2,6 +2,12 @@
 
 document.addEventListener('DOMContentLoaded', function(){
 
+const chyboveHlaskyValidace = {
+    'otazkaInput': 'Nesmi byt prazdna',
+    'odpovedInput': 'Nesmi byt prazdna',
+    'checkbox': 'Nesmi byt prazdna',
+    'odpovedInputSpravna': 'Nesmi byt prazdna'
+}
 
 
     document.getElementById("vytvoritOtazku").addEventListener('click', vytvoritOtazku)
@@ -52,13 +58,20 @@ function vytvoritOtazku(){
     pridatOdpovedButton.addEventListener('click', ()=>{vytvoritOdpoved(odpovediDiv)});
     odebratOtazkuButton.addEventListener('click', (ev)=>{odebratOtazku(ev.target.parentElement)});
 
+    const otazkaChyba = document.createElement('span');
+    otazkaChyba.classList.add('otazkaChyba');
+    const otazkaChyby = document.createElement('span');
+    otazkaChyby.classList.add('otazkaChyby');
 
     div.appendChild(otazkaInputLabel);
     div.appendChild(otazkaInput);
+    div.appendChild(otazkaChyba);
     div.appendChild(document.createElement('br'));
     div.appendChild(select);
     div.appendChild(document.createElement('br'));
     div.appendChild(odpovediDiv);
+    div.appendChild(document.createElement('br'));
+    div.appendChild(otazkaChyby);
     div.appendChild(document.createElement('br'));
     div.appendChild(pridatOdpovedButton);
     div.appendChild(document.createElement('br'));
@@ -98,10 +111,21 @@ function vytvoritOdpoved(odpovediDiv) {
     smazatOdpovedButton.type = 'button';
 
 
+    const odpovedChyba = document.createElement('span');
+    odpovedChyba.classList.add('odpovedChyba');
+
+    const spravneOdpovediChyba = document.createElement('span');
+    spravneOdpovediChyba.classList.add('spravneOdpovediChyba');
+
+
     div.appendChild(odpovedInputLabel);
     div.appendChild(odpovedInput);
+    div.appendChild(odpovedChyba);
+    div.appendChild(document.createElement('br'));
     div.appendChild(checkboxLabel);
     div.appendChild(checkbox);
+    div.appendChild(spravneOdpovediChyba);
+    div.appendChild(document.createElement('br'));
     div.appendChild(smazatOdpovedButton);
 
     odpovedInput.addEventListener('input', () => {update()});
@@ -155,8 +179,9 @@ function odpovediSpravnost(odpovediDiv, target) {
 }
 
 function vytvoritFormOtazku(otazkaDiv, index) {
-    const vyrvoritKvizButton = document.getElementById('vytvoritKviz');
-    const validace = validaceFormOtazky2(otazkaDiv);//validaceFormOtazky2(otazkaDiv);
+    const vyrvoritKvizButton = document.getElementById('vyrvoritKviz');
+    console.log(vyrvoritKvizButton)
+    const validace = validaceFormOtazky1(otazkaDiv);//validaceFormOtazky2(otazkaDiv);
     if (validace !== null) {
         vyrvoritKvizButton.disabled = true;
 
@@ -164,12 +189,13 @@ function vytvoritFormOtazku(otazkaDiv, index) {
         const nadpis = document.createElement('h3');
         nadpis.textContent = `Otazka ${index} neni validni`;
         chybyDiv.append(nadpis);
-        validace.forEach((chybaHlaska)=>{
-            const chybaP = document.createElement('p');
-            chybaP.textContent = '\n' + chybaHlaska;
-            chybyDiv.append(chybaP);
-        })
+        // validace.forEach((chybaHlaska)=>{
+        //     const chybaP = document.createElement('p');
+        //     chybaP.textContent = '\n' + chybaHlaska;
+        //     chybyDiv.append(chybaP);
+        // })
         return chybyDiv
+
     } else {vyrvoritKvizButton.disabled = false;}
 
     const formOtazka = document.createElement('div');
@@ -197,7 +223,8 @@ function vytvoritFormOtazku(otazkaDiv, index) {
         formOdpoved.type = typInputuOdpovedi;
         formOdpovedi.id = 'formOdpovedi' + i;
         formOdpoved.classList.add('formOdpovedInput');
-        formOdpoved.name = 'otakza-' + index + '-' + (typInputuOdpovedi === 'radio' ? '' : indexing);
+        // formOdpoved.name = 'otakza-' + index + '-' + (typInputuOdpovedi === 'radio' ? '' : indexing);
+        formOdpoved.name = 'otakza-' + index + '-' + indexing;
         formOdpoved.setAttribute('indexing', indexing);
 
         formOdpovedi.append(formOdpovedLabel)
@@ -216,39 +243,42 @@ function odebratOtazku(otazkaDiv) {
 }
 
 function validaceFormOtazky1(otazkaDiv) {
-
+    let chyba = false;
     // otazka text
-    const otazkaInput = otazkaDiv.querySelector('.otazkaInput');
-    if (otazkaInput.value === '') {
-        otazkaInput.classList.add('inputKvizuSpatne')
-        console.log("add c")
-    }else {otazkaInput.classList.remove('inputKvizuSpatne')}
-    /*
+    if (otazkaDiv.querySelector('.otazkaInput').value === '') {
+        otazkaDiv.querySelector('.otazkaChyba').innerText = 'Otazka nesmi byt prazdna';
+        chyba = true;
+    }else{otazkaDiv.querySelector('.otazkaChyba').innerText = '';}
+
     // odpovedi text
-    const odpovedInputsSpatne = Array.from(otazkaDiv.querySelectorAll('.odpovedInput'))
-        .map((el, i) => (el.value === '' ? i : null))
-        .filter(index => index !== null);
-    if (odpovedInputsSpatne.length > 0) {
-        errorLogy.push('Odpoved nesmi byt prazdna')
-        odpovedInputsSpatne.forEach((indexOdpovedi)=>{errorLogy.push(`Odpoved ${indexOdpovedi+1} nesmi byt prazdna`)})
+    if (otazkaDiv.querySelectorAll('.odpovedInput').length > 0){
+        otazkaDiv.querySelectorAll('.odpovedInput').forEach((el)=>{
+            if (el.value === '') {
+                el.nextElementSibling.innerText = 'Odpoved nesmi byt prazdna';
+                chyba = true;
+            }
+            else {
+                el.nextElementSibling.innerText = '';
+            }
+        })
     }
+
     // odpovedi pocet
     const odpovedi = otazkaDiv.querySelectorAll('.odpovedInput');
+    otazkaDiv.querySelector('.otazkaChyby').innerText = '';
     if (odpovedi.length < 2) {
-        errorLogy.push('Musi byt alespon dve odpovedi')
+        otazkaDiv.querySelector('.otazkaChyby').innerText += 'Musi byt alespon 2 odpovedi\n';
+        chyba = true;
     }
+
     // odpovedi spravna
     const spravneOdpovedi = Array.from(otazkaDiv.querySelectorAll('.odpovedInputSpravna')).filter((el)=>{return el.checked}) ;
     if (spravneOdpovedi.length === 0) {
-        errorLogy.push('Neni vybrana spravna odpoved')
+        otazkaDiv.querySelector('.otazkaChyby').innerText += 'Neni vybrana spravna odpoved';
+        chyba = true;
     }
 
-    console.log(errorLogy)
-
-    if (errorLogy.length > 0) {
-        return errorLogy
-    }*/
-    return null
+    return (chyba)?true:null;
 }
 
 function validaceFormOtazky2(otazkaDiv) {
