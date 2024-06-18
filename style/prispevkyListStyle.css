@@ -17,6 +17,7 @@ table {
     margin: 20px 0;
     background-color: var(--un-color);
     color: var(--white);
+    border: 5px solid var(--un-color);
 }
 
 th, td {
@@ -26,7 +27,8 @@ th, td {
 }
 
 th {
-    background-color: var(--header-color);
+    background-color: var(--un-color);
+
 }
 
 td a {
@@ -63,7 +65,7 @@ p a:hover {
 
 #id {
     padding: 20px;
-    background-color: var(--un-color);
+    background-color: var(--header-color);
     margin: 5% 2%;
     border: 3px solid var(--dos-color);
     border-radius: 8px;

@@ -6,7 +6,7 @@
         <div class="review">
             <h2><?= $jedenPrispevek["nazevPrispevku"] ?></h2>
             <h3><a href="/uzivatel/<?= $jedenPrispevek["idUzivatele"] ?>"><?= $jedenPrispevek["jmenoUzivatele"]." ".$jedenPrispevek["prijmeniUzivatele"] ?></a></h3>
-            <h3><a href="/kniha/<?= $jedenPrispevek["idKniha"] ?>"><?= $jedenPrispevek["nazevKniha"]." ".$jedenPrispevek["jmenoAutora"]." ".$jedenPrispevek["prijmeniAutora"] ?></a></h3>
+            <h3><a href="/kniha/<?= $jedenPrispevek["idKniha"] ?>"><?= $jedenPrispevek["nazevKniha"]." | ".$jedenPrispevek["jmenoAutora"]." ".$jedenPrispevek["prijmeniAutora"] ?></a></h3>
 
             <div class="content">
                 <?= $jedenPrispevek["obsahPrispevku"] ?>
