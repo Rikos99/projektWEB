@@ -4,6 +4,8 @@ class KvizKontroler extends Kontroler {
     public function zpracuj($parametry)
     {
 
+        $this->cssCesty=["kvizsingleStyle.css"];
+
         $objektyModel = new ObjektyModel;
 
 

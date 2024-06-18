@@ -6,7 +6,7 @@
 .profilEdit,
 .profilZmena {
     text-align: center;
-    background-color: var(--un-color);
+    background-color: var(--header-color);
     border: 5px solid var(--dos-color);
     border-radius: 5px;
     padding: 2%;
@@ -22,8 +22,8 @@ form {
     align-items: center; 
 }
 
-input[type="text"],
-input[type="password"],
+form input[type="text"],
+form input[type="password"],
 input[type="file"] {
     width: calc(100% - 20px); 
     padding: 8px;

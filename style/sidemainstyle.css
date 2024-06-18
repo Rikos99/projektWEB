@@ -1,7 +1,7 @@
 #sidediv {
     flex: 1;
     padding: 20px;
-    background-color: var(--div-separator);
+    background-color: var(--header-color);
     border: 3px solid var(--dos-color);
     color: var(--un-color);
     border-radius: 5px;
@@ -11,7 +11,7 @@
 #nastenka {
     flex: 1;
     padding: 20px;
-    background-color: var(--header-color);
+    background-color: var(--dos-color);
     margin-top: 20px;
     color: var(--white);
     border-radius: 5px;
@@ -29,7 +29,7 @@
 #nastenka h3 {
     position: sticky;
     top: 0;
-    background-color: var(--header-color);
+    background-color: var(--dos-color);
     z-index: 1;
     margin-bottom: 10px;
     margin-top: 0;
@@ -39,11 +39,11 @@
 
 #nastenka #scroler {
     overflow-y: auto;
-    max-height: calc(50vh - 40px); /* Adjusted for padding */
+    max-height: calc(50vh - 40px); 
 }
 
 #sidediv #profile-info {
-    background-color: var(--header-color);
+    background-color: var(--dos-color);
     color: var(--white);
     border-radius: 12px;
     padding: 10px 20px;
@@ -54,11 +54,13 @@
 #sidediv #profile-info h3 {
     text-align: center;
     margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
 }
 
 #sidediv #nastenka #scroler p {
     padding: 8px;
-    background-color: var(--dos-color);
+    border:3px solid var(--header-color);
     border-radius: 8px;
     margin: 8px 0;
 }
@@ -72,7 +74,7 @@
     border-radius: 10px;
 }
 
-/* Media query for responsiveness */
+
 @media (max-width: 768px) {
     #sidediv,
     #nastenka {
@@ -86,7 +88,7 @@
     }
 
     #nastenka #scroler {
-        max-height: calc(50vh - 20px); /* Adjusted for padding */
+        max-height: calc(50vh - 20px);
     }
 
     #sidediv #profile-info {

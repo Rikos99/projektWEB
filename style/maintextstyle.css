@@ -132,7 +132,6 @@
     color: var(--black);
 }
 
-/* Divider between daily sections */
 .container .dailyquest #dailyknihy {
     border-right: 3px solid var(--header-color);
     padding-right: 10px;
@@ -194,7 +193,6 @@
     margin: 2px 0px;
 }
 
-/* Media query for responsiveness */
 @media (max-width: 768px) {
     #text {
         margin-right: 0;

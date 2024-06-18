@@ -3,6 +3,9 @@
 class PrispevkyKontroler extends Kontroler {
     public function zpracuj($parametry) {
 
+        $this->cssCesty=["prispevkyListStyle.css"];
+
+
         $objektyModel = new ObjektyModel;
 
 

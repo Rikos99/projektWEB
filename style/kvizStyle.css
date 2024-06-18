@@ -1,52 +1,59 @@
+
+body {
+    color: var(--white);
+}
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--background);
+    min-height: 100vh;
     padding: 20px;
+    text-align: center; 
 }
 
 form {
-    background-color: var(--un-color);
+    background-color: var(--header-color);
     padding: 20px;
     border: 3px solid var(--dos-color);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
+    max-width: 80vh;
+    min-width: 80vh;
 }
 
 .centerKviz {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%; 
 }
 
 .centerKviz label {
     margin: 10px 0 5px;
     font-weight: bold;
-    width: 100%;
     max-width: 300px;
     text-align: left;
     color: var(--white);
 }
 
 .centerKviz input[type="text"],
-.centerKviz select {
-    padding: 8px;
+.centerKviz select,
+.centerKviz button {
+    padding: 10px;
     width: 100%;
     max-width: 300px;
-    border: 1px solid var(--un-color);
+    border: 1px solid var(--header-color);
     border-radius: 5px;
     background-color: var(--background);
     color: var(--white);
+    margin-top: 5px;
+    box-sizing: border-box;
 }
 
 .centerKviz select {
     margin-bottom: 20px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
 }
 
 .centerKviz select option {
@@ -54,76 +61,127 @@ form {
     color: var(--white);
 }
 
-#vytvareniKvizu {
-    width: 100%;
-    border: 1px solid var(--un-color);
-    border-radius: 10px;
-    margin: 20px 0;
-    padding: 20px;
-    background-color: var(--un-color);
-}
-
-#vyslednyFormular {
-    padding: 10px;
-    border: 1px solid var(--div-separator);
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-#strukturaFormulare {
-    margin-bottom: 20px;
-}
-
-#spravneOdpovediInput {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid var(--div-separator);
-    border-radius: 5px;
-    background-color: var(--background);
-    color: var(--white);
-}
-
-#graficke {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#grafickeVkladaniDiv {
-    padding: 10px;
-    border: 1px solid var(--div-separator);
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 100%;
-    background-color: var(--background);
-}
-
-#vytvoritOtazku {
-    background-color: var(--dos-color);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-#vytvoritOtazku:hover {
-    background-color: lighten(var(--dos-color), 10%);
-}
-
+#vytvoritOtazku,
 #vyrvoritKviz {
     background-color: var(--dos-color);
     color: var(--white);
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 20px;
+    margin-top: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
 }
 
+#vytvoritOtazku:hover,
 #vyrvoritKviz:hover {
-    background-color: lighten(var(--dos-color), 10%);
+    background-color: var(--div-separator);
+    box-shadow: 0 0 15px var(--dos-color);
+    color:var(--header-color);
+}
+
+#vyslednyFormular {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid var(--div-separator);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#spravneOdpovediInput {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid var(--div-separator);
+    border-radius: 5px;
+    background-color: var(--background);
+    color: var(--white);
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+#vytvarenikvizu {
+    width: 90vh; 
+    overflow-x: auto;
+}
+
+#graficke {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+}
+
+#grafickeVkladaniDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding: 20px;
+    border: 2px solid var(--div-separator);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%; 
+    max-width: 50vh;
+    min-width: 50vh;
+    background-color: var(--background);
+}
+
+.otazka {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.otazka label,
+.otazka input,
+.otazka select,
+.otazka button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+}
+
+.otazka .odpoved {
+    margin-bottom: 10px;
+}
+
+.otazkaChyba,.odpovedChyba{
+    margin-top: 10px;
+    color:red;
+}
+
+.pridatOdpovedButton,
+.pridatOtazkuButton
+{
+
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.odebratOtazkuButton,
+.smazatOdpovedButton{
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.pridatOdpovedButton:hover,
+.pridatOtazkuButton:hover
+{
+   
+    background-color: rgba(129, 172, 124, 0.685);
+    box-shadow: 0 0 10px rgba(129, 172, 124, 0.3);
+    color:var(--header-color);
+    cursor: pointer;
+
+}
+
+.odebratOtazkuButton:hover,
+.smazatOdpovedButton:hover{
+
+    background-color: rgba(194, 102, 102, 0.938);
+    box-shadow: 0 0 10px rgba(194, 102, 102, 0.3);
+    color:var(--header-color);
+    cursor: pointer;
+
 }

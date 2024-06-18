@@ -8,44 +8,39 @@
     <form action="" method="post">
 
         <div class="centerKviz">
-        <label for="nazevKvizu">Nazev kvizu</label>
-        <input type="text" name="nazevKvizu" id="nazevKvizu">
+            <label for="nazevKvizu">Nazev kvizu</label>
+            <input type="text" name="nazevKvizu" id="nazevKvizu">
 
-        <label for="vyberKnihy"></label>
-        <select name="kniha" id="vyberKnihy">
-        <?php if (isset($this->data['predurcenaKnihaString'])) {
-            echo "<option selected value='" . $this->data['predurcenaKnihaId'] . "'>" . $this->data['predurcenaKnihaString'] . "</option>";
-        }
-        else {
-            foreach ($this->data['vsechnyKnihy'] as $kniha) {
-                echo "<option value='" . $kniha['idKniha'] . "'>" . $kniha['nazevKniha'] . " - " . $kniha['jmenoAutora'] ." ". $kniha['prijmeniAutora'] . "</option>";
-            }
-        }
-        ?>
-        </select>
+            <label for="vyberKnihy">Vyber knihy</label>
+            <select name="kniha" id="vyberKnihy">
+                <?php if (isset($this->data['predurcenaKnihaString'])): ?>
+                    <option selected value="<?= $this->data['predurcenaKnihaId'] ?>">
+                        <?= $this->data['predurcenaKnihaString'] ?>
+                    </option>
+                <?php else: ?>
+                    <?php foreach ($this->data['vsechnyKnihy'] as $kniha): ?>
+                        <option value="<?= $kniha['idKniha'] ?>">
+                            <?= $kniha['nazevKniha'] ?> - <?= $kniha['jmenoAutora'] ?> <?= $kniha['prijmeniAutora'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </select>
 
-        <div id="vytvareniKvizu">
-            <div id="vyslednyFormular"style="background-color: #aacfee">
-
-                <div id="strukturaFormulare"></div>
-
-                <input type="text" name="spravneOdpovedi" id="spravneOdpovediInput" value="" readonly hidden="hidden">
-
-            </div>
-            <div id="graficke">
-                <div id="grafickeVkladaniDiv" style="background-color: #0e7fe1">
+            <div id="vytvareniKvizu">
+                <div id="vyslednyFormular">
+                    <div id="strukturaFormulare"></div>
+                    <input type="text" name="spravneOdpovedi" id="spravneOdpovediInput" value="" readonly hidden>
                 </div>
-                <button id="vytvoritOtazku" type="button">Vytvorit otazku</button>
+
+                <div id="graficke">
+                    <div id="grafickeVkladaniDiv"></div>
+                    <button id="vytvoritOtazku" type="button">Vytvorit otazku</button>
+                </div>
             </div>
 
+            <input type="hidden" id="teloKvizu" name="teloKvizu">
+            <input type="submit" value="Vytvorit kviz" id="vyrvoritKviz">
         </div>
 
-
-        <input type="hidden" id="teloKvizu" name="teloKvizu">
-        <input type="submit" value="Vytvorit kviz" id="vyrvoritKviz">
-        </div>
-        
     </form>
-
-
 </main>

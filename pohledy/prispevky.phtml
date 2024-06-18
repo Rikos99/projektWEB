@@ -1,47 +1,34 @@
-<div>
+<div id="id">
     <?php
-
     // HLAVICKY TABULKY
     $hlavickyTabulky = [
-            "Nazev prispevku",
-            "Kniha",
-            "Autor",
-            "Obdobi",
-            "Uzivatel"
-        ];
+        "Nazev prispevku",
+        "Kniha",
+        "Autor",
+        "Obdobi",
+        "Uzivatel"
+    ];
 
     $data = array(); // NASTAVENI RADKU TABULKY
     foreach ($this->data['vsechnyPrispevky'] as $prispevek) {
         $data[] = array(
-                [$prispevek['nazevPrispevku'], "prispevek/" . $prispevek['idPrispevku']],
-                [$prispevek['nazevKniha'], "kniha/" . $prispevek['idKniha']],
-                [$prispevek['jmenoAutora']." ".$prispevek['prijmeniAutora'] , "autor/" . $prispevek['idAutora']],
-                [$prispevek['nazevObdobi'], "prispevky/knihy/obdobi/" . $prispevek['idObdobi']],
-                [$prispevek['jmenoUzivatele']." ".$prispevek['prijmeniUzivatele'], "uzivatel/" . $prispevek['idUzivatele']],
-
-            );
+            [$prispevek['nazevPrispevku'], "prispevek/" . $prispevek['idPrispevku']],
+            [$prispevek['nazevKniha'], "kniha/" . $prispevek['idKniha']],
+            [$prispevek['jmenoAutora']." ".$prispevek['prijmeniAutora'] , "autor/" . $prispevek['idAutora']],
+            [$prispevek['nazevObdobi'], "prispevky/knihy/obdobi/" . $prispevek['idObdobi']],
+            [$prispevek['jmenoUzivatele']." ".$prispevek['prijmeniUzivatele'], "uzivatel/" . $prispevek['idUzivatele']],
+        );
     }
-
     ?>
 
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 0 10px;
-        }
-    </style>
-
     <table>
-
         <thead>
             <?php // VLOZENI HLAVICEK TABULKY
-                foreach ($hlavickyTabulky as $hlavicka) {
-                    echo "<th>$hlavicka</th>";
-                }
+            foreach ($hlavickyTabulky as $hlavicka) {
+                echo "<th>$hlavicka</th>";
+            }
             ?>
         </thead>
-
         <tbody>
         <?php
         foreach ($data as $radek){ // VKLADANI RADKU S DATY
@@ -53,18 +40,14 @@
         }
         ?>
         </tbody>
-
     </table>
+
     <p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
         if (isset($_SESSION["zpravy"]["prispevky"]["chybaNacteni"])) {
             echo $_SESSION["zpravy"]["prispevky"]["chybaNacteni"] ;
             echo "<br>";
             echo "<a href='prispevky'>Zobrazit vsechny</a>";
         }
-
         ?>
     </p>
-
 </div>
-
-

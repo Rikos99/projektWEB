@@ -1,0 +1,97 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-container {
+    max-width: 600px;
+    width: 100%;
+    background-color: var(--un-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+h2 {
+    color: #b83030;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: var(--white);
+    text-align: center;
+    margin: 0;
+    float: left;
+    padding-top: 4px;
+}
+
+#date{
+    float: right;
+}
+
+#nazevKviz{
+
+    text-align: center;
+    color: var(--white);
+    font-weight: 900;
+}
+
+h5 {
+    color: var(--div-separator);
+    text-align: center;
+}
+
+form {
+    border-top: 3px solid var(--header-color);
+    margin-top: 20px;
+    text-align: center;
+}
+
+form input[type="submit"] {
+    background-color: var(--dos-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 25px;
+}
+
+.formOdpovedi {
+    display: block; 
+}
+
+.formOdpovedLabel {
+    display: block; 
+    margin-bottom: 8px; 
+    color: var(--white);
+}
+
+form input[type="submit"]:hover {
+    background-color: rgba(129, 172, 124, 0.685);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.content {
+    margin-top: 20px;
+    background-color: var(--un-color);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}

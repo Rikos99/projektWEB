@@ -1,0 +1,74 @@
+h2, h3, h4, h5, h6 {
+    color: var(--white);
+}
+
+a {
+    color: var(--dos-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: var(--un-color);
+    color: var(--white);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--div-separator);
+}
+
+th {
+    background-color: var(--header-color);
+}
+
+td a {
+    color: var(--white);
+}
+
+td a:hover {
+    color: var(--dos-color);
+}
+
+thead {
+    background-color: var(--header-color);
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--un-color);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--background);
+}
+
+p {
+    color: var(--white);
+}
+
+p a {
+    color: var(--dos-color);
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+#id {
+    padding: 20px;
+    background-color: var(--un-color);
+    margin: 5% 2%;
+    border: 3px solid var(--dos-color);
+    border-radius: 8px;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}

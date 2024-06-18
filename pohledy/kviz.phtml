@@ -1,19 +1,17 @@
-<!--<pre>-->
-<!---->
-<!--    --><?php
-//    print_r($this->data['kviz']);
-//    ?>
-<!---->
-<!--</pre>-->
+<div class="container">
+    <div class="form-container">
+        <h2 id="nazevKviz"><?=$this->data['kviz']['Nazev']?></h2>
+        <h3><?=$this->data['kviz']['jmeno']?> <?=$this->data['kviz']['prijmeni']?></h3>
 
-<h1><?=$this->data['kviz']['Nazev']?></h1>
-<h3><?=$this->data['kviz']['jmeno']?> <?=$this->data['kviz']['prijmeni']?></h3>
+        <form action="" method="post">
+            <div class="content">
+                <?=$this->data['kviz']['Obsah']?>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
 
-<form action="" method="post">
-
-    <?=$this->data['kviz']['Obsah']?>
-
-    <input type="submit">
-</form>
-
-<h5><?=$this->data['kviz']['DatumNahrani']?></h5>
+        <h3 id="date">
+            <p><?=$this->data['kviz']['DatumNahrani']?></p>
+        </h3>
+    </div>
+</div>

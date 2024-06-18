@@ -33,7 +33,7 @@
         <div id="filterbackground">
             <div class="filter">
                 <h3>Filtr</h3>
-                <button class="resetFilter" type="button">resetFilterButtonSetup</button>
+                <button class="resetFilter" type="button">Filter reset</button>
                 <div class="dropdown1">
                     <button class="dropbtn1">Knihy</button>
                     <div id="dropdownContent1" class="dropdown-content1">
@@ -124,9 +124,9 @@
                                 }
                             }
                             if ($isInPovinneKnihy) {
-                                echo '<input type="submit" class="addToLibraryBtn povinnaKniha" name="type" value="odebrat_z_povinnych">';
+                                echo '<input type="submit" class="addToLibraryBtn povinnaKniha" name="type" value="odebrat z povinnych">';
                             } else {
-                                echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat_do_povinnych">';
+                                echo '<input type="submit" class="addToLibraryBtn" name="type" value="pridat do povinnych">';
                             }
                         }
                         ?>
@@ -137,6 +137,15 @@
             </div>
           </div>
         </div>
+        <p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
+        if (isset($_SESSION["zpravy"]["knihy"]["chybaNacteni"])) {
+            echo $_SESSION["zpravy"]["knihy"]["chybaNacteni"] ;
+            echo "<br>";
+            echo "<a href='knihy'>Zobrazit vsechny</a>";
+        }
+
+        ?>
+    </p>
       </div>
 
     <script>
@@ -165,19 +174,6 @@
         </div>
     </div>
 
-
-
- 
-
-    <p><?php // JESTLIZE JE CHYBA, TAK UKAZ ZPRAVU A ZOBRAZ ODKAZ NA VSECHNY
-        if (isset($_SESSION["zpravy"]["knihy"]["chybaNacteni"])) {
-            echo $_SESSION["zpravy"]["knihy"]["chybaNacteni"] ;
-            echo "<br>";
-            echo "<a href='knihy'>Zobrazit vsechny</a>";
-        }
-
-        ?>
-    </p>
 
 </div>
 <!---
@@ -212,3 +208,7 @@ Získávání textu z textového filtru -->
     </script>
     ---->
     
+
+
+
+

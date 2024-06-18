@@ -49,7 +49,6 @@ header a {
     text-decoration: none;
 }
 
-/* Additional media queries for responsiveness */
 @media (max-width: 768px) {
     main {
         margin: 0 5%;
