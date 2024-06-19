@@ -73,6 +73,11 @@ form input[type="submit"] {
     margin-top: 25px;
 }
 
+form input[type="submit"]:hover {
+    background-color: rgba(129, 172, 124, 0.685);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
 .formOdpovedi {
     display: block; 
 }
@@ -81,11 +86,6 @@ form input[type="submit"] {
     display: block; 
     margin-bottom: 8px; 
     color: var(--white);
-}
-
-form input[type="submit"]:hover {
-    background-color: rgba(129, 172, 124, 0.685);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .content {

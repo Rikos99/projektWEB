@@ -73,3 +73,20 @@ form {
         margin-bottom: 12px;
     }
 }
+
+button[type="submit"] {
+    background-color: var(--dos-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 25px;
+}
+
+button[type="submit"]:hover {
+    background-color: rgba(129, 172, 124, 0.685);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
