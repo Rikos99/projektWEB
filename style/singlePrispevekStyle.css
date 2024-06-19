@@ -28,7 +28,7 @@
     border-radius: 8px;
 }
 
-h2 {
+#nazev {
     color: #a83c4e;
     border-bottom: 2px solid var(--div-separator);
     padding-bottom: 10px;
