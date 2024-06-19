@@ -223,8 +223,8 @@ function vytvoritFormOtazku(otazkaDiv, index) {
         formOdpoved.type = typInputuOdpovedi;
         formOdpovedi.id = 'formOdpovedi' + i;
         formOdpoved.classList.add('formOdpovedInput');
-        // formOdpoved.name = 'otakza-' + index + '-' + (typInputuOdpovedi === 'radio' ? '' : indexing);
-        formOdpoved.name = 'otakza-' + index + '-' + indexing;
+        formOdpoved.name = 'otakza-' + index + '-' + (typInputuOdpovedi === 'radio' ? '' : indexing);
+        //formOdpoved.name = 'otakza-' + index + '-' + indexing;
         formOdpoved.setAttribute('indexing', indexing);
 
         formOdpovedi.append(formOdpovedLabel)
