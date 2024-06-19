@@ -18,13 +18,13 @@ function changeTextArea(typ){
     //let textArea = document.getElementById("hlavniEditor");
 
     switch (typ) {
-        case "R":{
+        case "1":{
             setPredlohu(predlohaCesta + "/rozbor.html");
         }break;
-        case "C":{
+        case "2":{
             setPredlohu(predlohaCesta + "/ctenarsky.html");
         }break;
-        case "Z":{
+        case "3":{
             setPredlohu(predlohaCesta + "/zapisky.html");
         }
     }

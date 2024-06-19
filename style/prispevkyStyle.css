@@ -73,3 +73,7 @@ form {
         margin-bottom: 12px;
     }
 }
+
+#textareaContentJakoHtml {
+    display: none;
+}
